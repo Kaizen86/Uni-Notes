@@ -42,9 +42,11 @@ Instructions are written on Moodle, which is good because this guy is saying thi
 
 Some projects need an Ethics certification. Issued by Faculty Ethics Committee..Final submission can contain addendums: proposal, ethics, and another one
 
+# Today's schedule
 14:00-15:00: 110
 15:00-16:00: 102
 
+# Miscellaneous
 Student support: studentlife@port.ac
 Support for extra time in exam is available
 
