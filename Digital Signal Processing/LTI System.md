@@ -15,6 +15,7 @@ Now what the hell do all those words mean?
 	- But mostly it's about the 'time' part
 - Time invariant: Does not change or vary with respect to time
 - Causal: Does not depend on the future inputs
+	- Not to be confused with "Casual". ***Looking at you, Martin***
 
 input (time-based $x[n]$) $\rightarrow$ LTI System (digital) $\rightarrow$ output ($y[n]$)
 	Where n indicates discrete time samples (whole numbers: 0,1,2,...)
