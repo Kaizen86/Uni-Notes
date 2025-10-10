@@ -4,12 +4,12 @@
 The calculation is similar to [[Discrete Convolution]], but there are some important differences. Discrete cross correlation is defined as follows:
 $$\begin{align}
 	R_{xy}[m] &= (x \star y)[n] \\
-	&= \sum^{\inf}_{k=-\inf} x[k] \cdot y[k-m]
+	&= \sum^{\infty}_{k=-\infty} x[k] \cdot y[k-m]
 \end{align}$$
 - Star ($\star$), not an asterix ($*$)!
 
 The maximum...
 $$\begin{align}
 	y[n] &= (x \star y)[n] \\
-	&= \sum^{\inf}_{k=-\inf} x[k] \cdot y[n-k]
+	&= \sum^{\infty}_{k=-\infty} x[k] \cdot y[n-k]
 \end{align}$$

@@ -8,7 +8,7 @@ The impulse response is the response of an LTI system to an impulse function.
 An impulse function looks like this:
 $$S[n] =
 	\begin{cases}
-      1 & \text{for $n=0$;}\\
+      1 & \text{for $n=0$;} \\
       0 & \text{elsewhere}
     \end{cases}
 $$
@@ -21,7 +21,7 @@ $S[n] \rightarrow$ LTI System $h[n] \rightarrow h[n]$
 What happens if you put in *two* Impulse Functions? If we input another impulse function but shifted in time by 1 sample:
 $$S[n-1] =
 	\begin{cases}
-      1 & \text{for $n-1=0$;}\\
+      1 & \text{for $n-1=0$;} \\
       0 & \text{elsewhere}
     \end{cases}
 $$
@@ -40,7 +40,7 @@ This is quite abstract, which can be difficult to think about.
 
 # What is $h[n]$ ?
 Example of a moving average filter, taking the mean average of 3 neighboring samples:
-$$y[n] = \frac{1}{3}x[n]+\frac{1}{3}x[n-1]+\frac{1}{3}x[n-2]$$
+$$y[n] = \frac{1}{3}x[n] + \frac{1}{3}x[n-1] + \frac{1}{3}x[n-2]$$
 *TODO include picture of diagram he drew*
 This will remove high-frequency noise from the input signal $x$, which is quite useful!
 - Types of sensors with noise: Microphone, thermometer, vibration sensor
@@ -48,7 +48,7 @@ This example function is quite crude, you can implement this on a microcontrolle
 ## Determining the impulse response of this filter
 In this case, you have to have an input, we look at different values, shift it along, and look at what the output is. This filter is relatively simple. If we run the filter, here's what happens. The rightmost column is the output, aka the impulse response at $h[n]$.
 
-| $n$ | $x[n]$ | $x[n-1]$ | $x[n-2]$ | $\frac{1}{3}x[n]+\frac{1}{3}x[n-1]+\frac{1}{3}x[n-2]$ |
+| $n$ | $x[n]$ | $x[n-1]$ | $x[n-2]$ | $\frac{1}{3}x[n] + \frac{1}{3}x[n-1] + \frac{1}{3}x[n-2]$ |
 | --- | ------ | -------- | -------- | ----------------------------------------------------- |
 | -2  | 0      | 0        | 0        | 0                                                     |
 | -1  | 0      | 0        | 0        | 0                                                     |

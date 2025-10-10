@@ -6,15 +6,19 @@ Discrete convolution is defined as follows: $y[n] = (x*h)[n]$
 
 $x[n] \rightarrow$ [[LTI System]] $h[n] \rightarrow y[n]$
 Mathematically we have:
-$$\begin{align}
-	y[n] &= \sum^{\inf}_{k=-\inf} x[k] \cdot h[n-k] \\
-	&= \sum^{\inf}_{k=-\inf} x[n-k] \cdot h[k]
-\end{align}$$
+$$
+\begin{align}
+	y[n] &= \sum^{\infty}_{k=-\infty} x[k]   \cdot h[n-k] \\
+	     &= \sum^{\infty}_{k=-\infty} x[n-k] \cdot h[k]
+\end{align}
+$$
 Example: Convolve:
-$$\begin{align}
+$$
+\begin{align}
 	x[n] &= 1,2,0 &(for n&=0,1,2) \\
-	h[n] &= 1,-1 &(for n&=0,1)
-\end{align}$$
+	h[n] &= 1,-1  &(for n&=0,1)
+\end{align}
+$$
 
 | $n$\\$k$ | -1         | 0          | 1          | 2          | 3          | $y[n]$ |
 | -------- | ---------- | ---------- | ---------- | ---------- | ---------- | ------ |
