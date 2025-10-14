@@ -1,7 +1,10 @@
 # Coursework
 Create a wave and display it on the 7 segment display. The switches select which waveform is generated.
 Phase 1 is becoming familiar with VHDL code, then Phase 2 is creating the Wave Generator. Phase 2 should not be written from scratch; use Phase 1 as a starting point.
-Groups are pre-decided. Good luck, Martin!
+Martin has chosen me for his project partner. Should have expected that...
+
+HelloWorld source available on Moodle
+We have enough information to get started with the FPGA coursework
 
 ## Phase 1
 Create a counter that counts from 0000 to 9999
