@@ -1,6 +1,7 @@
 6/12 of us have arrived
 
 # Independent Project
+**TODO** merge this information into Independent Project folder
 Slides are on Moodle but we don't have accounts lmao
 
 - M23441 is for BEng students
