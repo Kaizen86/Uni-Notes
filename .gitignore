@@ -1,2 +1,5 @@
 # Ignore workspace jsons as they change constantly
 .obsidian/workspace*.json
+
+# Matlab autosave files
+**/*.asv
