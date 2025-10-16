@@ -4,11 +4,17 @@ Discrete convolution is defined as follows: $y[n] = (x*h)[n]$
 - The $*$ means convolution, not multiply!
 - Can also be written as $x[n]*h[n]$
 
+## Mathematical definition
+$$\begin{align}
+	y[n] &= (x \star y)[n] \\
+	&= \sum^{\infty}_{k=-\infty} x[k] \cdot y[n-k]
+\end{align}$$
 $x[n] \rightarrow$ [[LTI System]] $h[n] \rightarrow y[n]$
 Mathematically we have:
 $$
 \begin{align}
-	y[n] &= \sum^{\infty}_{k=-\infty} x[k]   \cdot h[n-k] \\
+	y[n] &= (x \star y)[n] \\
+	     &= \sum^{\infty}_{k=-\infty} x[k]   \cdot h[n-k] \\
 	     &= \sum^{\infty}_{k=-\infty} x[n-k] \cdot h[k]
 \end{align}
 $$
