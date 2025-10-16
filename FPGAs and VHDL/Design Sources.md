@@ -1,14 +1,5 @@
-
 VHDL lets you organise functionality by modules. In a hierarchy, functionality is split into smaller modules, and there is one top-level module which ultimately binds IO to modules. There is one source file per module.
-
 # Overview of VHDL code
-## Libraries and packages
-Different versions of the VHDL Standard called a library. Libraries contain packages such as `IEEE.std_logic_1164` for logic level functionality or `IEEE.numeric_std` for integers and basic mathematic operations. Import a package with:
-```vhdl
-library IEEE;
-use IEEE.std_logic_1164;
-```
-
 ## Entity and Architecture
 Entity is where inputs and outputs are defined. Architecture contains Behavioural implementations, which define the logic of the circuit. Vivado takes care of writing the Entity section for you by asking for all the inputs/outputs when creating a source file.
 ## Signals
