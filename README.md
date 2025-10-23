@@ -1,5 +1,5 @@
-# Dan's Uni Notes
-These are my Obsidian notes for my BEng university course. I've made these public in case another student finds them useful. We are learning about Digital Signal Processing and Field Programmable Gate Arrays in the first TB (2025-2026), then Embedded Operating Systems and Advanced Electronic Systems in the second TB (2026). (TB stands for Teaching Block, not Tuberculosis](https://en.wikipedia.org/wiki/Tuberculosis))
+# Kaizen's Uni Notes
+These are my Obsidian notes for my BEng university course. I've made these public in case another student finds them useful. We are learning about Digital Signal Processing and Field Programmable Gate Arrays in the first TB (2025-2026), then Embedded Operating Systems and Advanced Electronic Systems in the second TB (2026). (TB stands for Teaching Block, not [Tuberculosis](https://en.wikipedia.org/wiki/Tuberculosis)
 
 **These notes are provided as-is**, meaning they are unedited and quite informal. If the lecturer is going quickly and I can't quite keep up, or if I'm baffled by something, there might be some cathartic profanity. You have been warned lol
 
