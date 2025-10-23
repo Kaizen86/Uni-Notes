@@ -1,4 +1,4 @@
-The impulse response is the time domain characterisation of an [[LTI System]]. If we know the impulse response and the input then we can determine the output.
+The impulse response is the time domain characterisation of an [[LTI]]. If we know the impulse response and the input then we can determine the output.
 - Analogy for a time domain characterisation is a bit like a CV for an LTI System. Human output is characterised by our CV, which describes how we will respond to input.
 
 # What is an Impulse Response?
@@ -34,7 +34,7 @@ So what happens if our input is
 1. $x[n] = S[n]+S[n-1]$
 	- Answer is $y[n] = h[n]+h[n-1]$ 
 2. $x[n]=aS[n]+bS[n-2]$
-	- $a$ and $b$ are constants which multiply the inputs (see [[LTI System#Properties of LTI Systems]])
+	- $a$ and $b$ are constants which multiply the inputs (see [[LTI#Properties of LTI Systems]])
 	- Answer is $y[n]=ah[n]+bh[n-2]$
 This is quite abstract, which can be difficult to think about.
 
