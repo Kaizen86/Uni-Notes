@@ -109,7 +109,7 @@ $$
 	&\text{(Output)} &\text{(Transfer function)} &\; &\text{(Input)}
 \end{gather}
 $$
-
+Attenuation at certain points:
 $$
 \begin{align}
 	&\text{Frequencies close to } 0             &\approx &+0dB \\
@@ -117,4 +117,4 @@ $$
 	&\text{Frequencies close to } \pi           &\approx &-10dB 
 \end{align}
 $$
-This is almost like a ... (to be continued!)
+This is almost like a low-pass filter and band-stop filter hybrid.

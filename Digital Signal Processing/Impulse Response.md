@@ -59,4 +59,4 @@ In this case, you have to have an input, we look at different values, shift it a
 | 4   | 0      | 0        | 0        | 0                                                     |
 | 5   | 0      | 0        | 0        | 0                                                     |
 # [[Discrete Convolution]]
-This shows that we can determine the output of the system for a specific input. However, this can be a bit time consuming. Instead, we can use the impulse response in a mathematical operation called a *convolution*.
+This shows that we can determine the output of the system for a specific input. However, this can be a bit time consuming. Instead, we can use the impulse response in a mathematical operation called a *convolution*. (See [[Convolution Therorum]])
