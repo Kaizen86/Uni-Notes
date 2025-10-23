@@ -76,7 +76,7 @@ end process
 - `character` (one of the ASCII set)
 - `boolean` (TRUE or FALSE)
 - `bit` (either `'0'` or `'1'`)
-- `std_logic` (improved version of `bit`, has __9__ values)
+- `std_logic` (improved version of `bit`, has **9** values)
 
 | `std_logic` value | Meaning                                        |
 | ----------------- | ---------------------------------------------- |
