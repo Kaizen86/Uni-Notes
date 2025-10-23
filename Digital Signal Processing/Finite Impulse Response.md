@@ -32,7 +32,7 @@ w[n] =
 \end{cases}
 $$
 	- Example:
-	- ![[img305.png]]
+	- ![[rectangular-window.png]]
 	- In this picture, $m$=10
 	- The total length of the window is $2m+1 = 21$
 You can't magically use this "as-is", you need to give it extra variables first.
