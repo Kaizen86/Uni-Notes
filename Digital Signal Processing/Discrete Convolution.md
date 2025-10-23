@@ -1,7 +1,7 @@
 Calculating these by hand is a bit tedious, but luckily computers can do that for us. MATLAB has a dedicated function called `convolution`, and others have similar but it usually isn't called a convolution for some reason.
 
 Discrete convolution is defined as follows: $y[n] = (x*h)[n]$
-- The $*$ means convolution, not multiply!
+- The $*$ means convolution, not multiply! See [[Convolution Theorum]] for more information.
 - Can also be written as $x[n]*h[n]$
 
 ## Mathematical definition

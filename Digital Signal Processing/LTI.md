@@ -4,7 +4,7 @@ gps be hella accurate
 - measures the time of flight by comparing the incoming signal with what was expected
 - very poggers
 
-There are some [helpful calculators](chivertj.github.io/dspworksheets) made by the lecturer so we can check our workings
+There are some [helpful calculators](https://chivertj.github.io/dspworksheets) made by the lecturer so we can check our workings
 
 # Linear Time Invariant (LTI) (causal) Systems
 Now what the hell do all those words mean?
