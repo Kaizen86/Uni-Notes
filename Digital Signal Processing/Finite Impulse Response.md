@@ -38,6 +38,7 @@ $$
 You can't magically use this "as-is", you need to give it extra variables first.
 
 Note: Normalised digital frequency is $\Omega_{cf}$
+- What this means in practical terms (as far as I understand it) is that you always map the sample frequency $F_s$ to $2\pi$, and $\Omega_cf$ refers to a point on this remapped spectrum.
 For the $sinc$ function, it needs to be formulated to enable us to design the filter:
 
 $$
@@ -47,7 +48,7 @@ $$
 \end{gather}$$
 **TODO: fix the spacing above**
 The critical frequency is calculated similar before for digital frequencies:
-$$\Omega cf = \frac{2 \pi f_{cf} \text{}}{f_s}$$
+$$\Omega_{cf} = \frac{2 \pi f_{cf} \text{}}{f_s}$$
 - Where $f_{cf}$ is the analogue critical frequency, and $f_s$ is the sampling frequency
 
 This will result in a [[LTI]] [[Impulse Response]]impulse response being windowed with a rectangular window function:
