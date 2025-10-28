@@ -32,7 +32,7 @@ $S[n-1] \rightarrow$ LTI System $h[n] \rightarrow h[n-1]$
 -  Where $S[n-1]$ is the shifted impulse function, $h[n]$ is the impulse response, and $h[n-1]$ is the shifted impulse response.
 So what happens if our input is
 1. $x[n] = S[n]+S[n-1]$
-	- Answer is $y[n] = h[n]+h[n-1]$ 
+	- Answer is $y[n] = h[n]+h[n-1]$
 2. $x[n]=aS[n]+bS[n-2]$
 	- $a$ and $b$ are constants which multiply the inputs (see [[LTI#Properties of LTI Systems]])
 	- Answer is $y[n]=ah[n]+bh[n-2]$

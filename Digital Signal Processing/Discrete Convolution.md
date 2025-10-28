@@ -1,5 +1,3 @@
-Calculating these by hand is a bit tedious, but luckily computers can do that for us. MATLAB has a dedicated function called `convolution`, and others have similar but it usually isn't called a convolution for some reason.
-
 Discrete convolution is defined as follows: $y[n] = (x*h)[n]$
 - The $*$ means convolution, not multiply! See [[Convolution Theorum]] for more information.
 - Can also be written as $x[n]*h[n]$
@@ -34,3 +32,5 @@ $$
 | 2        | 0          | 1x0        | 2x(-1)     | 0          | 0          | -2     |
 | 3        | 0          | 1x0        | 2x0        | 0          | 0          | 0      |
 |          | ($x[k=0]$) | ($x[k=1]$) | ($x[k=2]$) | ($x[k=3]$) | ($x[k=4]$) |        |
+Calculating these by hand is a bit tedious, but luckily computers can do that for us. MATLAB has a dedicated function called `convolution`, and others have similar but it usually isn't called a convolution for some reason.
+

@@ -14,7 +14,7 @@ Each week:
 	- After 7 weeks, lectures end so we can focus on lab work
 - 2 hours of lab work
 
-2 Assessments: 
+2 Assessments:
 - Project Based Learning
 - CW1 (50%)
 	- January 12th?: Submit code

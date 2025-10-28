@@ -1,9 +1,3 @@
-# Intro
-gps be hella accurate
-- to within 1 metre wowowow
-- measures the time of flight by comparing the incoming signal with what was expected
-- very poggers
-
 There are some [helpful calculators](https://chivertj.github.io/dspworksheets) made by the lecturer so we can check our workings
 
 # Linear Time Invariant (LTI) (causal) Systems
@@ -32,12 +26,12 @@ input (time-based $x[n]$) $\rightarrow$ LTI System (digital) $\rightarrow$ outpu
 For a linear system $y[n] = F(x[n])$
 $$f(ax_1[n]+bx_2[n]) = aF(x_1[n])+bF(x_2[n])$$
 ## Properties of LTI Systems
-$x_1[n]$ and $x_2[n]$ -> LTI System ($h[n]$) -> $y[n]$
+$x_1[n]$ and $x_2[n] \rightarrow$ LTI System ($h[n]$) $\rightarrow y[n]$
 x and y could be multiplied separately, producing e.g. by $ax_1[n]$, then the two products can be added, e.g. $ax_1[n]+bx_2[n]$, then fed into an LTI System $g[n]$ to result in $y[n]$.
 
 Here's the kicker: for an LTI System we can place the LTI System before the multiplication & sum to get an equivalent result.
-	$x_1[n]$ -> LTI System $g[n]$ -> multiply by $xa$
-	$x_2[n]$ -> LTI System $g[n]$ -> multiply by $xb$
+	$x_1[n] \rightarrow$ LTI System $g[n] \rightarrow$ multiply by $xa$
+	$x_2[n] \rightarrow$ LTI System $g[n]\rightarrow$ multiply by $xb$
 	Then add products of $xa$ and $xb$ to create $y[n]$
 $g[n]$ is called an [[Impulse Response]]!
 

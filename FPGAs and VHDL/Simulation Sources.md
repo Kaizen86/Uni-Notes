@@ -1,4 +1,4 @@
-These files define how a simulation should run, to automatically verify a circuit works properly instead of driving things manually with Force Clock. In Vivado, this is called a Testbench. 
+These files define how a simulation should run, to automatically verify a circuit works properly instead of driving things manually with Force Clock. In Vivado, this is called a Testbench.
 
 The design being simulated is called a Design Under Test (DUT). The testbench creates inputs (stimulus) to drive the DUT and can look at its outputs (output checker).
 

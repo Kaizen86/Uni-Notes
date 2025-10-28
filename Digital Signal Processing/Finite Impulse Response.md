@@ -1,3 +1,5 @@
+FIXME: This may need expanding!
+
 FIR filters do not have feedback. This is the main distinguishing characteristic.
 
 # Design Methodology

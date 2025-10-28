@@ -1,3 +1,5 @@
+FIXME: This needs expanding!
+
 Used for aperiodic and sampled signals.
 $$X(\Omega) = \sum^\infty_{n=-\infty} x[n] \; exp(-j \Omega n)$$
 Where variable $X(\Omega)$ is the continuous frequency's ($\Omega$) radians/sample, $n$ is the discrete time sample, $exp$ is the exponential ($e$).

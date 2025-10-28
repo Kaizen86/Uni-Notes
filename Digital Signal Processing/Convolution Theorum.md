@@ -14,13 +14,13 @@ $$
 	H(\Omega) &= \text{DTFT}\{h[n]\} \; \text{(transfer function)} \\
 \end{align}
 $$
-	
+
 Therefore you can use simple multiplication in the frequency domain:
 $$Y(\Omega) = H(\Omega) \cdot X(\Omega)$$
 ## Examples
 1. Determine the DTFT of the [[impulse response]] for a 3 point moving-average filter:
 $$
-	y[n] = \frac{1}{3} \cdot x[n] + 
+	y[n] = \frac{1}{3} \cdot x[n] +
 	       \frac{1}{3} \cdot x[n-1] +
 	       \frac{1}{3} \cdot x[n-2]
 $$
@@ -42,8 +42,8 @@ $$
 Substituting in the expression for $h[n]$
 $$
 H(\Omega) =
-	\sum^{-1}_{n=-\infty} 0    \; exp(-j \Omega n) + 
-	\sum^{2}_{n=0} \frac{1}{3} \; exp(-j \Omega n) + 
+	\sum^{-1}_{n=-\infty} 0    \; exp(-j \Omega n) +
+	\sum^{2}_{n=0} \frac{1}{3} \; exp(-j \Omega n) +
 	\sum^{\infty}_{n=3}   0    \; exp(-j \Omega n)
 $$
 Substituting in the values of $n$ and expanding
@@ -53,7 +53,7 @@ H(\Omega) =
 	\frac{1}{3} exp(-j \Omega 1) +
 	\frac{1}{3} exp(-j \Omega 2)
 $$
-	
+
 Expanding each complex exponential using Euler's identity and factorizing the $\frac{1}{3}$
 Remember: Euler's identity is $exp(jA) = jsin(A)+cos(A)$ and $exp(c)=1$
 - What the fuck??
@@ -114,7 +114,7 @@ $$
 \begin{align}
 	&\text{Frequencies close to } 0             &\approx &+0dB \\
 	&\text{Frequencies close to } \frac{\pi}{2} &\approx &-30dB \\
-	&\text{Frequencies close to } \pi           &\approx &-10dB 
+	&\text{Frequencies close to } \pi           &\approx &-10dB
 \end{align}
 $$
 This is almost like a low-pass filter and band-stop filter hybrid.

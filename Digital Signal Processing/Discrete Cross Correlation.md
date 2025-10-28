@@ -1,3 +1,5 @@
+FIXME: This needs expanding!
+
 [Animation of Cross Correlation](https://chivertj.github.io/dspworksheets/LTISystems/Ex_corranim.html)
 [Interactive GPS Cross-Correlation demo](https://chivertj.github.io/dspworksheets/LTISystems/gps_interactive.html)
 
@@ -10,7 +12,7 @@ $$\begin{align}
 \end{align}$$
 - Star ($\star$), not an asterix ($*$)!
 
-The maximum of this function, i.e the result of the cross-correlation operation between two signals, represents the point in time where the two signals can be considered to have the most similarity. This is potentially useful for a range of applications such as: 
+The maximum of this function, i.e the result of the cross-correlation operation between two signals, represents the point in time where the two signals can be considered to have the most similarity. This is potentially useful for a range of applications such as:
 - medical ultrasound
 - car parking sensors
 This is where the time where the two signals are found to match can be used to calculate distance, depth, and potentially other useful information. See worksheet and slides for examples. Also, in Matlab, we have used the `xcorr` function.

@@ -19,7 +19,7 @@ Individual project must be done by ourselves, obviously. Project supervisor can 
 Independent project is 40 credits out of 120
 
 3 categories of student:
-1. Has an idea 
+1. Has an idea
 2. ???
 
 Moodle is accessible via port.ac.uk
@@ -76,11 +76,11 @@ Teaching Block 2:
 Student emails look like: `up<student id>@...port.ac.uk`
 
 Wednesdays we go down:
-- 15th October 
-- 12th November 
+- 15th October
+- 12th November
 - 10th December
-- 28th January 
-- 18th February 
+- 28th January
+- 18th February
 - 18th March
 - 29th April - Project day
 - 13th May

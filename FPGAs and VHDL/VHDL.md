@@ -26,7 +26,7 @@ open, register -- Invalid; reserved keywords
 ### Scalar Types
 - Enumerated: a list of values
 - Integer
-	- Uses [2's complement](https://en.wikipedia.org/wiki/Two%27s_complement). 
+	- Uses [2's complement](https://en.wikipedia.org/wiki/Two%27s_complement).
 	- Default value is maximum signed negative
 	- Can be configured as unsigned
 - Floating Point (`real`)

@@ -5,17 +5,18 @@ As the lecturer puts it: *The [[Discrete Time Fourier Transform]] of a $sinc$ fu
 To get around this, you use a window function. There are a variety of window functions. The common first window function is a rectangular window:
 ## Rectangular window
 - Rectangular window is defined as:
-- $$
+$$
 w[n] =
 \begin{cases}
 	1 & \text{for } {-m} \leq n \leq m; \\
 	0 & \text{elsewhere}
 \end{cases}
 $$
-	- Example:
-	- ![[rectangular-window.png]]
-	- In this picture, $m$=10
-	- The total length of the window is $2m+1 = 21$
+	
+Example:
+![[rectangular-window.png]]
+- In this picture, $m$=10
+- The total length of the window is $2m+1 = 21$
 You can't magically use this "as-is", you need to give it extra variables first.
 
 Note: Normalised digital frequency is $\Omega_{cf}$
@@ -60,13 +61,13 @@ These are generally named after the people who discovered them.
 | Blackman    | $2\pi \cdot 5.5/N$ | 74dB                 |
 - where N is the length of the window
 
-For example, the Rectangular window transition width between the passband and stopband can be calculated using a well-known formula:
-[^1]
+For example, the Rectangular window transition width between the passband and stopband can be calculated using a well-known formula: [^1]
 $$\Delta\Omega_{TW} = \frac{2\pi \cdot 0.9}{N}$$
 - Where $0.9$ is a sort of scaling factor called the $k$ value, specific to each window, and $N$ is the length of the window.
 - Plug in different values for the $k$ value when calculating different windows (see table above).
 This is added with the critical frequency to determine the stopband frequency:
 $$\Omega_{dB} = \Omega_{cf} + \Delta\Omega_{TW}$$
+
 There are other window types, where each one has different properties. For instance:
 
 | Window Type | $k$ value | Stopband Attenuation |

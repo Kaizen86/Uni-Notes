@@ -1,3 +1,5 @@
+FIXME: This needs expanding!
+
 Instead of defining everything in one file, split up functionality into separate submodules, and link them together in a single top-level module. You instantiate each module as if it were a component and then use `port map` to link their inputs/outputs together with signals.
 
 After creating the Source Files, make sure to tell Vivado which one is the top-level module. Right-click the file and mark it as top-level.

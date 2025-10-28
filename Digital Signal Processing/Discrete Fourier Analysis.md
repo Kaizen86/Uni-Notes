@@ -23,4 +23,4 @@ All of these can be processed in the digital domain and even analogue at certain
 | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | **Periodic**<br>(repeating)      | Sine wave<br>A/C power line<br>Fourier Transform | Digital preamble?<br>Any digitised analogue signal (obviously!)<br>Discrete Fourier Transform (DFT)          |
 | **Aperiodic**<br>(not repeating) | Human speech<br>Thermal noise?<br>Fourier Series | Random sampled noise<br>Any aperiodic analogue signal (obviously!)<br>Discrete Time Fourier Transform (DTFT) |
-Everything we're processing on a computer must fall into the Periodic Discrete section, because they have finite memory and discrete samples.
+Everything we're processing on a computer **must fall into the Periodic Discrete section,** because they have finite memory and discrete samples.
