@@ -33,11 +33,12 @@ The critical frequency is calculated similar to before for digital frequencies:
 $$\Omega_{cf} = \frac{2 \pi f_{cf} \text{}}{f_s}$$
 - Where $f_{cf}$ is the analogue critical frequency, and $f_s$ is the sampling frequency
 
-This will result in a [[LTI]] [[Impulse Response]] being windowed with a rectangular window function:
+This will result in an [[LTI]] [[Impulse Response]] being windowed with a rectangular window function. For a discrete system, this is represented by:
 $$h[n] = w[n] \cdot s[n]$$
-The frequency response will then no longer be a brick wall.
-- ![[Rectangular window frequency response.jpg]]
-For rectangular window, the attenuation is always $-21dB$. The attenuation depends on the type of window function used. This transition band width can be adjusted, but it's quite long; how can we improve it?
+- Where $h[n]$ is the impulse *response*, $w[n]$ is the discrete window function, and $s[n]$ is the impulse *function*. (I don't know if that $s$ should be capitalised or not...)
+Because it's been windowed, the frequency response will necessarily no longer be a brick wall. It will ripple slightly in the *pass band*, taper off through the *transition band*, and ripple in the *stop band*. (Also called "sidelobes" and the "[Gibbs Phenomenon](https://en.wikipedia.org/wiki/Gibbs_phenomenon)".)
+![[Rectangular window frequency response.jpg]]
+For a rectangular window, the attenuation is always $-21dB$. The attenuation depends on the type of window function used. This transition band width can be adjusted, but it's quite long; how can we improve it?
 
 Note: [half-power point](https://en.wikipedia.org/wiki/Half-power_point) is approximately $-3db$, which divides total power by 2. Counterintuitively, the voltage for half-power is not 0.5, but in fact:
 ```math
