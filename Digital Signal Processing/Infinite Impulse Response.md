@@ -148,7 +148,8 @@ Functions like `filter(B,A,n,fs)` have:
 We can use this to implement, for instance, a Butterworth filter
 
 ---
-# Practice with using Analogue Prototype Method using Bilinear Transformation
+## Practice with using Analogue Prototype Method using Bilinear Transformation
+### 1.
 ```math
 # Sampling frequency
 fs=1000
@@ -163,6 +164,7 @@ $f_s$ and $f_{cf}$ in Hertz
 $\Omega_{cf}$ in rad/sample
 $\omega_{cf}$ in rad/second
 $\omega_0=\omega_{cf}$ for some reason
+- $\alpha = \frac{2f_s}{\omega_0}$ or $\alpha = \frac{1}{tan(\frac{\Omega_{cf}}{2})}$
 
 Analogue prototype transfer function:
 $$
@@ -173,3 +175,17 @@ $$
 \end{align}
 $$
 TODO copy from pictures
+
+---
+## 2
+```math
+# Sampling frequency
+fs=1000
+# Analogue cut-off frequency
+fcf=499
+# Normalised digital cutoff freq
+Omegacf=2*pi*fcf/fs
+# Frequency warped analogue cut-off freq
+omegacf=2*fs*tan(Omegacf/2)
+```
+oh lawdy oh good heavens
