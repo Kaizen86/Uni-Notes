@@ -7,7 +7,7 @@ $$\begin{align}
 	y[n] &= (x \star y)[n] \\
 	&= \sum^{\infty}_{k=-\infty} x[k] \cdot y[n-k]
 \end{align}$$
-$x[n] \rightarrow$ [[LTI]] $h[n] \rightarrow y[n]$
+$x[n] \rightarrow$ [[Linear Time Invariant Systems|LTI]] $h[n] \rightarrow y[n]$
 Mathematically we have:
 $$
 \begin{align}

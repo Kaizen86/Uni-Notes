@@ -4,7 +4,7 @@ FIR filters do not have feedback. This is the main distinguishing characteristic
 
 # Design Methodology
 These can be designed in a number of different ways. A somewhat simple method is known as the *windowed sinc* method.
-Say we have an input to an [[LTI]]:
+Say we have an input to an [[Linear Time Invariant Systems|LTI]]:
 $$
 \begin{gather}
 	&x[n] &\rightarrow \text{LTI System } h[n]=w[n] \cdot s[n] \rightarrow &y[n] \\

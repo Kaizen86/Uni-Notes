@@ -1,4 +1,4 @@
-As the lecturer puts it: *The [[Discrete Time Fourier Transform]] of a $sinc$ function is a brick-wall response in the frequency domain. Unfortunately, this is impossible to achieve in practice. Hence, you need to limit the time-domain $sinc$ function* (to a [[Finite Impulse Response]]) *so the [[Discrete Convolution]] operation can run in a practical amount of time. How much time is practical depends on the signal.*
+As the lecturer puts it: "*The [[Discrete Time Fourier Transform]] of a $sinc$ function is a brick-wall response in the frequency domain. Unfortunately, this is impossible to achieve in practice. Hence, you need to limit the time-domain $sinc$ function* (to a [[Finite Impulse Response]]) *so the [[Discrete Convolution]] operation can run in a practical amount of time. How much time is practical depends on the signal.*"
 - Audio signals shouldn't be delayed much more than 1ms or so. This is relatively low frequency
 - Higher frequencies need even smaller delays
 
@@ -34,7 +34,7 @@ The critical frequency is calculated similar to before for digital frequencies:
 $$\Omega_{cf} = \frac{2 \pi f_{cf} \text{}}{f_s}$$
 - Where $f_{cf}$ is the analogue critical frequency, and $f_s$ is the sampling frequency
 
-This will result in an [[LTI]] [[Impulse Response]] being windowed with a rectangular window function. For a discrete system, this is represented by:
+This will result in an [[Linear Time Invariant Systems|LTI]] [[Impulse Response]] being windowed with a rectangular window function. For a discrete system, this is represented by:
 $$h[n] = w[n] \cdot s[n]$$
 - Where $h[n]$ is the impulse *response*, $w[n]$ is the discrete window function, and $s[n]$ is the impulse *function*. (I don't know if that $s$ should be capitalised or not...)
 Because it's been windowed, the frequency response will necessarily no longer be a brick wall. It will ripple slightly in the *pass band*, taper off through the *transition band*, and ripple in the *stop band*. (Also called "sidelobes" and the "[Gibbs Phenomenon](https://en.wikipedia.org/wiki/Gibbs_phenomenon)".)

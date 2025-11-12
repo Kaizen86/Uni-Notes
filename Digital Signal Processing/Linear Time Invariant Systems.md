@@ -1,3 +1,7 @@
+---
+aliases:
+  - LTI
+---
 There are some [helpful calculators](https://chivertj.github.io/dspworksheets) made by the lecturer so we can check our workings
 
 # Linear Time Invariant (LTI) (causal) Systems
