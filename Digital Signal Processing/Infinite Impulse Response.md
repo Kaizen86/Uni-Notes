@@ -135,7 +135,7 @@ $$
 $$\text{so that } p_1 = z = -\beta$$
 
 For stability, the poles need to be in the unit circle, in the complex z-domain.
-- TODO include picture of complex plane
+- ![[IIR Pole Stability diagram.jpg]]
 - Any point along the unit circle will have a distance of 1 from the origin.
 Any pole outside the unit circle will be unstable.
 In the analogue domain, you use the s-domain, but here we use the complex z-domain.
