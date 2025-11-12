@@ -36,7 +36,7 @@ $$H(\omega) = \frac{1}{1+j \omega R c}$$
 Let the radial critical frequency $\omega_{cf} = 2\pi f_{cf} = \frac{1}{RC}$ (or equivalently $RC = \frac{1}{\omega+{cf}}$):
 $$H(\omega) = \frac{1}{1\frac{j\omega}{\omega_{cf}}}$$
 This has a magnitude response (in dB):
-- TODO insert graph
+- ![[RC filter response.jpg]]
 I have a headache.
 
 # Bilinear Transformation Method
