@@ -1,5 +1,4 @@
-
-An infinitely long [[Impulse Response]]
+As the name suggests, it's an infinitely long [[Impulse Response]]
 # [[Finite Impulse Response]] vs IIR
 FIR:
 - No feedback
@@ -8,7 +7,7 @@ IIR:
 - Feedback
 - Achieves a better cut-off with fewer calculations
 
-Preferred for linear phase however IIR is better as it uses fewer calculations
+FIR is preferred for linear phase however IIR is better as it uses fewer calculations
 
 IIR filters can be designed using a number of techniques. A well known technique uses "analogue prototypes", based on real electrical circuits with known useful filter properties. This is because analogue filters have been quite well-researched before digital processing was created.
 - For instance, a simple passive low-pass 1st order analogue filter could be implemented as an RC circuit:
@@ -20,7 +19,7 @@ $$
   \text{becomes:} \\
   V_{out} &= \frac{X_c}{R+X_c}\times V_{in}
 \end{align}$$
-- Where $X_c = \frac{1}{j \omega c}$, in which $c$ is the speed of light.
+- Where $X_c = \large\frac{1}{j \omega c}$, in which $c$ is the speed of light.
 Substitute the reactance expression:
 $$V_{out} = \frac{\frac{1}{j \omega c}}{R + \frac{1}{j \omega c}} V_{in}$$
 Divide both sides by $V_{in}$ and multiply the top & bottom by $j \omega c$:
@@ -40,20 +39,18 @@ This has a magnitude response (in dB):
 I have a headache.
 
 # Bilinear Transformation Method
-To convert an analogue prototype, like the one just derived, to a digital representation, we can use the Bilinear Transformation (BLT) method. This involves 2 main steps:
+To convert an analogue prototype, like the one just derived, to a digital representation, we can use the Bilinear Transformation (BLT) method. This involves 2 main steps; prewarp and applying the BLT. First though, there's a 'step 0'.
+0. Determine the normalised digital frequency
+$$\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$$
 1. Apply a prewarp to critical frequencies
 	- This involves an equation, such as:
 $$\omega_{cf} = 2f_s tan\left( \frac{\Omega_{cf}}{2} \right)$$
-	- where $fs$ is the sampling frequency, and $\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$ is the normalised digital frequency. For more detail on $\Omega_{cf}$, see [[Window Functions#^explain-normalised-freq|this explanation]].
+	- where $fs$ is the sampling frequency, and $\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$ is the [[Window Functions#^explain-normalised-freq|normalised digital frequency]].
 	- This is doing the opposite warp from the next equation, hence "prewarp"
 2. Apply BLT equation to the transfer function:
 $$H(z) = H'(\omega)|_{\huge j\omega \rightarrow 2fs\left(\frac{z-1}{z+1}\right)}$$
 	- What the entire fuck is that??
-	- This is changing the scales in a non-linear way, so a pre-warp is needed (step 1).
-------
-"There's almost a step 0". Oh great.
-0. Determine the normalised digital frequency
-$$\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$$
+	- This is changing the scales in a non-linear way, so a prewarp is needed (step 1).
 ## Example
 $f_{cf} = 1\text{KHz}$ and $f_s = 10\text{KHz}$
 Answer:
@@ -71,7 +68,7 @@ $$\text{let } \alpha = \frac{1}{tan\left( \frac{\Omega_{cf}}{2} \right)}$$
 $$
 \begin{align}
 	{\omega'}_{cf} &=\frac{2f_s}{\alpha} \\
-\text{Where } \alpha &= \frac{1}{tan\left( \frac{0.2\pi}{2} \right)}
+	\text{Where } \alpha &= \frac{1}{tan\left( \frac{0.2\pi}{2} \right)}
 \end{align}
 $$
 - Putting this back into the transfer function, we have:
@@ -84,15 +81,19 @@ $$
 1. Apply the BLT (curly braces to illustrate separate parts)
 $$
 \begin{align}
-	H(z) &= H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}} \\ \\
-	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{{\omega'}_{cf}} \right\}} \\ \\
+	H(z) &= H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}} \\
+	\\
+	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{{\omega'}_{cf}} \right\}} \\
+	\\
 	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{\frac{2f_s}{\alpha}} \right\}}
 \end{align}
 $$
 $$
 \begin{align}
-	&= \frac{1} {1+\left\{ 2f_s \large\frac{z-1}{z+1} \right\} \div \left\{ \large\frac{2f_s}{\alpha} \right\}} \\ \\
-	&= \frac{1} {1+\left\{ \cancel{2f_s} \large\frac{z-1}{z+1} \right\} \times \left\{ \frac{\large\alpha}{\cancel{2f_s}} \right\}} \\ \\
+	&= \frac{1} {1+\left\{ 2f_s \large\frac{z-1}{z+1} \right\} \div \left\{ \large\frac{2f_s}{\alpha} \right\}} \\
+	\\
+	&= \frac{1} {1+\left\{ \cancel{2f_s} \large\frac{z-1}{z+1} \right\} \times \left\{ \frac{\large\alpha}{\cancel{2f_s}} \right\}} \\
+	\\
 	&= \frac{1}{1+\alpha \large\frac{z-1}{z+1} }
 \end{align}
 $$
@@ -112,9 +113,9 @@ $$H(z) = \frac{z+1}{z(1+\alpha) + 1-\alpha}$$
 	$$H(z) = \frac{1}{1+\alpha}\left( \frac{z+1}{z+\left\{ \large\frac{1-\alpha}{1+\alpha} \right\}} \right)$$
 $$
 \begin{gather}
-	\text{let } \beta=\frac{1-\alpha}{1+\alpha} \text{ \& } k=\frac{z+1}{z+\beta}\\
+	\text{let } \beta=\frac{1-\alpha}{1+\alpha} \text{ \& } K=\frac{z+1}{z+\beta} \\
 	\text{we then have: } \\
-	H(z) = k \frac{(z+1)}{z+\beta}
+	H(z) = K \frac{(z+1)}{z+\beta}
 \end{gather}
 $$
 - This is now in a familiar or standard form for a z-domain transfer function.
@@ -124,34 +125,45 @@ $$
 The roots of the denominator are called *poles*, and the roots of the numerator are called *zeros*. The poles are values of $z$ at which the denominator becomes zero and hence the transfer function would be infinite. For example:
 $$\frac{z-z_1}{z-p_1}$$
 - Where $z_1$ is the zero and $p_1$ is the pole.
-- Here, 
-	- TODO copy from picture
+$$
+\begin{align}
+	&\text{Here, } \\
+	&z+\beta &= &\;0 \\
+	\therefore\; &z &= &-\beta
+\end{align}
+$$
+$$\text{so that } p_1 = z = -\beta$$
 
 For stability, the poles need to be in the unit circle, in the complex z-domain.
 - TODO include picture of complex plane
-- And point along the unit circle will have a distance of 1 from the origin.
+- Any point along the unit circle will have a distance of 1 from the origin.
 Any pole outside the unit circle will be unstable.
 In the analogue domain, you use the s-domain, but here we use the complex z-domain.
 
 ## Time-domain Input Output Difference Equation
 Recall the z-domain transfer function:
-$$H(z) = k \frac{(z+1)}{z+\beta}$$
-First, divide top and bottom by z, and that will get us the negative power of z. This will give us terms that are more easily converted to time domain.
-- TODO copy from picture and fix bracket height
+$$H(z) = K \frac{(z+1)}{z+\beta}$$
+1. First, divide top and bottom by z, and that will get us the negative power of z. This will give us terms that are more easily converted to time domain.
+$$\frac{z}{z} = 1$$
 $$
 \begin{align}
-	H(z) &= K(\frac{}{}) \\
-	& = K(\frac{}{})	
+	H(z) &= K( \frac
+		{1 \cancel{\frac{z}{z}} + \frac{1}{z}} {1 \cancel{\frac{z}{z}} + \frac{\beta}{z}}) \\
+	\\
+	& = K(\frac {1+z^{-1}} {1+\beta z^{-1}} )
 \end{align}
 $$
-Multiply out the numerator:
-- TODO
-
-Noting that:
-- TODO
+2. Multiply out the numerator:
+$$H(z) = \frac{K+K z^{-1}} {1+\beta z^{-1}}$$
+- Recall that an [[Linear Time Invariant Systems|LTI System]] in z-domain looks like: $X(x) \rightarrow H(z) \rightarrow Y(z)$, noting that:
+$$H(z) = \frac{Y(z)}{X(z)}$$
 To save time, equate both expressions and cross-multiply by both denominators:
-- TODO
-Multiplying out:
+$$
+\begin{align}
+	
+\end{align}
+$$
+1. Multiplying out:
 - TODO
 "Now this is the bit of inverse magic. This z function ... time delay to take it back to time domain. Where you're multiplying by $z^{-1}$, that's like a time shift."
 TODO
