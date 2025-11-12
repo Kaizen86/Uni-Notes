@@ -20,7 +20,7 @@ Example:
 You can't magically use this "as-is", you need to give it extra variables first.
 
 Note: Normalised digital frequency is $\Omega_{cf}$
-- What this means in practical terms (as far as I understand it) is that you always map the sample frequency $f_s$ to $2\pi$, and $\Omega_{cf}$ refers to a point on this remapped spectrum.
+- What this means in practical terms (as far as I understand it) is that you always map the sample frequency $f_s$ to $2\pi$, and $\Omega_{cf}$ refers to a point on this remapped spectrum. ^explain-normalised-freq
 
 For the $sinc$ function, it needs to be formulated to enable us to design the filter:
 $$
@@ -122,6 +122,8 @@ $$
 	&= 158.4
 \end{align}
 $$
+- TODO check i got the brackets copied correctly
+
 This needs to be rounded up to achieve the required specification.
 
 [^1]: I've rearranged the numerator slightly because I think it's easier to understand, but be aware that may not be proper convention. I haven't looked into this too deeply. For posterity, the original form given by the lecturer is to put the k value next to $\pi$, like this: $2 \cdot 0.9 \pi$

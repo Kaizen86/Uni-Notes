@@ -12,7 +12,7 @@ Preferred for linear phase however IIR is better as it uses fewer calculations
 
 IIR filters can be designed using a number of techniques. A well known technique uses "analogue prototypes", based on real electrical circuits with known useful filter properties. This is because analogue filters have been quite well-researched before digital processing was created.
 - For instance, a simple passive low-pass 1st order analogue filter could be implemented as an RC circuit:
-- ![[RC Circuit.png]]
+- ![[RC Circuit.png|400]]
 This circuit can be analysed very simply, via the reactance-based voltage divider rule:
 $$
 \begin{align}
@@ -20,7 +20,7 @@ $$
   \text{becomes:} \\
   V_{out} &= \frac{X_c}{R+X_c}\times V_{in}
 \end{align}$$
-- Where $X_c = \frac{1}{j \omega c}$, where $c$ is the speed of light.
+- Where $X_c = \frac{1}{j \omega c}$, in which $c$ is the speed of light.
 Substitute the reactance expression:
 $$V_{out} = \frac{\frac{1}{j \omega c}}{R + \frac{1}{j \omega c}} V_{in}$$
 Divide both sides by $V_{in}$ and multiply the top & bottom by $j \omega c$:
@@ -36,18 +36,18 @@ $$H(\omega) = \frac{1}{1+j \omega R c}$$
 Let the radial critical frequency $\omega_{cf} = 2\pi f_{cf} = \frac{1}{RC}$ (or equivalently $RC = \frac{1}{\omega+{cf}}$):
 $$H(\omega) = \frac{1}{1\frac{j\omega}{\omega_{cf}}}$$
 This has a magnitude response (in dB):
-- ![[RC filter response.jpg]]
+- ![[RC filter response.jpg|500]]
 I have a headache.
 
 # Bilinear Transformation Method
 To convert an analogue prototype, like the one just derived, to a digital representation, we can use the Bilinear Transformation (BLT) method. This involves 2 main steps:
 1. Apply a prewarp to critical frequencies
 	- This involves an equation, such as:
-	- $$\omega_{cf} = 2fs tan(\frac{\Omega_{cf}}{2})$$
-	- where $fs$ is the sampling frequency, and... TODO copy this
+$$\omega_{cf} = 2f_s tan\left( \frac{\Omega_{cf}}{2} \right)$$
+	- where $fs$ is the sampling frequency, and $\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$ is the normalised digital frequency. For more detail on $\Omega_{cf}$, see [[Window Functions#^explain-normalised-freq|this explanation]].
 	- This is doing the opposite warp from the next equation, hence "prewarp"
 2. Apply BLT equation to the transfer function:
-$$H(z) = H'(\omega)|_{j\omega \rightarrow 2fs(\frac{z-1}{z+1})}$$
+$$H(z) = H'(\omega)|_{\huge j\omega \rightarrow 2fs\left(\frac{z-1}{z+1}\right)}$$
 	- What the entire fuck is that??
 	- This is changing the scales in a non-linear way, so a pre-warp is needed (step 1).
 ------
@@ -55,44 +55,68 @@ $$H(z) = H'(\omega)|_{j\omega \rightarrow 2fs(\frac{z-1}{z+1})}$$
 0. Determine the normalised digital frequency
 $$\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$$
 ## Example
-$f_{cf} = 1KHz$ and $f_s = 10KHz$
+$f_{cf} = 1\text{KHz}$ and $f_s = 10\text{KHz}$
 Answer:
+0. Find normalised critical frequency 
 $$
 \begin{align}
 	\Omega_cf = \frac{2\pi \times 1000}{10000} = 0.2\pi
 \end{align}
 $$
-## Example
 1. Apply prewarp
-$$\omega^{'}_{cf} = 2f_s tan(\frac{0.2\pi}{2})$$
-- To help simplify the later expression,
-$$\text{let } x = \frac{1}{tan(\frac{\Omega_{cf}}{2})}$$
+$${\omega'}_{cf} = 2f_s tan\left( \frac{0.2\pi}{2} \right)$$
+- To help simplify the later expression;
+$$\text{let } \alpha = \frac{1}{tan\left( \frac{\Omega_{cf}}{2} \right)}$$
 - Letting this means we have:
-	- TODO copy from picture
-1. Apply the BLT
-$$H(z) = H^{'}(\omega)|_{j\omega = 2f_s\frac{z-1}{z+1}}$$
-	- owwww
-- TODO copy from picture
-"it's horrible, isn't it?" yes, yes it is
-"you can think of z a little bit like this omega, but in the digital domain. they can take complex values as well"
-
-
----
 $$
 \begin{align}
-	H(z) = \frac{1}{1+ \lbrace \frac{1}{1} \rbrace}
+	{\omega'}_{cf} &=\frac{2f_s}{\alpha} \\
+\text{Where } \alpha &= \frac{1}{tan\left( \frac{0.2\pi}{2} \right)}
 \end{align}
 $$
-	TODO copy from picture and fix braces
-Multiply top and bottom together by $(z+1)$:
-	TODO copy from picture
-Multiply out the denominator and collect like terms:
-	TODO copy from picture
-Factor out $(1+d)$ from the denominator:
-	TODO copy from picture
-Letting ...:
-we then have:
-$$H(z) = k \frac{(z+1)}{z+\beta}$$
+- Putting this back into the transfer function, we have:
+$$
+	{H'}(\omega) 
+	= \frac{1}{1+ \huge\frac{j\omega} {{\omega'}_{cf}} }
+	= \frac{1}{1+j\omega \huge\frac{\alpha}{2f_s} }
+$$
+
+1. Apply the BLT (curly braces to illustrate separate parts)
+$$
+\begin{align}
+	H(z) &= H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}} \\ \\
+	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{{\omega'}_{cf}} \right\}} \\ \\
+	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{\frac{2f_s}{\alpha}} \right\}}
+\end{align}
+$$
+$$
+\begin{align}
+	&= \frac{1} {1+\left\{ 2f_s \large\frac{z-1}{z+1} \right\} \div \left\{ \large\frac{2f_s}{\alpha} \right\}} \\ \\
+	&= \frac{1} {1+\left\{ \cancel{2f_s} \large\frac{z-1}{z+1} \right\} \times \left\{ \frac{\large\alpha}{\cancel{2f_s}} \right\}} \\ \\
+	&= \frac{1}{1+\alpha \large\frac{z-1}{z+1} }
+\end{align}
+$$
+- owwww
+"it's horrible, isn't it?" that's an understatement...
+"you can think of z a little bit like this omega, but in the digital domain. they can take complex values as well"
+
+2. Multiply top and bottom together by $(z+1)$:
+$$
+\begin{align}
+	H(z) = \frac{1}{z+1 + \alpha\left( z-1 \right)}
+\end{align}
+$$
+3. Multiply out the denominator and collect like terms:
+$$H(z) = \frac{z+1}{z(1+\alpha) + 1-\alpha}$$
+4. Factor out $(1+\alpha)$ from the denominator:
+	$$H(z) = \frac{1}{1+\alpha}\left( \frac{z+1}{z+\left\{ \large\frac{1-\alpha}{1+\alpha} \right\}} \right)$$
+$$
+\begin{gather}
+	\text{let } \beta=\frac{1-\alpha}{1+\alpha} \text{ \& } k=\frac{z+1}{z+\beta}\\
+	\text{we then have: } \\
+	H(z) = k \frac{(z+1)}{z+\beta}
+\end{gather}
+$$
 - This is now in a familiar or standard form for a z-domain transfer function.
 - That denominator with the $\beta$ term is key to understanding if the system will be stable or oscillate. We'll look at stability first:
 
