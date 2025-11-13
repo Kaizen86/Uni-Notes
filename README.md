@@ -12,7 +12,7 @@ I strongly suggest using [Git](https://git-scm.com/install) to clone this reposi
 ```sh
 git clone https://github.com/Kaizen86/Uni-Notes
 ```
-I am frequently updating these notes, so this will let you run Git Pull from the Command Palette to easily get the latest version. You can also download [just the notes](https://github.com/Kaizen86/Uni-Notes/archive/refs/heads/master.zip), but this will break the Git Pull command.
+I am frequently updating these notes, so this will let you run "Git: Pull" from Obsidian's Command Palette to easily get the latest version. You can also download [just the notes](https://github.com/Kaizen86/Uni-Notes/archive/refs/heads/master.zip) directly, but this will break the Git Pull command.
 
 
 Best of luck with your exams!
