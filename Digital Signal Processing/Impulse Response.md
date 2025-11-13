@@ -14,7 +14,7 @@ $$S[n] =
 $$
 
 Suppose there's an impulse at sample $t=0$ and every other sample is 0. If the impulse function is the input to an LTI System then the output is just the impulse response.
-$S[n] \rightarrow$ LTI System $h[n] \rightarrow h[n]$
+$S[n] \rightarrow \boxed{\text{LTI System } h[n]} \rightarrow h[n]$
 - Where $S[n]$ is the Impulse Function, the LTI System uses the Impulse Response $h[n]$, the sample Impulse Response $h[n]$ is the output.
 
 # Multiple functions
@@ -28,7 +28,7 @@ $$
 You'd have samples 0 and 1 equal to 1, and all other samples are still 0. You will get $h[n-1]$ as an output.
 
 If the shifted impulse function is input to an LTI system, then
-$S[n-1] \rightarrow$ LTI System $h[n] \rightarrow h[n-1]$
+$S[n-1] \rightarrow \boxed{\text{LTI System }h[n]} \rightarrow h[n-1]$
 -  Where $S[n-1]$ is the shifted impulse function, $h[n]$ is the impulse response, and $h[n-1]$ is the shifted impulse response.
 So what happens if our input is
 1. $x[n] = S[n]+S[n-1]$

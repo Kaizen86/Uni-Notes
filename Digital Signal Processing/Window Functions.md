@@ -80,9 +80,9 @@ There are other window types, where each one has different properties. For insta
 	- I haven't checked this but this is what I got when rearranging the equation to solve for $k$
 $$
 \begin{align}
-\frac{2k\pi}{N} &= \Delta\Omega_{TW} \\
-2\pi k &= \Delta\Omega_{TW}N \\
-k &= \frac{\Delta\Omega_{TW}N}{2\pi}
+	\frac{2k\pi}{N} &= \Delta\Omega_{TW} \\
+	2\pi k &= \Delta\Omega_{TW}N \\
+	k &= \frac{\Delta\Omega_{TW}N}{2\pi}
 \end{align}
 $$
 - TODO merge tables? k-values and transition width are almost duplicate information...

@@ -15,7 +15,7 @@ Now what the hell do all those words mean?
 - Causal: Does not depend on the future inputs
 	- Not to be confused with "Casual". ***Looking at you, Martin***
 
-input (time-based $x[n]$) $\rightarrow$ LTI System (digital) $\rightarrow$ output ($y[n]$)
+$\text{input (time-based }x[n]\text{)} \rightarrow \boxed{\text{LTI System (digital)}} \rightarrow \text{output (} y[n] \text{)}$
 	Where n indicates discrete time samples (whole numbers: 0,1,2,...)
 
 ## Examples of LTI Systems
@@ -30,12 +30,12 @@ input (time-based $x[n]$) $\rightarrow$ LTI System (digital) $\rightarrow$ outpu
 For a linear system $y[n] = F(x[n])$
 $$f(ax_1[n]+bx_2[n]) = aF(x_1[n])+bF(x_2[n])$$
 ## Properties of LTI Systems
-$x_1[n]$ and $x_2[n] \rightarrow$ LTI System ($h[n]$) $\rightarrow y[n]$
+$x_1[n] \text{ and } x_2[n] \rightarrow \boxed{\text{LTI System }(h[n])} \rightarrow y[n]$
 x and y could be multiplied separately, producing e.g. by $ax_1[n]$, then the two products can be added, e.g. $ax_1[n]+bx_2[n]$, then fed into an LTI System $g[n]$ to result in $y[n]$.
 
 Here's the kicker: for an LTI System we can place the LTI System before the multiplication & sum to get an equivalent result.
-	$x_1[n] \rightarrow$ LTI System $g[n] \rightarrow$ multiply by $xa$
-	$x_2[n] \rightarrow$ LTI System $g[n]\rightarrow$ multiply by $xb$
+	$x_1[n] \rightarrow \boxed{\text{LTI System } g[n]} \rightarrow \text{multiply by } xa$
+	$x_2[n] \rightarrow \boxed{\text{LTI System } g[n]} \rightarrow \text{multiply by } xb$
 	Then add products of $xa$ and $xb$ to create $y[n]$
 $g[n]$ is called an [[Impulse Response]]!
 

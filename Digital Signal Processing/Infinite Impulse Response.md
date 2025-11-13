@@ -160,7 +160,7 @@ $$
 $$H(z) = \frac{K+K z^{-1}} {1+\beta z^{-1}}$$
 
 3. Equate both expressions and cross-multiply by both denominators:
-	- Recall that an [[Linear Time Invariant Systems|LTI System]] in z-domain looks like: $X(x) \rightarrow H(z) \rightarrow Y(z)$
+	- Recall that an [[Linear Time Invariant Systems|LTI System]] in z-domain looks like: $X(x) \rightarrow \boxed{H(z)} \rightarrow Y(z)$
 $$
 \begin{align}
 	\text{Noting that:}\; H(z) &= \frac{Y(z)}{X(z)}, \\

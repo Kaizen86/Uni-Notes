@@ -5,13 +5,13 @@ $$y[n] = (x * h)[n]$$
 - The $*$ means [[discrete convolution]], not multiply!
 
 The convolution theorem tells us that the convolution operation is changed to a multiplication in the frequency domain.
-$X(\Omega) \rightarrow$ LTI System $H(\Omega) \rightarrow Y(\Omega)$
+$X(\Omega) \rightarrow \boxed{\text{LTI System } H(\Omega)} \rightarrow Y(\Omega)$
 - Where:
 $$
 \begin{align}
-	Y(\Omega) &= \text{DTFT}\{y[n]\} \; \text{(output)} \\
-	X(\Omega) &= \text{DTFT}\{x[n]\} \; \text{(input)} \\
-	H(\Omega) &= \text{DTFT}\{h[n]\} \; \text{(transfer function)} \\
+	Y(\Omega) &= \text{DTFT}\{y[n]\} \text{ (output)} \\
+	X(\Omega) &= \text{DTFT}\{x[n]\} \text{ (input)} \\
+	H(\Omega) &= \text{DTFT}\{h[n]\} \text{ (transfer function)} \\
 \end{align}
 $$
 
