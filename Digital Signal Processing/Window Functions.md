@@ -20,7 +20,7 @@ Example:
 You can't magically use this "as-is", you need to give it extra variables first.
 
 Note: Normalised digital frequency is $\Omega_{cf}$
-- What this means in practical terms (as far as I understand it) is that you always map the sample frequency $f_s$ to $2\pi$, and $\Omega_{cf}$ refers to a point on this remapped spectrum. ^explain-normalised-freq
+- What this means in practical terms (as far as I understand it) is that you always map the sample frequency $f_s$ down to $2\pi$, and $\Omega_{cf}$ refers to a point on this remapped spectrum. ^explain-normalised-freq
 
 For the $sinc$ function, it needs to be formulated to enable us to design the filter:
 $$
