@@ -101,6 +101,7 @@ $$
 - owwww
 "it's horrible, isn't it?" that's an understatement...
 "you can think of z a little bit like this omega, but in the digital domain. they can take complex values as well"
+![[its-quite-simple-really.webp|250]]
 
 2. Multiply top and bottom together by $(z+1)$:
 $$
