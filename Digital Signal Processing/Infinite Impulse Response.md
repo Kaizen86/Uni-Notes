@@ -58,7 +58,7 @@ Answer:
 0. Find normalised critical frequency 
 $$
 \begin{align}
-	\Omega_cf = \frac{2\pi \times 1000}{10000} = 0.2\pi
+	\Omega_{cf} = \frac{2\pi \times 1000}{10000} = 0.2\pi
 \end{align}
 $$
 1. Apply prewarp
@@ -331,3 +331,4 @@ $$
 
 [helpful calculator john made](https://chivertj.github.io/dspworksheets/IIRFilters/Design2ndorderDigitalLP.html)
 
+Continued in [[Higher Order IIR Filtering]].
