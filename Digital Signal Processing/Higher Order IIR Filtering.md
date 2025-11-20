@@ -107,7 +107,7 @@ https://chivertj.github.io/dspworksheets/iirfilterdesign-worksheetcalcs.html
 These coefficients are useful to help design the filter and we have a specialised format called "Second Order Stages", or SOS. Splitting the system up into these individual stages is useful for the design step but also the realisation step, where computations can sometimes be sensitive to rounding and truncation that is associated with digital floating point calculations in embedded systems.
 
 A 3rd order system could be structured as follows:
-	TODO include diagram of delay lines
+	![[IIR DF1.jpg]]
 $$
 	H(z) = \frac
 	{b_0 \;+\; b_1\; z^{-1} \;+\; b_2\; z^{-2} \;+\; b_3\; z^-3}
@@ -116,7 +116,6 @@ $$
 This structure could be more sensitive to situations where coefficients close to zero or some some other values may not have sufficient precision in the digital floating point format. Determining the pole positions and other important details could demonstrate that the original system specification met and or the system is subsequently unstable due to the limited precision.
 # Alternative Filter Structures
 The filter structure that we have seen so far is known as Direct Form 1 (DF1).
-	TODO include picture of diagram
 There are other structures! A slightly more efficient filter structure which uses fewer time delays is known as a Direct Form 2 (DF2) filter structure. Recalling [[Linear Time Invariant Systems|LTI Systems]], you can swap the order of calculations without affecting the results. This lets us share the time delays in the middle:
-	TODO include picture of diagram and merging
+	![[IIR DF2.jpg]]
 The important part is this gives you the same result as a DF1, just using a slightly fewer resources.
