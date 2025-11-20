@@ -20,7 +20,17 @@ $$
 \end{gather}
 $$
 
-... table of butterworth quality factors per stage ...
+| Order $N$<br>(Stage) | $Q_1$  | $Q_2$  | $Q_3$  | $Q_4$  | $Q_5$  |
+| -------------------- | ------ | ------ | ------ | ------ | ------ |
+| 2                    | 0.7071 | ---    | ---    | ---    | ---    |
+| 3                    | 1      | ---    | ---    | ---    | ---    |
+| 4                    | 0.5412 | 1.3066 | ---    | ---    | ---    |
+| 5                    | 0.618  | 1.618  | ---    | ---    | ---    |
+| 6                    | 0.5176 | 0.7071 | 1.9319 | ---    | ---    |
+| 7                    | 0.555  | 0.8019 | 2.247  | ---    | ---    |
+| 8                    | 0.5098 | 0.6013 | 0.9    | 2.5629 | ---    |
+| 9                    | 0.5321 | 0.6527 | 1      | 2.8794 | ---    |
+| 10                   | 0.5062 | 0.5612 | 0.7071 | 1.1013 | 3.1962 |
 
 The Q values vary based on the analogue domain poles, which follow a specific pattern in the analogue domain. If we keep to just low/high pass filter, we can treat this as just Q values and skip some maths.
 For instance, for a 4th order filter, we have:
@@ -43,9 +53,50 @@ $$
 \end{gather}
 $$
 For a 5th order filter, we have:
-TODO copy from picture
+$$
+\begin{align}
+	\text{input} \rightarrow
+	\boxed{\begin{gather}
+		\text{1st order} \\
+		\text{gain} = \frac{1}{\sqrt{2}}
+		\end{gather}} \rightarrow
+	\boxed{\begin{gather}
+		\text{2nd order} \\
+		Q = 0.6180
+		\end{gather}} \rightarrow
+	\boxed{\begin{gather}
+		\text{2nd order} \\
+		Q = 1.6180
+		\end{gather}} \rightarrow
+	\text{output}
+\end{align}
+$$
+Total gain of 2nd stages of the critical frequency is:
+$$0.618\times1.618 \approx 1$$
 This combines with the first order stage to give an overall gain of $\frac{1}{\sqrt{2}}$
 
+# Useful Formulae
+See [[Infinite Impulse Response#Filters 2nd Order]]
+Normalised digital frequency is calculated with:
+$$\Omega = \frac{2\pi f}{fs}$$
+Pre-warping formula
+$${\omega'} = 2f_s \text{ tan}\left( \frac{\Omega}{2} \right)$$
+Butterworth filter order is calculated with:
+$$
+	n \ge \frac{1}{2\cdot\text{log}_{10}(v_s)} \cdot \text{log}_{10} \left( 
+		\frac{10^{0.1\cdot A_s}-1}{\epsilon^2}
+	\right)
+$$
+- Where the normalised frequency $v_s$ has $f_o$ which is the critical or bandpass frequency and the free frequency is given by the stop band frequency, i.e $f=f_s$ so that:
+$$
+\begin{align}
+	v_s &= \frac{f}{f_o}
+		\text{ for a low pass filter,} \\
+	v_s &= \frac{f_o}{f}
+		\text{ for a high pass filter,} \\
+	\text{and } \epsilon^2 &= 10^{0.1\cdot A_p} -1
+\end{align}
+$$
 # How to determine the required filter order
 Sometimes, filters are specified as follows:
 $$
@@ -59,8 +110,8 @@ $$
 $$
 \begin{gather}
 	&\text{Required filter order is then:} \\
-	&n \ge \frac{1}{2\text{log}_{10}v_s} \cdot \text{log}_{10} \left( 
-		\frac{10^{0.1A_s}-1}{\epsilon^2}
+	&n \ge \frac{1}{2\cdot\text{log}_{10}(v_s)} \cdot \text{log}_{10} \left( 
+		\frac{10^{0.1\cdot A_s}-1}{\epsilon^2}
 	\right) \\
 \end{gather}
 $$
