@@ -101,10 +101,10 @@ $$
 Sometimes, filters are specified as follows:
 $$
 \begin{align}
-	&f_{pass} &= &\text{ passband frequency} \\
-	&f_{stop} &= &\text{ stopband frequency} \\
-	&A_p &= &\text{ passband allowable attenuation} \\
-	&A_s &= &\text{ stopband minimum amount of attenuation} \\
+	f_{pass} &= \text{ passband frequency} \\
+	f_{stop} &= \text{ stopband frequency} \\
+	A_p &= \text{ passband allowable attenuation} \\
+	A_s &= \text{ stopband minimum amount of attenuation} \\
 \end{align}
 $$
 $$
@@ -123,6 +123,29 @@ $$
 \end{align}
 $$
 
+
+This equation can be used to ... the digital case(?) if we use pre-warped pass and stop-band frequencies, i.e:
+$$
+\begin{align}
+	n_s &= \frac{{\omega'}_{stop}} {{\omega'}_{pass}} \text{ (for low pass)} \\
+	n_s &= \frac{{\omega'}_{pass}} {{\omega'}_{stop}} \text{ (for high pass)} \\
+	\text{where: } \\
+	{\omega'}_{pass} &= 2f_s \text{ tan} \left(
+		\frac{\Omega_{pass}}{2}
+		\right) \\
+	{\omega'}_{stop} &= 2f_s \text{ tan} \left(
+		\frac{\Omega_{stop}}{2}
+		\right) \\
+	\text{\&} \\
+	\Omega_{pass} &=\frac{2\pi\, f_{pass}}{f_s} \\
+	\Omega_{stop} &=\frac{2\pi\, f_{stop}}{f_s} \\
+\end{align}
+$$
+
+## Example
+Determine the required filter order and filter coefficients for a low-pass filter with critical frequency $f_{pass}=12\text{kHz}$ and and a stop-band frequency $f_{stop} = 48\text{kHz}$. The allowable attenuation in the pass-band is $A_p = 3dB$, and the minimum amount of stop-band attenuation is $A_s = 32dB$.
+
+### Filter orders
 ```math
 f_pass = 12000
 f_stop = 48000
@@ -140,21 +163,27 @@ omegaprime_s = 2*fs*tan((2*pi*f_stop/fs)/2)
 freq_ratio = v_s = omegaprime_s/omegaprime_p
 epsilonsquared = 10^(0.1*a_pass)-1
 n = 1/(2*log10(v_s)) * log10((10^(0.1*a_stop)-1)/epsilonsquared)
-# Round it up
+# Round up to nearest filter order
 filter_orders = ceil(n)
 ```
-
-
-## Example
-Determine the required filter order and filter coefficients ...
-
-holy shit i am so behind
-TODO copy multiple pictures !!
-
+Yay this is correct!
+### Filter coefficients
 Helpful calculators to check working:
 https://chivertj.github.io/dspworksheets/IIRFilters/Design2ndorderDigitalLP.html
 https://chivertj.github.io/dspworksheets/iirfilterdesign-worksheetcalcs.html
 
+TODO copy multiple pictures !!
+...
+$$
+\begin{gather}
+	\text{input} \rightarrow
+		\boxed{1^\text{st}\text{ order}} \rightarrow
+		&\boxed{2^\text{nd}\text{ order}}& \rightarrow
+		\text{output} \\
+	&Q = 1& \\
+	&\left( 3^\text{rd}\text{ order} \right)&
+\end{gather}
+$$
 These coefficients are useful to help design the filter and we have a specialised format called "Second Order Stages", or SOS. Splitting the system up into these individual stages is useful for the design step but also the realisation step, where computations can sometimes be sensitive to rounding and truncation that is associated with digital floating point calculations in embedded systems.
 
 A 3rd order system could be structured as follows:
