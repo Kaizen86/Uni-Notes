@@ -66,7 +66,7 @@ $$\Delta\Omega_{TW} = \frac{2\pi \cdot 0.9}{N}$$
 - Where $0.9$ is a sort of scaling factor called the $k$ value, specific to each window, and $N$ is the length of the window.
 - Plug in different values for the $k$ value when calculating different windows (see table above).
 This is added with the critical frequency to determine the stopband frequency:
-$$\Omega_{dB} = \Omega_{cf} + \Delta\Omega_{TW}$$
+$$\Omega_{SB} = \Omega_{cf} + \Delta\Omega_{TW}$$
 
 There are other window types, where each one has different properties. For instance:
 
@@ -76,7 +76,7 @@ There are other window types, where each one has different properties. For insta
 | Hann        | 3.1       | 44dB                 |
 | Hamming     | 3.3       | 53dB                 |
 | Blackman    | 5.5       | 74dB                 |
-- Where $k$ is $\Delta\Omega_{TW} = \frac{2k\pi}{N}$
+- Where $k$ is $\Delta\Omega_{TW} = \huge\frac{2k\pi}{N}$
 	- I haven't checked this but this is what I got when rearranging the equation to solve for $k$
 $$
 \begin{align}
@@ -85,13 +85,12 @@ $$
 	k &= \frac{\Delta\Omega_{TW}N}{2\pi}
 \end{align}
 $$
-- TODO merge tables? k-values and transition width are almost duplicate information...
 
 ### Example
 A high-quality audio signal is sampled at 48kHz,  which needs to be prepared for a voice-only channel with a sampling frequency of 18kHz. Determine a suitable low-pass filter to help remove frequencies above half the sampling frequency.
 $$f_{s1} = 48000 \;\; f_{s2} = 18000$$
-The new folding frequency, $$f_n = \frac{f_{s2}}{2}=9000Hz$$
-This is the frequency at which the frequency components need to be sufficiently attenuated.
+The new folding frequency is then: $$f_N = \frac{f_{s2}}{2}=9000Hz$$
+- This is the frequency at which the frequency components need to be sufficiently attenuated.
 
 We might also assume the voice channel, which is high quality, to have a bandwidth of 8kHz. This means the transition width is going to need to be 1000Hz (9kHz-8kHz).
 ![[Window transition width Example graph.jpg]]
@@ -103,27 +102,26 @@ $$\Delta\Omega_{cf} = \frac{2\pi \cdot 3.3}{N}$$
 This can be rearranged:
 $$N = \frac{2\pi \cdot 3.3}{\Delta\Omega_{cf}}$$
 We need to determine:
-$$\Delta\Omega_{cf} = \frac{2\pi f_TW}{f_s}$$
+$$\Delta\Omega_{cf} = \frac{2\pi f_{TW}}{f_s}$$
 - where $f_s$ is the original sampling frequency.
 
-1. Determine $\Delta\Omega_{TW}$
+
+1. Determine $\Delta\Omega_{TW}$:
 $$
 \begin{align}
-	\Delta\Omega_{TW} &= \frac{2\pi \cdot 0.9}{N} \\
-	\Delta\Omega_{TW} &= \frac{2\pi \cdot 1000}{48000} = \frac{2\pi}{48} = \frac{\pi}{24} \\
+	\Delta\Omega_{TW} &= \frac{2\pi \cdot 1000}{48000} \\
+	&= \frac{2\pi}{48} \\
+	&= \frac{\pi}{24}
 \end{align}
 $$
-TODO double-check that...
-2. Determine $N$
+2. Determine $N$:
 $$
 \begin{align}
-	N &= \frac{2\pi \cdot 3.3}{ \left( \frac{2\pi}{48} \right) } \\
-	&= 3.3 \cdot 48 \\
+	N &= \frac{\cancel{2\pi} \cdot 3.3}{ \left( \frac{\cancel{2\pi}}{48} \right) } \\
+	&= 3.3 \times 48 \\
 	&= 158.4
 \end{align}
 $$
-- TODO check i got the brackets copied correctly
-
-This needs to be rounded up to achieve the required specification.
-
-[^1]: I've rearranged the numerator slightly because I think it's easier to understand, but be aware that may not be proper convention. I haven't looked into this too deeply. For posterity, the original form given by the lecturer is to put the k value next to $\pi$, like this: $2 \cdot 0.9 \pi$
+- This needs to be rounded up to achieve the required specification.
+$$\lceil 158.4 \rceil = 159$$
+[^1]: I've rearranged the numerator slightly because I think it's easier to understand, but be aware that may not be proper convention. I haven't looked into this too deeply. For posterity, the original form given by the lecturer is to put the $k$ value next to $\pi$, like this: $2 \cdot 0.9 \pi$
