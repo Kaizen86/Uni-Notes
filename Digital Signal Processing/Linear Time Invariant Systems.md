@@ -15,7 +15,11 @@ Now what the hell do all those words mean?
 - Causal: Does not depend on the future inputs
 	- Not to be confused with "Casual". ***Looking at you, Martin***
 
-$\text{input (time-based }x[n]\text{)} \rightarrow \boxed{\text{LTI System (digital)}} \rightarrow \text{output (} y[n] \text{)}$
+$$
+	\text{input (time-based }x[n]\text{)} \rightarrow
+	\fbox{LTI System (digital)} \rightarrow
+	\text{output } (y[n])
+$$
 	Where n indicates discrete time samples (whole numbers: 0,1,2,...)
 
 ## Examples of LTI Systems

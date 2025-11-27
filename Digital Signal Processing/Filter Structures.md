@@ -10,8 +10,12 @@ $$w[n] = x[n] + (-a_1) \cdot w[n-1]$$
 Taking the z-transforms of these:
 $$
 \begin{align}
-	&\large Z\left\{ y[n] \right\} = Y(z) & &\large Z\left\{ x[n] \right\} = X(z) \\
-	&\large Z\left\{ w[n] \right\} = W(z) & &\large Z\left\{ w[n-1] \right\} = W(z)z^{-1} \\
+	&\large Z\left\{ y[n] \right\} = Y(z) &
+	&\large Z\left\{ x[n] \right\} = X(z) \\
+	
+	&\large Z\left\{ w[n] \right\} = W(z) &
+	&\large Z\left\{ w[n-1] \right\} = W(z)z^{-1} \\
+	
 	\Aboxed{&\large Z\left\{ w[n-2] \right\} = W(z)z^{-2}}
 \end{align}
 $$
@@ -137,12 +141,12 @@ If $b_0 = 1$, $b_1 = 1$, and $a_1 = 0.5$:
 This function is asymptotically approaching zero and is indicative of a stable system where the impulse response has this characteristic.
 ## Parallel Filter Structures
 Previously, we have seen how a system can be designed as a cascade of lower order systems. For instance, a 10th order IIR filter can be split into x5 2nd order structures. The advantages include easier design methodology, together with better precision in the calculations on embedded devices. For example:
-$$X(z) \rightarrow \boxed{\text{4th order (}H(Z)\text{)} } \rightarrow Y(z)$$
+$$X(z) \rightarrow \boxed{\text{4th order } H(Z)} \rightarrow Y(z)$$
 Series or Cascade arrangement:
 $$
 	X(z) \rightarrow
-	\boxed{\text{2nd order}} \rightarrow
-	\boxed{\text{2nd order}} \rightarrow
+	\fbox{2nd order} \rightarrow
+	\fbox{2nd order} \rightarrow
 	Y(z)
 $$
 Parallel arrangements are also possible:
@@ -167,9 +171,11 @@ $$
 	= \frac{A}{z-0.1} + \frac{B}{z-0.2}
 $$
 Cross-multiplying both denominators:
-$$\begin{align}
+$$
+\begin{align}
 	\frac{1}{(z-0.1)(z-0.2)} 
 	&= \frac{A(z-0.2)}{(z-0.1)(z-0.2)} + \frac{B(z-0.1)}{(z-0.2)(z-0.1)} \\
+	\\
 	&= \frac{A(z-0.2)+B(z-0.1)}{(z-0.1)(z-0.2)}
 \end{align}
 $$
@@ -177,10 +183,10 @@ Equating the numerators
 $$1 = A(z-0.2) + B(z-0.1)$$
 Choosing values of $z$ where the other factors is zero. To determine $A$, let $z = +0.1$
 $$
-\begin{align}
+\begin{alignat}
 	1 &= A(0.1 - 0.2) &+ &B(0.1-0.1) \\
-	&= A(-0.1) &+ &\underbrace{B(0)}_{\huge=0}
-\end{align}
+	&= A(-0.1 ) &+ &\underbrace{B(0)}_{\huge=0}
+\end{alignat}
 $$
 Solving for $A$:
 $$A = \frac{1}{-0.1} = 10$$
@@ -188,11 +194,11 @@ For $B$, let $z = +0.2$:
 $$1 = A(0) + B(0.2-0.1)$$
 Substituting these back into $H(z)$
 $$
-\begin{align}
-	&H(z) = \frac{-10}{(z-0.1)} + \frac{10}{(z-0.2)} \\
+\begin{alignat}{1}
+	&H(z) = \frac{-10}{(z-0.1)} &&+ \frac{10}{(z-0.2)} \\
 	&\Rightarrow \\
-	&H(z) = \frac{-10z}{z-0.1} + \frac{10z}{z-0.2}
-\end{align}
+	&H(z) = \frac{-10z}{z-0.1} &&+ \frac{10z}{z-0.2}
+\end{alignat}
 $$
 These can now be two parallel subsystems with an overall system response identical to the original $H(z)$.
 $$H(z) = H_1(z) + H_2(z)$$

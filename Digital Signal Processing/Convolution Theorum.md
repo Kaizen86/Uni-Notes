@@ -20,9 +20,9 @@ $$Y(\Omega) = H(\Omega) \cdot X(\Omega)$$
 ## Examples
 1. Determine the DTFT of the [[impulse response]] for a 3 point moving-average filter:
 $$
-	y[n] = \frac{1}{3} \cdot x[n] +
-	       \frac{1}{3} \cdot x[n-1] +
-	       \frac{1}{3} \cdot x[n-2]
+	y[n] = \frac13 \cdot x[n] +
+	       \frac13 \cdot x[n-1] +
+	       \frac13 \cdot x[n-2]
 $$
 Answer: The impulse response of this moving average filter is given as follows:
 $$
@@ -43,36 +43,36 @@ Substituting in the expression for $h[n]$
 $$
 H(\Omega) =
 	\sum^{-1}_{n=-\infty} 0    \; exp(-j \Omega n) +
-	\sum^{2}_{n=0} \frac{1}{3} \; exp(-j \Omega n) +
+	\sum^{2}_{n=0}     \frac13 \; exp(-j \Omega n) +
 	\sum^{\infty}_{n=3}   0    \; exp(-j \Omega n)
 $$
 Substituting in the values of $n$ and expanding
 $$
 H(\Omega) =
-	\frac{1}{3} exp(-j \Omega 0) +
-	\frac{1}{3} exp(-j \Omega 1) +
-	\frac{1}{3} exp(-j \Omega 2)
+	\frac13 exp(-j \Omega 0) +
+	\frac13 exp(-j \Omega 1) +
+	\frac13 exp(-j \Omega 2)
 $$
 
-Expanding each complex exponential using Euler's identity and factorizing the $\frac{1}{3}$
+Expanding each complex exponential using Euler's identity and factorizing the $\frac13$
 Remember: Euler's identity is $exp(jA) = jsin(A)+cos(A)$ and $exp(c)=1$
 - What the fuck??
 $$
-\begin{align}
-	H(\Omega) = \frac{1}{3}(
-		1 &+ cos( \Omega) - jsin(\Omega)\\
-		  &+ cos(2\Omega) - jsin(2\Omega) \,
-	)
-\end{align}
+\begin{alignat}{1}
+	H(\Omega) = \frac13 \bigl(
+		1 &+ cos( \Omega) &&- jsin(\Omega)\\
+		  &+ cos(2\Omega) &&- jsin(2\Omega) \,
+	\bigr)
+\end{alignat}
 $$
 Combining real and imaginary terms
 $$
-\begin{align}
-	H(\Omega) = \frac{1}{3}(
-		1 &+ cos(\Omega) + cos(2\Omega) \\
-		  &-j(sin(\Omega) + sin(2\Omega)) \,
-	)
-\end{align}
+\begin{alignat}{1}
+	H(\Omega) = \frac13 \Bigl(
+		1 &+         \cos(\Omega) &&+ \cos(2\Omega) \\
+		  &- j \bigl(\sin(\Omega) &&+ \sin(2\Omega) \bigr)
+	\Bigr)
+\end{alignat}
 $$
 We can then perform further simplification using trigonometric substitutions and/or determine the magnitude and phase of this function.
 - Magnitude of a complex number, $A=a+jb$:
@@ -82,7 +82,7 @@ $$\angle \, A = tan^-1 \left\{ \frac{b}{a} \right\}$$
 
 ----
 A simpler case is where the moving average is performed symmetric around zero where
-$$y[n] = \frac{1}{3}x[n+1] + \frac{1}{3}x[n] + \frac{1}{3}x[n-1]$$
+$$y[n] = \frac13 x[n+1] + \frac13 x[n] + \frac13 x[n-1]$$
 The impulse response is given by
 $$
 h[n] =
@@ -92,14 +92,14 @@ h[n] =
 \end{cases}
 $$
 The DTFT of this can be determined in a similar way which is resulting in a **real** transfer function.
-$$H(\Omega) = \frac{1}{3}(1 + 2cos(\Omega))$$
+$$H(\Omega) = \frac13 (1 + 2cos(\Omega))$$
 The magnitude of this is then
-$$|H(\Omega)| = \frac{1}{3}(1 + 2cos(\Omega))$$
+$$|H(\Omega)| = \frac13 (1 + 2cos(\Omega))$$
 In decibels we have
 $$
 \begin{align}
 	H_{db}(\Omega) &= 20 \; log_{10}(|H(\Omega)|) \\
-	&= 20 \; log_{10} \left\{ \frac{1}{3} (1+2cos(\Omega)) \right\}
+	&= 20 \; log_{10} \left\{ \frac13 (1+2cos(\Omega)) \right\}
 \end{align}
 $$
 The convolution theorem tells us that the input signal, in the frequency domain, multiplies with this transfer function (or equivalently sums on the decibel scale). This function will modify the input but will not provide a clear single function for this type of moving average filter.
@@ -111,10 +111,10 @@ $$
 $$
 Attenuation at certain points:
 $$
-\begin{align}
-	&\text{Frequencies close to } 0             &\approx &+0dB \\
-	&\text{Frequencies close to } \frac{\pi}{2} &\approx &-30dB \\
-	&\text{Frequencies close to } \pi           &\approx &-10dB
-\end{align}
+\begin{alignat}{1}
+	&\text{Frequencies close to } 0 &&             &\approx &+0dB \\
+	&\text{Frequencies close to } \frac{\pi}{2} && &\approx &-30dB \\
+	&\text{Frequencies close to } \pi &&           &\approx &-10dB
+\end{alignat}
 $$
 This is almost like a low-pass filter and band-stop filter hybrid.

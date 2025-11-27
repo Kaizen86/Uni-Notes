@@ -14,14 +14,20 @@ IIR filters can be designed using a number of techniques. A well known technique
 - ![[RC Circuit.png|400]]
 Because this circuit has known characteristics, it can be analysed very simply via the reactance-based voltage divider rule:
 $$
-\begin{align}
-  V_y &= \frac{R_2}{R_1+R_2} \cdot V_x \\
+\begin{alignat}{1}
+  &V_y &= \frac{R_2}{R_1+R_2}\, &V_x \\
   \text{becomes:} \\
-  V_{out} &= \frac{X_c}{R+X_c}\times V_{in}
-\end{align}$$
+  &V_{out} &= \frac{X_c}{R+X_c}\, &V_{in}
+\end{alignat}
+$$
 - Where $X_c = \large\frac{1}{j \omega c}$, in which $c$ is the speed of light.
 Substitute the reactance expression:
-$$V_{out} = \frac{\frac{1}{j \omega c}}{R + \frac{1}{j \omega c}} V_{in}$$
+$$
+	V_{out} = \frac
+		{\frac{1}{j \omega c}}
+		{R + \frac{1}{j \omega c}} \,
+	V_{in}
+$$
 Divide both sides by $V_{in}$ and multiply the top & bottom by $j \omega c$:
 $$
 	\frac{V_{out}}{V_{in}} =
@@ -80,10 +86,9 @@ $$
 $$
 
 1. Apply the BLT (curly braces to illustrate separate parts)
+$$H(z) = H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}}$$
 $$
 \begin{align}
-	H(z) &= H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}} \\
-	\\
 	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{{\omega'}_{cf}} \right\}} \\
 	\\
 	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{\frac{2f_s}{\alpha}} \right\}}
@@ -94,28 +99,34 @@ $$
 	&= \frac{1} {1+\left\{ 2f_s \large\frac{z-1}{z+1} \right\} \div \left\{ \large\frac{2f_s}{\alpha} \right\}} \\
 	\\
 	&= \frac{1} {1+\left\{ \cancel{2f_s} \large\frac{z-1}{z+1} \right\} \times \left\{ \frac{\large\alpha}{\cancel{2f_s}} \right\}} \\
-	\\
-	&= \frac{1}{1+\alpha \large\frac{z-1}{z+1} }
 \end{align}
 $$
+$$ = \frac{1} {1+\alpha \large\frac{z-1}{z+1} }$$
 - owwww
 "it's horrible, isn't it?" that's an understatement...
 "you can think of z a little bit like this omega, but in the digital domain. they can take complex values as well"
 ![[its-quite-simple-really.webp|250]]
 
 2. Multiply top and bottom together by $(z+1)$:
-$$
-\begin{align}
-	H(z) = \frac{1}{z+1 + \alpha\left( z-1 \right)}
-\end{align}
-$$
+$$H(z) = \frac{1}{z+1 + \alpha\left( z-1 \right)}$$
 3. Multiply out the denominator and collect like terms:
 $$H(z) = \frac{z+1}{z(1+\alpha) + 1-\alpha}$$
 4. Factor out $(1+\alpha)$ from the denominator:
-	$$H(z) = \frac{1}{1+\alpha}\left( \frac{z+1}{z+\left\{ \large\frac{1-\alpha}{1+\alpha} \right\}} \right)$$
+$$
+	H(z) = \frac{1}{1+\alpha}
+	\left( \frac
+		{z+1}
+		{z + \left\{
+			\large\frac {1-\alpha} {1+\alpha}
+		\right\}}
+	\right)
+$$
 $$
 \begin{gather}
-	\text{let}\; \beta=\frac{1-\alpha}{1+\alpha} \text{ \& } K=\frac{z+1}{z+\beta} \\
+	\text{let}\; \beta=\frac{1-\alpha}{1+\alpha}
+	\text{ \& }
+	K=\frac{z+1}{z+\beta} \\
+	
 	\text{we then have:} \\
 	H(z) = K \frac{(z+1)}{z+\beta}
 \end{gather}
@@ -130,11 +141,11 @@ The roots of the denominator are called *poles*, and the roots of the numerator 
 $$\frac{z-z_1}{z-p_1}$$
 - Where $z_1$ is the zero and $p_1$ is the pole.
 $$
-\begin{align}
+\begin{alignat}{1}
 	&\text{Here,} \\
-	&z+\beta &= &\;0 \\
-	\therefore\; &z &= &-\beta
-\end{align}
+	&z + \beta &&= 0 \\
+	\therefore\; &z &&= -\beta
+\end{alignat}
 $$
 $$\text{so that } p_1 = z = -\beta$$
 
@@ -237,11 +248,21 @@ TODO include picture of graph comparing 1st/2nd order frequency response slopes
 ## How to make a 2nd order filter
 (this apparently won't be on the exam, phew)
 You simply run the filter again! You have 2 filters one after another, in stages. Phrased formally, a 2nd order response can be achieved by cascading two 1st order responses, e.g:
-$$\text{input}\; \rightarrow \boxed{\text{1st Order}} \rightarrow \boxed{\text{1st Order}} \rightarrow \text{output}$$
+$$
+	\text{input} \rightarrow 
+	\fbox{1st Order} \rightarrow 
+	\fbox{1st Order} \rightarrow
+	\text{output}
+$$
 However, you can't just slap them together and expect things to work; the design of the two staged should not be treated independently. You're likely to get slightly weird attenuation. We need to design them so that the overall response provides the correct amount of attenuation at the critical frequency.
 
 The overall second order response is often described as follows:
-$$H(\omega) = \frac{1}{\left(\frac{j\omega}{\omega_0}\right)^2 + \frac{j\omega}{Q\omega_0} +1}$$
+$$
+	H(\omega) = \frac{1}
+		{\left(\frac {j\omega} {\omega_0} \right)^2
+		+ \frac {j\omega}	{Q\omega_0}
+		+ 1}
+$$
 This describes the analogue transfer function with a gain at the critical frequency, $\omega_0 = 2\pi f_0 \;\text{rads/s}$, where the gain is given by Q, also known as the "Quality Factor".
 
 For a particular type of filter design, called a Butterworth, we have an overall gain response as $\frac{1}{\sqrt{2}}$. For a second order Butterworth filter, we therefore have:
@@ -260,14 +281,16 @@ $$
 $$
 	- The pre-warp is then
 $$
-\begin{align}
-	{\omega'}_0 = 2f_s \text{tan}\left( \frac{\Omega_0}{2} \right) \\
-	\text{let}\; \alpha=\frac{1}{\text{tan}\left(\frac{\Omega_0}{2}\right)} \text{, so that}\; {\omega'}_0=\frac{2f_s}{\alpha}
-\end{align}$$
+\begin{gather}
+	{\omega'}_0 = 2f_s \tan\left( \frac{\Omega_0}{2} \right) \\
+	
+	\text{let } \alpha = \frac{1} {\tan\left( \frac{\Omega_0}{2} \right)}
+	\text{, so that } {\omega'}_0 = \frac{2f_s}{\alpha}
+\end{gather}$$
 2. Substitute in the prewarped frequency ${\omega'}_0$ to analogue 2nd order prototype and then perform the BLT:
 $$
 \begin{align}
-	{H'}(\omega) = H(\omega)|_{\omega_0 = {\omega'}_0}
+	{H'}(\omega) = H(\omega)|_{\huge\omega_0 = {\omega'}_0}
 	= \frac{1}{\left(\frac{j\omega}{{\omega'}_0}\right) + \frac{j\omega}{{\omega'}_0Q} + 1}
 \end{align}
 $$
@@ -304,7 +327,8 @@ $$
 		= \frac{\alpha}{Q} \left( z^2-1 \right)
 		= \frac{z^2\alpha}{Q} - \frac{\alpha}{Q} \;(?) \\
 	(z+1)^2 = z^2 + 2z + 1
-\end{align}$$
+\end{align}
+$$
 TODO finish copying from picture
 To make the denominator factor on $z^2$ equal to 1 (useful as it is a more standard form), we have:
 $$

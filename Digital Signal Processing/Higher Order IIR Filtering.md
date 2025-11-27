@@ -4,8 +4,8 @@ This follows on from [[Infinite Impulse Response#Filters 2nd Order]]
 Higher order filters can be assembled from a series of 1st and 2nd order stages. For instance, a 3rd order filter can be created as follows:
 $$
 	\text{input} \rightarrow 
-	\boxed{\text{1st order}} \rightarrow
-	\boxed{\text{2nd order}} \rightarrow
+	\fbox{1st order} \rightarrow
+	\fbox{2nd order} \rightarrow
 	\text{output}
 $$
 Recall that Butterworth filters have -3db at the critical frequency. To achieve a Butterworth response with 3dB of attenuation at the Critical Frequency, the overall gain also needs to be -3dB. The 1st order stage already provides this. Therefore, the 2nd order stage just needs to 0dB at the critical frequency.
@@ -38,11 +38,11 @@ $$
 \begin{gather}
 	\text{input} \rightarrow 
 	\boxed{\begin{gather}
-		\text{2nd order } \\
+		\text{2nd order} \\
 		0.5412
 		\end{gather}} \rightarrow
 	\boxed{\begin{gather}
-		\text{2nd order } \\
+		\text{2nd order} \\
 		1.3066 
 		\end{gather}} \rightarrow
 	\text{output} \\
@@ -177,11 +177,11 @@ Note: large section missing, here sorry
 $$
 \begin{gather}
 	\text{input} \rightarrow
-		\boxed{1^\text{st}\text{ order}} \rightarrow
-		&\boxed{2^\text{nd}\text{ order}}& \rightarrow
+		\fbox{1st order} \rightarrow
+		&\fbox{2nd order}& \rightarrow
 		\text{output} \\
 	&Q = 1& \\
-	&\left( 3^\text{rd}\text{ order} \right)&
+	&\left( \text{3rd order} \right)&
 \end{gather}
 $$
 These coefficients are useful to help design the filter and we have a specialised format called "Second Order Stages", or SOS. Splitting the system up into these individual stages is useful for the design step but also the realisation step, where computations can sometimes be sensitive to rounding and truncation that is associated with digital floating point calculations in embedded systems.

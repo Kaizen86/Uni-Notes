@@ -28,7 +28,7 @@ $$
 You'd have samples 0 and 1 equal to 1, and all other samples are still 0. You will get $h[n-1]$ as an output.
 
 If the shifted impulse function is input to an LTI system, then
-$S[n-1] \rightarrow \boxed{\text{LTI System }h[n]} \rightarrow h[n-1]$
+$S[n-1] \rightarrow \boxed{\text{LTI System } h[n]} \rightarrow h[n-1]$
 -  Where $S[n-1]$ is the shifted impulse function, $h[n]$ is the impulse response, and $h[n-1]$ is the shifted impulse response.
 So what happens if our input is
 1. $x[n] = S[n]+S[n-1]$
@@ -40,7 +40,7 @@ This is quite abstract, which can be difficult to think about.
 
 # What is $h[n]$ ?
 Example of a moving average filter, taking the mean average of 3 neighbouring samples:
-$$y[n] = \frac{1}{3}x[n] + \frac{1}{3}x[n-1] + \frac{1}{3}x[n-2]$$
+$$y[n] = \frac13 x[n] + \frac13 x[n-1] + \frac13 x[n-2]$$
 *TODO include picture of diagram he drew*
 This will remove high-frequency noise from the input signal $x$, which is quite useful!
 - Types of sensors with noise: Microphone, thermometer, vibration sensor
@@ -48,15 +48,15 @@ This example function is quite crude, you can implement this on a microcontrolle
 ## Determining the impulse response of this filter
 In this case, you have to have an input, we look at different values, shift it along, and look at what the output is. This filter is relatively simple. If we run the filter, here's what happens. The rightmost column is the output, aka the impulse response at $h[n]$.
 
-| $n$ | $x[n]$ | $x[n-1]$ | $x[n-2]$ | $\frac{1}{3}x[n] + \frac{1}{3}x[n-1] + \frac{1}{3}x[n-2]$ |
-| --- | ------ | -------- | -------- | ----------------------------------------------------- |
-| -2  | 0      | 0        | 0        | 0                                                     |
-| -1  | 0      | 0        | 0        | 0                                                     |
-| 0   | 1      | 0        | 0        | $\frac{1}{3}$                                         |
-| 1   | 0      | 1        | 0        | $\frac{1}{3}$                                         |
-| 2   | 0      | 0        | 1        | $\frac{1}{3}$                                         |
-| 3   | 0      | 0        | 0        | 0                                                     |
-| 4   | 0      | 0        | 0        | 0                                                     |
-| 5   | 0      | 0        | 0        | 0                                                     |
+| $n$ | $x[n]$ | $x[n-1]$ | $x[n-2]$ | $\frac13 x[n] + \frac13 x[n-1] + \frac13 x[n-2]$ |
+| --- | ------ | -------- | -------- | ------------------------------------------------ |
+| -2  | 0      | 0        | 0        | 0                                                |
+| -1  | 0      | 0        | 0        | 0                                                |
+| 0   | 1      | 0        | 0        | $\frac13$                                        |
+| 1   | 0      | 1        | 0        | $\frac13$                                        |
+| 2   | 0      | 0        | 1        | $\frac13$                                        |
+| 3   | 0      | 0        | 0        | 0                                                |
+| 4   | 0      | 0        | 0        | 0                                                |
+| 5   | 0      | 0        | 0        | 0                                                |
 # [[Discrete Convolution]]
 This shows that we can determine the output of the system for a specific input. However, this can be a bit time consuming. Instead, we can use the impulse response in a mathematical operation called a *convolution*. (See [[Convolution Theorum]])
