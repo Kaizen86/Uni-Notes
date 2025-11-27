@@ -20,6 +20,13 @@
         "a": 1,
         "rgb": 3064497
       }
+    },
+    {
+      "query": "path:\"Independent Project\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 11657298
+      }
     }
   ],
   "collapse-display": true,
