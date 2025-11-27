@@ -223,25 +223,35 @@ $$
 \begin{gather}
 	w[n] = x[n] + (-a_1) \cdot w[n-1] \\
 	\text{becomes} \\
-	\text{TODO}
+	Y(z) = b_0 \cdot W(z) + b_1 \cdot W(z) \cdot z^{-1}
 \end{gather}
 $$
 $$
 \begin{gather}
 	w[n] = x[n] + (-a_1) \cdot w[n-1] \\
 	\text{becomes} \\
-	\text{TODO}
+	W(z) = X(z) -a_1 \cdot W(z) \cdot Z^{-1}
 \end{gather}
 $$
+Applying these to the two time-domain equations can yield the z-domain versions ... dangit missed this bit
+
 To determine the transfer function $H(z) = \large\frac{Y(z)}{X(z)}$, we need to rearrange the equations and solve for $Y(z)$ and $X(z)$:
-TODO
+$$
+\begin{align}
+	&\boxed{Y(z) = W(z) \left( b_0+b_1 \cdot z^{-1} \right)}
+		\text{ Also factored out } W(z) \text{!}\\
+	&\boxed{\begin{align}
+		X() &= W(z) + a_1 \cdot W(z) \cdot z^{-1}\\
+		&= W(z) \left( 1+a_1 \cdot z^{-1} \right)
+	\end{align}}
+\end{align}
+$$
 Dividing $Y(z)$ by $X(z)$:
 $$
 \begin{align}
 	\frac{Y(z)}{X(z)} = \frac
-		{\cancel{W(z)}}
-		{\cancel{W(z)}}
-	\text{TODO}
+		{\cancel{W(z)} \left( b_0+b_1 \cdot z^{-1} \right)}
+		{\cancel{W(z)} \left( 1+a_1 \cdot z^{-1} \right)}
 \end{align}
 $$
 This is our transfer function:
@@ -249,16 +259,28 @@ $$H(z) = \frac{b_0+b_1 \cdot z^{-1}} {1+a_1 \cdot z^{-1}}$$
 To determine the pole, we can multiply top & bottom by $z$ first:
 $$
 \begin{align}
-	H(z) &= \frac{}{} \times \frac{z}{z} \\
-	&= \frac{b_0 + b_1 \cancel{z^{-1}} \cancel{z^1}}{z+a_1 \cancel{z^{-1}} \cancel{z^1}} \\ \\
-	&= \frac{b_0 \left( z+\frac{b_1}{b_0} \right)} {z+a_1}
+	H(z) &= 
+		\frac
+			{b_0 + b_1 \cdot z^{-1}}
+			{1 + a_1 \cdot z^{-1}}
+		\times \frac{z}{z} \\
+	\\
+	&= \frac
+		{b_0 \cdot z + b_1 \cancel{z^{-1}} \cancel{z^1}}
+		{z + a_1 \cancel{z^{-1}} \cancel{z^1}} \\
+	\\
+	&= \frac
+		{b_0 \left( z+\large\frac{b_1}{b_0} \right)}
+		{z+a_1}
 \end{align}
 $$
 The value of $z$ that makes the denominator zero is the pole. $z+a_1 = 0$
 hence $z=-a$ is the pole value.
 Here, $p_1 = -a_1$
 There is only 1 pole for this system as it first order.
-Recalling the rules of [[Infinite Impulse Response#Stability|stability]], The magnitude of the pole should be less than 1 to ensure the system is stable. $|p_1| < 1$
+Recalling the rules of [[Infinite Impulse Response#Stability|stability]], The magnitude of the pole should be less than 1 to ensure the system is stable.
+$$|p_1| < 1$$
+The impulse response ... TODO copy
 $$
 \begin{align}
 	X(z) \rightarrow &\boxed{H(z)} \rightarrow Y(z) \\
@@ -270,7 +292,7 @@ Applying this to the previous example:
 $$
 	Z^{-1} \left\{H(z)\right\}
 	= Z^{-1} \left\{
-		\frac{b_0 z}{z+a_1}
+		\frac{b_0 \cdot z}{z+a_1}
 		+
 		\frac{b_1}{z+a_1}
 	\right\}
