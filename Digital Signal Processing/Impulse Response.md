@@ -13,7 +13,7 @@ $$S[n] =
     \end{cases}
 $$
 
-Suppose there's an impulse at sample $t=0$ and every other sample is 0. If the impulse function is the input to an LTI System then the output is just the impulse response.
+Suppose there's an impulse at sample $n=0$ and every other sample is 0. If the impulse function is the input to an LTI System then the output is just the impulse response.
 $S[n] \rightarrow \boxed{\text{LTI System } h[n]} \rightarrow h[n]$
 - Where $S[n]$ is the Impulse Function, the LTI System uses the Impulse Response $h[n]$, the sample Impulse Response $h[n]$ is the output.
 
@@ -30,7 +30,7 @@ You'd have samples 0 and 1 equal to 1, and all other samples are still 0. You wi
 If the shifted impulse function is input to an LTI system, then
 $S[n-1] \rightarrow \boxed{\text{LTI System } h[n]} \rightarrow h[n-1]$
 -  Where $S[n-1]$ is the shifted impulse function, $h[n]$ is the impulse response, and $h[n-1]$ is the shifted impulse response.
-So what happens if our input is
+So what happens if our input is:
 1. $x[n] = S[n]+S[n-1]$
 	- Answer is $y[n] = h[n]+h[n-1]$
 2. $x[n]=aS[n]+bS[n-2]$
@@ -43,10 +43,12 @@ Example of a moving average filter, taking the mean average of 3 neighbouring sa
 $$y[n] = \frac13 x[n] + \frac13 x[n-1] + \frac13 x[n-2]$$
 *TODO include picture of diagram he drew*
 This will remove high-frequency noise from the input signal $x$, which is quite useful!
-- Types of sensors with noise: Microphone, thermometer, vibration sensor
-This example function is quite crude, you can implement this on a microcontroller like an Arduino very easily, but you can make much better filters. "That's the whole point of DSP."
+- Examples of sensors with noise: Microphone, thermometer, vibration sensor
+This function is quite crude, you can implement this on a microcontroller like an Arduino very easily, but you can make much better filters. "That's the whole point of DSP."
 ## Determining the impulse response of this filter
-In this case, you have to have an input, we look at different values, shift it along, and look at what the output is. This filter is relatively simple. If we run the filter, here's what happens. The rightmost column is the output, aka the impulse response at $h[n]$.
+Because a filter will produce its impulse response when given an impulse function, we can do exactly that. In this case, $x$ is the impulse function. To run our filter, we slide it across $x$'s samples, represented by $n$ (sample number).
+
+This filter is relatively simple. If we run the filter, here's what happens. You can see how the impulse appears at each point in the filter as $n$ changes. The rightmost column is the output, aka the impulse response at $h[n]$.
 
 | $n$ | $x[n]$ | $x[n-1]$ | $x[n-2]$ | $\frac13 x[n] + \frac13 x[n-1] + \frac13 x[n-2]$ |
 | --- | ------ | -------- | -------- | ------------------------------------------------ |
