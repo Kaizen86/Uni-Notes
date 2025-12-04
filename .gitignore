@@ -3,3 +3,6 @@
 
 # Matlab autosave files
 **/*.asv
+
+# Output of webpage-html-export plugin
+export/
