@@ -1,0 +1,163 @@
+/*
+Node color convention:
+Constraint input/output: Orange
+Port input/output: Grey
+Signal: White
+Constant: Blue
+Process: Green
+*/
+
+digraph G {
+    subgraph cluster_1 {
+        color = blue
+        label = "Phase 1"
+      
+        # Submodules come first
+        {
+            subgraph cluster_t1_count {
+                pad="5000"
+                label = "count: entity work.count"
+                color = black
+                # Port
+                {
+                    node [style=filled;fillcolor=lightgrey]
+                    # Input
+                    {
+                        count1_clk [label=clk]
+                        count1_enable [label=enable]
+                        count1_fast [label=fast]
+                        count1_reset [label=reset]
+                    }
+                    # Output
+                    {
+                        count1_digit_ones [label=digit_ones]
+                        count1_digit_tens [label=digit_tens]
+                        count1_digit_hundreds [label=digit_hundreds]
+                        count1_digit_thousands [label=digit_thousands]
+                    }
+                }
+            }
+            
+            subgraph cluster_t1_multiplex {
+                label = "display_driver: entity work.seg_multiplex"
+                color = black
+                # Port
+                {
+                    node [style=filled;fillcolor=lightgrey]
+                    # Input
+                    {
+                        multiplex1_digit_ones [label=digit_ones]
+                        multiplex1_digit_tens [label=digit_tens]
+                        multiplex1_digit_hundreds [label=digit_hundreds]
+                        multiplex1_digit_thousands [label=digit_thousands]
+                    }
+                    # Output
+                    {
+                        multiplex1_seg_anodes [label=seg_anodes]
+                        multiplex1_seg_cathodes [label=seg_anodes]
+                        multiplex1_seg_dp [label=seg_anodes]
+                        
+                    }
+                }
+            }
+        }
+        
+        # Then the Top Level module
+        subgraph cluster_t1 {
+            label = "entity top_level"
+            color = black
+            
+            # Port
+            {
+                node [style=filled;fillcolor=lightgrey]
+                # Inputs
+                {
+                    t1_clk [label=clk]
+                    t1_enable_sw [label=enable_sw]
+                    t1_fast_sw [label=fast_sw]
+                    t1_reset_btn [label=reset_btn]
+                }
+                # Outputs
+                {
+                    t1_anodes [label=anodes]
+                    t1_seg [label=seg]
+                    t1_dp [label=dp]
+                }
+            }
+            
+            # Signals
+            t1_digit_ones [label=digit_ones]
+            t1_digit_tens [label=digit_tens]
+            t1_digit_hundreds [label=digit_hundreds]
+            t1_digit_thousands [label=digit_thousands]
+            
+            # Links
+            t1_clk -> count1_clk
+            t1_enable_sw -> count1_enable
+            t1_fast_sw -> count1_fast
+            t1_reset_btn -> count1_reset
+
+            t1_digit_ones -> count1_digit_ones [dir=back]
+            t1_digit_ones -> multiplex1_digit_ones
+            t1_digit_tens -> count1_digit_tens [dir=back]
+            t1_digit_tens -> multiplex1_digit_tens
+            t1_digit_hundreds -> count1_digit_hundreds [dir=back]
+            t1_digit_hundreds -> multiplex1_digit_hundreds
+            t1_digit_thousands -> count1_digit_thousands [dir=back]
+            t1_digit_thousands -> multiplex1_digit_thousands
+            
+            t1_anodes -> multiplex1_seg_anodes [dir=back]
+            t1_seg -> multiplex1_seg_cathodes [dir=back]
+            t1_dp -> multiplex1_seg_dp [dir=back]
+            
+        }
+        
+        # Finally, add the Constraints
+        {
+            node [style=filled;fillcolor=orange]
+            # Input
+            {
+                clk_1 [label=clk]
+                clk_1 -> t1_clk
+                enable_sw -> t1_enable_sw
+                fast_sw -> t1_fast_sw
+                reset_btn -> t1_reset_btn
+            }
+            # Output
+            {
+                edge [dir=back]
+                anodes -> t1_anodes
+                seg -> t1_seg
+                dp -> t1_dp
+            }
+        }
+    }
+    
+    /*
+    subgraph cluster_2 {
+        color = blue
+        label = "Phase 2"
+        # I/O
+        {
+            node [style=filled; fillcolor=lightgrey]
+            # Input
+            {
+                clk_2[label=clk]
+                clk_2 -> t2
+            }
+            # Output
+            {
+                edge [dir=back]
+            }
+        }
+        
+        t2 [style=empty; label=top_level]
+        
+        # Submodules
+        {
+            edge [dir=both]
+            //t2 -> 
+        }
+    }
+    */
+}
