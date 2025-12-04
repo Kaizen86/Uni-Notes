@@ -130,14 +130,14 @@ $$
 \begin{align}
 	n_s &= \frac{{\omega'}_{stop}} {{\omega'}_{pass}} \text{ (for low pass)} \\
 	n_s &= \frac{{\omega'}_{pass}} {{\omega'}_{stop}} \text{ (for high pass)} \\
-	\text{where: } \\
+	\text{where:} \\
 	{\omega'}_{pass} &= 2f_s \text{ tan} \left(
 		\frac{\Omega_{pass}}{2}
 		\right) \\
 	{\omega'}_{stop} &= 2f_s \text{ tan} \left(
 		\frac{\Omega_{stop}}{2}
 		\right) \\
-	\text{\&} \\
+	\text{where:} \\
 	\Omega_{pass} &=\frac{2\pi\, f_{pass}}{f_s} \\
 	\Omega_{stop} &=\frac{2\pi\, f_{stop}}{f_s} \\
 \end{align}
