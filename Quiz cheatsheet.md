@@ -1,3 +1,5 @@
+get rickrolled idiot :3
+![[rickroll-roll.gif]]
 # Determine the required analogue filter order
 ```math
 fpass=12e3
