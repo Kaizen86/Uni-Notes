@@ -48,6 +48,8 @@ MATLAB can be downloaded and installed:
 - mathworks.com login using university email
 Can also use GNU Octave for some aspects
 
+KSBs can be found on the Story Board on Moodle:
+- K1/K5/S4/S6/B3/B8
 # Introduction to DSP
 Brainstorm:
 - Square waves
