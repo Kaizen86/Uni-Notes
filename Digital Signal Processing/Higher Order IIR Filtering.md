@@ -197,7 +197,9 @@ $$
 This structure could be more sensitive to situations where coefficients close to zero or some some other values may not have sufficient precision in the digital floating point format. Determining the pole positions and other important details could demonstrate that the original system specification met and or the system is subsequently unstable due to the limited precision.
 # Alternative Filter Structures
 The filter structure that we have seen so far is known as Direct Form 1 (DF1).
-There are other structures! A slightly more efficient filter structure which uses fewer time delays is known as a Direct Form 2 (DF2) filter structure. Recalling [[Linear Time Invariant Systems|LTI Systems]], you can swap the order of calculations without affecting the results. This lets us share the time delays in the middle:
+There are other structures! A slightly more efficient filter structure which uses fewer time delays is known as a Direct Form 2 (DF2) filter structure.
+![[DF1 DF2 Structure Comparison.png|700]]
+Recalling [[Linear Time Invariant Systems|LTI Systems]], you can swap the order of calculations without affecting the results. This lets us share the time delays in the middle:
 	![[IIR DF2.jpg]]
 The important part is this gives you the same result as a DF1, just using a slightly fewer resources. In practice, fewer time delays means less computer memory being used to store the delayed samples. In specialised DSP devices, there's a limited number of high-speed memory blocks, so this lets us potentially use more of those and improve performance.
 
