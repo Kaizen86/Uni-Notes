@@ -3,7 +3,9 @@ This is a continuation of [[Higher Order IIR Filtering#Alternative Filter Struct
 TODO include diagram of DF1/DF2 comparison
 In DF1, we can summarize the equation quite quickly:
 $$y[n] = -a_1 \cdot y[n-1] + b_0 \cdot x[n] + b_1 \cdot x[n-1]$$
+# Analysing DF2
 For DF2, as mentioned earlier, we can swap the operations around and reduce the number of blocks we need to draw. However, to be able to analyse this filter structure, we have to introduce an intermediate variable $w$.
+![[IIR DF2.jpg]]
 $$y[n] = b_0 \cdot w[n] + b_1 \cdot w[n-1]$$
 Note: The z-domain transfer lets us determine the [[Infinite Impulse Response#Stability|stability of the system by checking the magnitude of its poles]].
 $$w[n] = x[n] + (-a_1) \cdot w[n-1]$$
@@ -75,10 +77,9 @@ $$
 		{z+a_1}
 \end{align}
 $$
-The value of $z$ that makes the denominator zero is the pole. $z+a_1 = 0$
-hence $z=-a$ is the pole value.
-Here, $p_1 = -a_1$
-There is only 1 pole for this system as it first order.
+The value of $z$ that makes the numerator zero is the 'zero' (lol). $b_0\left( z+\frac{b_1}{b_0} \right) = 0$. Multiplying both sides by $\frac{1}{b_0}$  gives $z+\frac{b_1}{b_0} = 0$. 
+The value of $z$ that makes the denominator zero is the pole. $z+a_1 = 0$. Hence $z=-a$ is the pole value. Here, $p_1 = -a_1$ There is only 1 pole for this system as it first order.
+
 Recalling the rules of [[Infinite Impulse Response#Stability|stability]], The magnitude of the pole should be less than 1 to ensure the system is stable.
 $$|p_1| < 1$$
 The impulse response is the time domain characterisation of the system, in the time domain.
@@ -139,7 +140,7 @@ If $b_0 = 1$, $b_1 = 1$, and $a_1 = 0.5$:
 | 5   | -0.0312                  | 0.0625                         | 0.0312  |
 | 6   | 0.0156                   | -0.0312                        | -0.0156 |
 This function is asymptotically approaching zero and is indicative of a stable system where the impulse response has this characteristic.
-## Parallel Filter Structures
+# Parallel Filter Structures
 Previously, we have seen how a system can be designed as a cascade of lower order systems. For instance, a 10th order IIR filter can be split into x5 2nd order structures. The advantages include easier design methodology, together with better precision in the calculations on embedded devices. For example:
 $$X(z) \rightarrow \boxed{\text{4th order } H(Z)} \rightarrow Y(z)$$
 Series or Cascade arrangement:
@@ -154,7 +155,7 @@ TODO insert diagram because I can't draw that using MathJax
 
 ---
 Partial fraction Expansion (PFE) can be used to split a transfer function into a sum of transfer functions.
-### Example
+### PFE Example
 Determine the PFE of following and the corresponding time-domain input/output difference equations for the individual transfer functions.
 $$H(z) = \frac{z}{z^2 -0.3z +0.02}$$
 Steps:
@@ -209,3 +210,126 @@ TODO include picture of diagram
 Here, $Y(z) = Y_1(z) + Y_2(z)$. (Sum of the outputs). This leads to:
 $$H_1(z) = \frac{Y_1(z)}{X(z)} \;\; \& \;\; H_2(z)=\frac{Y_2(z)}{X(z)}$$
 Equating these with the expressions for $H_1(z)$ and $H_2(z)$ will then provide us with a path to determining the input/output difference equations for them individually.
+
+## DF2 Example 1
+Find z-domain transfer of this DF2:
+$$y_1[n] = -10x[n] + 0.1y_1[n-1] \text{ (from } H_1(z) \text{)}$$
+
+Working:
+$$
+\begin{gather}
+	H_1(z) = \frac{-10z}{z-0.1} \\
+	\left( \text{also given by } H_1(z) = \frac{Y_1}{X(z)} \right) \\
+\end{gather}
+$$
+$$
+\begin{align}
+	\frac{Y_1(z)}{X(z)} &= \frac{-10z}{z-0.1} \times \frac{z^{-1}}{z^{-1}} \\
+	=> \frac{Y_1(z)}{X(z)} &= \frac
+		{-10 \cancel{z}\cancel{z^{-1}}}
+		{1 \cancel{z}\cancel{z^{-1}} -z^{-1}} = \frac{-10}{1-z^{-1} \cdot 0.1}
+\end{align}
+$$
+Multiplying both sides by the denominator:
+$$
+\begin{align}
+	\frac{Y_1(z)} {\cancel{X(z)}}
+		\cdot \cancel{X(z)} \cdot (1-z^{-1} \cdot 0.1) \\
+	= \frac{-10} {\cancel{1-z^{-1} \cdot 0.1}}
+			(\cancel{1-z^{-1} \cdot 0.1}) \cdot X(z)
+\end{align}
+$$
+Multiplying out the remaining terms:
+$$Y_1(z) - 0.1 \cdot Y(z) \cdot z^{-1} = -10 \cdot X(z)$$
+Taking inverse z-transforms:
+$$
+\begin{alignat*}{1}
+	&Z^{-1}\lbrace Y_1(z)\rbrace
+		&&
+		&&= y_1[n] \\
+	&Z^{-1}\lbrace 0.1 \cdot Y_1(z) \cdot z^{-1}\rbrace
+		&&= 0.1 \cdot Z^{-1}\lbrace Y_1(z) \cdot z^{-1}\rbrace
+		&&= 0.1 \cdot y_1[n-1] \\
+	&Z^{-1}\lbrace -10x \cdot X(z)\rbrace
+		&&= -10 \cdot z^{-1}\lbrace X(z) \rbrace
+		&&= -10 \cdot x[n]
+\end{alignat*}
+$$
+Using these, yields the overall inverse z-transform:
+$$y_1[n]-0.1 \cdot y_1[n-1] = -10 \cdot x[n]$$
+Solving in terms of the current time output:
+$$y_1[n] = 0.1 \cdot y_1[n-1] + 10 \cdot x[n]$$
+
+## DF2 Example 2
+Find z-domain transfer of this DF2:
+$$
+\begin{align}
+	y_2[n] = 10x[n] + 0.2y_2[n-1] \text{ (from } H_2(z) \text{)} \\
+	
+\end{align}
+$$
+
+Following a similar derivation, we have:
+$$
+\begin{align}
+	\frac{Y_2(z)}{X(z)}
+		&= \frac{10 \cdot Z}{(z-0.2)} \times \frac{z^{-1}}{z^{-1}} \\
+	\Rightarrow \frac{Y_2(z)}{X(z)}
+		&= \frac
+			{10 \cdot \cancel{z}\cancel{z^{-1}} 1}
+			{1\cancel{z}\cancel{z^-1}-0.2\cdot z^{-1}}
+		= \frac{10}{1-0.2 \cdot z^{-1}}
+\end{align}
+$$
+Cross multiplying by both denominators:
+$$
+\begin{align}
+	&\frac{Y_2(z)}{\cancel{X(z)}} \cdot
+		\cancel{X(z)} \left( 1-0.2 \cdot z^{-1} \right) \\
+	&= \frac{10}{\cancel{1-0.2 \cdot z^{-1}}} \cdot 
+		\cancel{1-0.2 \cdot z^{-1}} \cdot X(z)
+\end{align}
+$$
+This relates the outputs to the inputs in the z-domain. Multiplying out the remaining terms:
+$$Y_2(z) - 0.2 \cdot Y_2(z) \cdot z^{-1} = 10 \cdot X(z)$$
+Taking inverse of z-transforms:
+TODO
+Combining and solving for the current output:
+TODO
+
+Drawing the filter structure and the overall one too:
+TODO insert diagram
+Alternatively, drawing them individually and then on an overall system:
+TODO insert diagram
+**In the exam you can draw them separately.**
+
+All this does involve a lot of algebra, so [John made a tool](https://chivertj.github.io/dspworksheets/IIRFilters/biquadanalyzermanualentry.html) to help with that. If you're stuck, this can help to compare against.
+
+TODO insert bunch of diagrams
+
+For $w[n]$:
+For $y[n]$:
+z-transform for example $\text{№ }1$:
+z-transform for example $\text{№ }2$:
+
+## Questions
+### 1.
+Solve for $X(z)$ with example $\text{№ }1$ and then factor out $W(z)$
+$$
+\begin{align}
+	0.5 \cdot X(z) &= \cdots \\
+	X(z) &= \frac{W(z)}{0.5} \cdot \left( \cdots \right)
+\end{align}
+$$
+Combine to determine $H(z) = \frac{Y(z)}{X(z)}$:
+$$
+\begin{align}
+	H(z) &= \frac{Y(z)}{X(z)} \\
+	&= \cdots
+\end{align}
+$$
+TODO
+Important! Aim to get:
+$$H(z) = \frac{0.1\cdot z^{-2}} {1-0.5 \cdot z^{-1} + 0.06 \cdot z^{-2}}$$
+
+### 2.
