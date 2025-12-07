@@ -234,7 +234,7 @@ $$
 $$
 \begin{align}
 	\frac{Y_1(z)}{X(z)} &= \frac{-10z}{z-0.1} \times \frac{z^{-1}}{z^{-1}} \\
-	=> \frac{Y_1(z)}{X(z)} &= \frac
+	\Rightarrow \frac{Y_1(z)}{X(z)} &= \frac
 		{-10 \cancel{z}\cancel{z^{-1}}}
 		{1 \cancel{z}\cancel{z^{-1}} -z^{-1}} = \frac{-10}{1-z^{-1} \cdot 0.1}
 \end{align}
