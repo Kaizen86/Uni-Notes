@@ -3,19 +3,16 @@ Node color convention:
 Constraint input/output: Orange
 Port input/output: Grey
 Signal: White
-Constant: Blue
-Process: Green
 */
 
 digraph G {
+    graph [ranksep=2]
     subgraph cluster_1 {
         color = blue
         label = "Phase 1"
-      
         # Submodules come first
         {
             subgraph cluster_t1_count {
-                pad="5000"
                 label = "count: entity work.count"
                 color = black
                 # Port
@@ -46,6 +43,7 @@ digraph G {
                     node [style=filled;fillcolor=lightgrey]
                     # Input
                     {
+                        multiplex1_clk [label=clk]
                         multiplex1_digit_ones [label=digit_ones]
                         multiplex1_digit_tens [label=digit_tens]
                         multiplex1_digit_hundreds [label=digit_hundreds]
@@ -58,7 +56,7 @@ digraph G {
                         multiplex1_seg_dp [label=seg_anodes]
                         
                     }
-                }
+                }                
             }
         }
         
@@ -97,6 +95,7 @@ digraph G {
             t1_fast_sw -> count1_fast
             t1_reset_btn -> count1_reset
 
+            t1_clk -> multiplex1_clk
             t1_digit_ones -> count1_digit_ones [dir=back]
             t1_digit_ones -> multiplex1_digit_ones
             t1_digit_tens -> count1_digit_tens [dir=back]
@@ -132,32 +131,132 @@ digraph G {
             }
         }
     }
-    
-    /*
+
+
+
+
     subgraph cluster_2 {
         color = blue
         label = "Phase 2"
-        # I/O
+        # Submodules come first
         {
-            node [style=filled; fillcolor=lightgrey]
+            subgraph cluster_t2_count {
+                label = "count: entity work.count"
+                color = black
+                # Port
+                {
+                    node [style=filled;fillcolor=lightgrey]
+                    # Input
+                    {
+                        count2_clk [label=clk]
+                        count2_enable [label=enable]
+                        count2_fast [label=fast]
+                        count2_reset [label=reset]
+                    }
+                    # Output
+                    {
+                        count2_digit_ones [label=digit_ones]
+                        count2_digit_tens [label=digit_tens]
+                        count2_digit_hundreds [label=digit_hundreds]
+                        count2_digit_thousands [label=digit_thousands]
+                    }
+                }
+            }
+            
+            subgraph cluster_t2_multiplex {
+                label = "display_driver: entity work.seg_multiplex"
+                color = black
+                # Port
+                {
+                    node [style=filled;fillcolor=lightgrey]
+                    # Input
+                    {
+                        multiplex2_clk [label=clk]
+                        multiplex2_digit_ones [label=digit_ones]
+                        multiplex2_digit_tens [label=digit_tens]
+                        multiplex2_digit_hundreds [label=digit_hundreds]
+                        multiplex2_digit_thousands [label=digit_thousands]
+                    }
+                    # Output
+                    {
+                        multiplex2_seg_anodes [label=seg_anodes]
+                        multiplex2_seg_cathodes [label=seg_anodes]
+                        multiplex2_seg_dp [label=seg_anodes]
+                        
+                    }
+                }                
+            }
+        }
+        
+        # Then the Top Level module
+        subgraph cluster_t2 {
+            label = "entity top_level"
+            color = black
+            
+            # Port
+            {
+                node [style=filled;fillcolor=lightgrey]
+                # Inputs
+                {
+                    t2_clk [label=clk]
+                    t2_enable_sw [label=enable_sw]
+                    t2_fast_sw [label=fast_sw]
+                    t2_reset_btn [label=reset_btn]
+                }
+                # Outputs
+                {
+                    t2_anodes [label=anodes]
+                    t2_seg [label=seg]
+                    t2_dp [label=dp]
+                }
+            }
+            
+            # Signals
+            t2_digit_ones [label=digit_ones]
+            t2_digit_tens [label=digit_tens]
+            t2_digit_hundreds [label=digit_hundreds]
+            t2_digit_thousands [label=digit_thousands]
+            
+            # Links
+            t2_clk -> count2_clk
+            t2_enable_sw -> count2_enable
+            t2_fast_sw -> count2_fast
+            t2_reset_btn -> count2_reset
+
+            t2_clk -> multiplex2_clk
+            t2_digit_ones -> count2_digit_ones [dir=back]
+            t2_digit_ones -> multiplex2_digit_ones
+            t2_digit_tens -> count2_digit_tens [dir=back]
+            t2_digit_tens -> multiplex2_digit_tens
+            t2_digit_hundreds -> count2_digit_hundreds [dir=back]
+            t2_digit_hundreds -> multiplex2_digit_hundreds
+            t2_digit_thousands -> count2_digit_thousands [dir=back]
+            t2_digit_thousands -> multiplex2_digit_thousands
+            
+            t2_anodes -> multiplex2_seg_anodes [dir=back]
+            t2_seg -> multiplex2_seg_cathodes [dir=back]
+            t2_dp -> multiplex2_seg_dp [dir=back]
+            
+        }
+        
+        # Finally, add the Constraints
+        {
+            node [style=filled;fillcolor=orange]
             # Input
             {
-                clk_2[label=clk]
-                clk_2 -> t2
+                clk_2 [label=clk]
+                clk_2 -> t2_clk
+                enable_sw -> t2_enable_sw
+                fast_sw -> t2_fast_sw
+                reset_btn -> t2_reset_btn
             }
             # Output
             {
                 edge [dir=back]
+                anodes -> t2_anodes
+                seg -> t2_seg
+                dp -> t2_dp
             }
         }
-        
-        t2 [style=empty; label=top_level]
-        
-        # Submodules
-        {
-            edge [dir=both]
-            //t2 -> 
-        }
     }
-    */
 }
