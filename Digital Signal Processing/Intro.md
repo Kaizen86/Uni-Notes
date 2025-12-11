@@ -65,7 +65,7 @@ Brainstorm:
 - Digital communications
 
 Discrete samples have discrete time, measured in natural numbers
-Suppose we got samples occurring every 25 ms:
+Suppose we got samples occurring every 25 ms: ^define-discrete
 
 | Continuous time (ms) | Discrete time |
 | -------------------- | ------------- |
