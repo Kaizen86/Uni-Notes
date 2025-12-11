@@ -218,7 +218,11 @@ That was all step 2?! I counted 8 different things there!
 3. Input/output difference equations
 ![[PFE Parallel Subsystems.jpg|500]]
 Here, $Y(z) = Y_1(z) + Y_2(z)$. (Sum of the outputs). This leads to:
-$$H_1(z) = \frac{Y_1(z)}{X(z)} \;\; \& \;\; H_2(z)=\frac{Y_2(z)}{X(z)}$$
+$$
+	H_1(z) = \frac{Y_1(z)} {X(z)}
+	\enspace \& \enspace
+	H_2(z) = \frac{Y_2(z)} {X(z)}
+$$
 Equating these with the expressions for $H_1(z)$ and $H_2(z)$ will then provide us with a path to determining the input/output difference equations for them individually.
 ## DF2 Example 1
 Find z-domain transfer of this DF2:
@@ -243,9 +247,9 @@ Multiplying both sides by the denominator:
 $$
 \begin{align}
 	\frac{Y_1(z)} {\cancel{X(z)}}
-		\cdot \cancel{X(z)} \cdot (1-z^{-1} \cdot 0.1) \\
+		\cdot \cancel{X(z)} \cdot \left(1-z^{-1} \cdot 0.1\right) \\
 	= \frac{-10} {\cancel{1-z^{-1} \cdot 0.1}}
-			(\cancel{1-z^{-1} \cdot 0.1}) \cdot X(z)
+			\left(\cancel{1-z^{-1} \cdot 0.1}\right) \cdot X(z)
 \end{align}
 $$
 Multiplying out the remaining terms:
@@ -264,10 +268,14 @@ $$
 		&&= -10 \cdot x[n]
 \end{alignat*}
 $$
-Using these, yields the overall inverse z-transform:
-$$y_1[n]-0.1 \cdot y_1[n-1] = -10 \cdot x[n]$$
-Solving in terms of the current time output:
-$$y_1[n] = +0.1 \cdot y_1[n-1] - 10 \cdot x[n]$$
+Using these, yields the overall inverse z-transform. Then we can solve it in terms of the current time output.
+$$
+\begin{alignat*}{1}
+	&y_1[n]& &-0.1 \cdot y_1[n-1] = &-10 \cdot x[n] \\
+	\Rightarrow \:
+	&y_1[n] =& &+0.1 \cdot y_1[n-1] &-10 \cdot x[n]
+\end{alignat*}
+$$
 - Note: John swapped the order of the terms for some reason. I'm not flipping them because that's easier to read.
 
 Filter structure for this first order subsystem can be drawn here as Direct Form 1:
@@ -276,7 +284,7 @@ Filter structure for this first order subsystem can be drawn here as Direct Form
 Find z-domain transfer of this DF2:
 $$
 \begin{align}
-	y_2[n] = 10x[n] + 0.2y_2[n-1] \text{ (from } H_2(z) \text{)} \\
+	y_2[n] = 10x[n] + 0.2y_2[n-1] \bigl(\text{from } H_2(z) \bigr) \\
 	
 \end{align}
 $$
@@ -307,7 +315,7 @@ $$Y_2(z) - 0.2 \cdot Y_2(z) \cdot z^{-1} = 10 \cdot X(z)$$
 Taking inverse of z-transforms:
 $$
 \begin{alignat*}{1}
-	&Z^{-1}\lbrace Y_2(z)\rbrace
+	&Z^{-1}\left\{ Y_2(z)\right\}
 		&&
 		&&= y_2[n] \\
 	&Z^{-1}\lbrace -0.2 \cdot Y_2(z) \cdot z^{-1}\rbrace
@@ -343,18 +351,18 @@ For $w[n]$:
 ![[DF1 Example 2 For w-n.png|500]]
 For $y[n]$::
 ![[DF1 Example 2 For y-n.png|500]]
-z-transforming example $\textnumero\; 1$:
+z-transforming example $\textnumero\: 1$:
 $$
 	W(z) = \boxed{ 0.5  \cdot X(z)}
          + \boxed{ 0.5  \cdot W(z) \cdot z^{-1}}
          + \boxed{-0.06 \cdot W(z) \cdot z^{-2}}
 $$
-z-transforming example $\textnumero\; 2$:
+z-transforming example $\textnumero\: 2$:
 $$W(z) = 0.2 \cdot W(z)$$
 
 ## Questions
 ### 1.
-Solve for $X(z)$ with example $\textnumero\; 1$ and then factor out $W(z)$
+Solve for $X(z)$ with example $\textnumero\: 1$ and then factor out $W(z)$
 $$
 \begin{align}
 	\boxed{0.5 \cdot X(z)} &= W(z) 

@@ -8,15 +8,15 @@ $$
 	\fbox{2nd order} \rightarrow
 	\text{output}
 $$
-Recall that Butterworth filters have -3db at the critical frequency. To achieve a Butterworth response with 3dB of attenuation at the Critical Frequency, the overall gain also needs to be -3dB. The 1st order stage already provides this. Therefore, the 2nd order stage just needs to 0dB at the critical frequency.
+Recall that Butterworth filters have -3 dB at the critical frequency. To achieve a Butterworth response with 3 dB of attenuation at the Critical Frequency, the overall gain also needs to be -3 dB. The 1st order stage already provides this. Therefore, the 2nd order stage just needs to 0 dB at the critical frequency.
 $$
 \begin{gather}
 	\text{input} \rightarrow 
-		\boxed{\text{-3dB at }f_c} \rightarrow
-		\boxed{\text{0dB at } f_c} \rightarrow
+		\boxed{-3\text{ dB at }f_c} \rightarrow
+		\boxed{0\text{ dB at } f_c} \rightarrow
 		\text{output} \\
 	\text{Total gain at the critical frequency is therefore:} \\
-	-3 + 0 = -3\text{dB}
+	-3 + 0 = -3\text{ dB}
 \end{gather}
 $$
 
@@ -49,7 +49,7 @@ $$
 	\text{Total gain at the critical frequency} \\
 	0.5412 \times 1.3066 = \frac{1}{\sqrt{2}} \\
 	\text{which corresponds to:} \\
-	20\text{log}_{10} \left( \frac{1}{\sqrt{2}} \right) = -3\text{dB}
+	20\log_{10} \left( \frac{1}{\sqrt{2}} \right) = -3\text{ dB}
 \end{gather}
 $$
 For a 5th order filter, we have:
@@ -80,12 +80,14 @@ See [[Infinite Impulse Response#Filters 2nd Order]]
 Normalised digital frequency is calculated with:
 $$\Omega = \frac{2\pi f}{fs}$$
 Pre-warping formula
-$${\omega'} = 2f_s \text{ tan}\left( \frac{\Omega}{2} \right)$$
+$$\omega^{'} = 2f_s \tan\left( \frac{\Omega}{2} \right)$$
 Butterworth filter order is calculated with:
 $$
-	n \ge \frac{1}{2\cdot\text{log}_{10}(v_s)} \cdot \text{log}_{10} \left( 
-		\frac{10^{0.1\cdot A_s}-1}{\epsilon^2}
-	\right)
+	n \ge \frac{1}{2 \cdot \log_{10}(v_s)} \cdot
+		\log_{10} \left(
+			\frac{10^{0.1 \cdot A_s}-1}
+			{\epsilon^2}
+		\right)
 $$
 - Where the normalised frequency $v_s$ has $f_o$ which is the critical or bandpass frequency and the free frequency is given by the stop band frequency, i.e $f=f_s$ so that:
 $$
@@ -111,9 +113,11 @@ $$
 $$
 \begin{gather}
 	&\text{Required filter order is then:} \\
-	&n \ge \frac{1}{2\cdot\text{log}_{10}(v_s)} \cdot \text{log}_{10} \left( 
-		\frac{10^{0.1\cdot A_s}-1}{\epsilon^2}
-	\right) \\
+	&n \ge \frac{1}{2\cdot\log_{10}(v_s)} \cdot
+		\log_{10} \left(
+			\frac{10^{0.1 \cdot A_s}-1}
+			{\epsilon^2}
+		\right) \\
 \end{gather}
 $$
 $$
@@ -128,13 +132,13 @@ $$
 This equation can be used to ... the digital case(?) if we use pre-warped pass and stop-band frequencies, i.e:
 $$
 \begin{align}
-	n_s &= \frac{{\omega'}_{stop}} {{\omega'}_{pass}} \text{ (for low pass)} \\
-	n_s &= \frac{{\omega'}_{pass}} {{\omega'}_{stop}} \text{ (for high pass)} \\
+	n_s &= \frac{\omega^{'}_{stop}} {\omega{'}_{pass}} \text{ (for low pass)} \\
+	n_s &= \frac{\omega^{'}_{pass}} {\omega{'}_{stop}} \text{ (for high pass)} \\
 	\text{where:} \\
-	{\omega'}_{pass} &= 2f_s \text{ tan} \left(
+	\omega^{'}_{pass} &= 2f_s \tan \left(
 		\frac{\Omega_{pass}}{2}
 		\right) \\
-	{\omega'}_{stop} &= 2f_s \text{ tan} \left(
+	\omega{'}_{stop} &= 2f_s \tan \left(
 		\frac{\Omega_{stop}}{2}
 		\right) \\
 	\text{where:} \\
@@ -144,7 +148,7 @@ $$
 $$
 
 ## Example
-Determine the required filter order and filter coefficients for a low-pass filter with critical frequency $f_{pass}=12\text{kHz}$ and and a stop-band frequency $f_{stop} = 48\text{kHz}$. The allowable attenuation in the pass-band is $A_p = 3dB$, and the minimum amount of stop-band attenuation is $A_s = 32dB$.
+Determine the required filter order and filter coefficients for a low-pass filter with critical frequency $f_{pass}=12\text{kHz}$ and and a stop-band frequency $f_{stop} = 48\text{kHz}$. The allowable attenuation in the pass-band is $A_p = 3\text{ dB}$, and the minimum amount of stop-band attenuation is $A_s = 32\text{ dB}$.
 
 ### Filter orders
 ```math
@@ -191,8 +195,8 @@ A 3rd order system could be structured as follows:
 - And the transfer function looks like this. Note the denominator (right-side) switches sign.
 $$
 	H(z) = \frac
-	{b_0 \;+\; b_1\; z^{-1} \;+\; b_2\; z^{-2} \;+\; b_3\; z^-3}
-	{a_0 \;+\; a_1\; z^{-1} \;+\; a_2\; z^{-2} \;+\; a_3\; z^-3}
+	{b_0 \:+\: b_1\cdot z^{-1} \:+\: b_2\cdot z^{-2} \:+\: b_3\cdot z^-3}
+	{a_0 \:+\: a_1\cdot z^{-1} \:+\: a_2\cdot z^{-2} \:+\: a_3\cdot z^-3}
 $$
 This structure could be more sensitive to situations where coefficients close to zero or some some other values may not have sufficient precision in the digital floating point format. Determining the pole positions and other important details could demonstrate that the original system specification met and or the system is subsequently unstable due to the limited precision.
 # Alternative Filter Structures

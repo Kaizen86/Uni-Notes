@@ -19,8 +19,8 @@ $$
 Example: Convolve:
 $$
 \begin{align}
-	x[n] &= 1,2,0& &(\text{for } n = 0,1,2) \\
-	h[n] &= 1,-1&  &(\text{for } n = 0,1)
+	x[n] &= 1,2,0& &(\text{for } n=0,1,2) \\
+	h[n] &= 1,-1&  &(\text{for } n=0,1)
 \end{align}
 $$
 

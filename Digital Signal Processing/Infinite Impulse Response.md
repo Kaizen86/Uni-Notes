@@ -50,12 +50,17 @@ To convert an analogue prototype, like the one just derived, to a digital repres
 $$\Omega_{cf} = \frac{2\pi f_{cf}}{f_s}$$
 1. Apply a prewarp to critical frequencies
 	- This involves an equation, such as:
-$$\omega_{cf} = 2f_s\, tan\left( \frac{\Omega_{cf}}{2} \right)$$
+$$\omega_{cf} = 2f_s\, \tan\left( \frac{\Omega_{cf}}{2} \right)$$
 	- where $fs$ is the sampling frequency, and $\Omega_{cf} = \large\frac{2\pi f_{cf}}{f_s}$ is the [[Window Functions#^explain-normalised-freq|normalised digital frequency]].
 	- This is doing the opposite warp from the next equation, hence "prewarp"
 	- If we don't do this, the critical frequency will be in the wrong place.
 2. Apply BLT equation to the transfer function:
-$$H(z) = H'(\omega)|_{\huge j\omega \rightarrow 2fs\left(\frac{z-1}{z+1}\right)}$$
+$$
+	H(z) = H^{'}(\omega)|_{\huge
+		j\omega \rightarrow 2f_s
+		\left(\frac{z-1}{z+1}\right)
+	}
+$$
 	- What the entire fuck is that??
 	- This is changing the scales in a non-linear way, so a prewarp is needed (step 1).
 ## Example
@@ -68,20 +73,20 @@ $$
 \end{align}
 $$
 1. Apply prewarp
-$${\omega'}_{cf} = 2f_s\, tan\left( \frac{0.2\pi}{2} \right)$$
+$$\omega^{'}_{cf} = 2f_s\, \tan\left( \frac{0.2\pi}{2} \right)$$
 - To help simplify the later expression;
-$$\text{let } \alpha = \frac{1}{tan\left( \frac{\Omega_{cf}}{2} \right)}$$
+$$\text{let } \alpha = \frac{1}{\tan\left( \frac{\Omega_{cf}}{2} \right)}$$
 - Letting this means we have:
 $$
 \begin{align}
-	{\omega'}_{cf} &=\frac{2f_s}{\alpha} \\
-	\text{Where}\; \alpha &= \frac{1}{tan\left( \frac{0.2\pi}{2} \right)}
+	\omega^{'}_{cf} &=\frac{2f_s}{\alpha} \\
+	\text{Where } \alpha &= \frac{1}{\tan\left( \frac{0.2\pi}{2} \right)}
 \end{align}
 $$
 - Putting this back into the transfer function, we have:
 $$
-	{H'}(\omega) 
-	= \frac{1}{1+ \huge\frac{j\omega} {{\omega'}_{cf}} }
+	H^{'}(\omega) 
+	= \frac{1}{1+ \huge\frac{j\omega} {\omega^{'}_{cf}} }
 	= \frac{1}{1+j\omega \huge\frac{\alpha}{2f_s} }
 $$
 
@@ -89,9 +94,15 @@ $$
 $$H(z) = H^{'}(\omega)|_{\huge j\omega = 2f_s\frac{z-1}{z+1}}$$
 $$
 \begin{align}
-	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{{\omega'}_{cf}} \right\}} \\
+	&= \frac{1} {1+\left\{ 
+		\huge\frac{2f_s \frac{z-1}{z+1} }
+		{\omega^{'}_{cf}} \right\}
+	} \\
 	\\
-	&= \frac{1} {1+\left\{ \huge\frac{2f_s \frac{z-1}{z+1} }{\frac{2f_s}{\alpha}} \right\}}
+	&= \frac{1} {1+\left\{
+		\huge\frac{2f_s \frac{z-1}{z+1} }
+		{\frac{2f_s}{\alpha}} \right\}
+	}
 \end{align}
 $$
 $$
@@ -108,7 +119,7 @@ $$ = \frac{1} {1+\alpha \large\frac{z-1}{z+1} }$$
 ![[its-quite-simple-really.webp|250]]
 
 2. Multiply top and bottom together by $(z+1)$:
-$$H(z) = \frac{1}{z+1 + \alpha\left( z-1 \right)}$$
+$$H(z) = \frac{1}{z+1 + \alpha(z-1)}$$
 3. Multiply out the denominator and collect like terms:
 $$H(z) = \frac{z+1}{z(1+\alpha) + 1-\alpha}$$
 4. Factor out $(1+\alpha)$ from the denominator:
@@ -123,7 +134,7 @@ $$
 $$
 $$
 \begin{gather}
-	\text{let}\; \beta=\frac{1-\alpha}{1+\alpha}
+	\text{let}\: \beta=\frac{1-\alpha}{1+\alpha}
 	\text{ \& }
 	K=\frac{z+1}{z+\beta} \\
 	
@@ -144,7 +155,7 @@ $$
 \begin{alignat}{1}
 	&\text{Here,} \\
 	&z + \beta &&= 0 \\
-	\therefore\; &z &&= -\beta
+	\therefore\: &z &&= -\beta
 \end{alignat}
 $$
 $$\text{so that } p_1 = z = -\beta$$
@@ -162,10 +173,15 @@ $$H(z) = K \frac{(z+1)}{z+\beta}$$
 $$\frac{z}{z} = 1$$
 $$
 \begin{align}
-	H(z) &= K( \frac
-		{1 \cancel{\frac{z}{z}} + \frac{1}{z}} {1 \cancel{\frac{z}{z}} + \frac{\beta}{z}}) \\
+	H(z) &= K\left( \frac
+		{1 \cancel{\frac{z}{z}} + \frac{1}{z}}
+		{1 \cancel{\frac{z}{z}} + \frac{\beta}{z}} 
+	\right) \\
 	\\
-	& = K(\frac {1+z^{-1}} {1+\beta z^{-1}} )
+	& = K\left(\frac
+		{1+z^{-1}}
+		{1+\beta z^{-1}}
+	\right)
 \end{align}
 $$
 2. Multiply out the numerator:
@@ -174,11 +190,14 @@ $$H(z) = \frac{K+K z^{-1}} {1+\beta z^{-1}}$$
 3. Equate both expressions and cross-multiply by both denominators:
 	- Recall that an [[Linear Time Invariant Systems|LTI System]] in z-domain looks like: $X(x) \rightarrow \boxed{H(z)} \rightarrow Y(z)$
 $$
-\begin{align}
-	\text{Noting that:}\; H(z) &= \frac{Y(z)}{X(z)}, \\
-	\left(1+\beta z^{-1}\right) \frac{Y(z)\cancel{X(z)}}{\cancel{X(z)}}
-	&= 
-\end{align}
+\begin{gather}
+	\text{Noting that:}\: H(z) = \frac{Y(z)}{X(z)}, \\
+	\left(1+\beta z^{-1}\right) \frac
+		{Y(z)\cancel{X(z)}}
+		{\cancel{X(z)}}
+	= \\
+	\dots
+\end{gather}
 $$
 - TODO
 "Now this is the bit of inverse magic. This z function ... time delay to take it back to time domain. Where you're multiplying by $z^{-1}$, that's like a time shift." I couldn't quite keep up with him there, sorry.
@@ -186,7 +205,7 @@ TODO
 "When we z-transform it, it becomes much simpler because you're multiplying with z's, and it's just algebra."
 
 Combining these:
-$$y[n]+\beta y[n-1] = $$
+$$y[n]+\beta y[n-1] = \dots$$
 Solving for $y[n]$:
 $$y[n] = kx[n] + kx[n-1] - \beta y[n-1]$$
 - This is the time domain difference equation
@@ -216,7 +235,7 @@ $f_s$ and $f_{cf}$ in Hertz
 $\Omega_{cf}$ in rad/sample
 $\omega_{cf}$ in rad/second
 $\omega_0=\omega_{cf}$ for some reason
-- $\alpha = \frac{2f_s}{\omega_0}$ or $\alpha = \frac{1}{tan(\frac{\Omega_{cf}}{2})}$
+- $\alpha = \frac{2f_s}{\omega_0}$ or $\alpha = \frac{1}{\tan(\frac{\Omega_{cf}}{2})}$
 
 Analogue prototype transfer function:
 $$
@@ -263,35 +282,42 @@ $$
 		+ \frac {j\omega}	{Q\omega_0}
 		+ 1}
 $$
-This describes the analogue transfer function with a gain at the critical frequency, $\omega_0 = 2\pi f_0 \;\text{rads/s}$, where the gain is given by Q, also known as the "Quality Factor".
+This describes the analogue transfer function with a gain at the critical frequency, $\omega_0 = 2\pi f_0 \text{ rads/s}$, where the gain is given by Q, also known as the "Quality Factor".
 
 For a particular type of filter design, called a Butterworth, we have an overall gain response as $\frac{1}{\sqrt{2}}$. For a second order Butterworth filter, we therefore have:
-$$Q = \frac{1}{\sqrt{2}} \;\;\;\;\; Q_{db} = 20\text{log}_{10}(Q) \approx -3.01\text{dB}$$
-TODO add space between the equations properly
+$$
+	Q = \frac{1}{\sqrt{2}} \quad
+	Q_{dB} = 20\log_{10}(Q) \approx -3.01 \text{ dB}
+$$
 This value of Q means the filter response can be considered "maximally flat". If Q is greater than this value, then the response will start to have some ripples
 TODO include picture of graph - fuck didn't get a photo of it :(
 
 To convert this analogue response to digital, we can use the [[Infinite Impulse Response#Bilinear Transformation Method|Bilinear Transformation Method]] again.
 1. Prewarp of the critical frequency
 $$
-\begin{gather}
-	\Omega_0 = \frac{2\pi f_0}{fs} \\
-	\text{Where}\; \Omega_0=\text{rad/sample,}\; f_s=\text{sampling frequency,}\; \text{specified critical frequency in Hz}
-\end{gather}
+\Omega_0 = \frac{2\pi f_0}{fs} \quad
+\begin{alignat*}{1}
+	\text{Where: } 
+	&\Omega_0 &&= \text{rad/sample,} \\
+	&f_s &&= \text{sampling frequency,} \\
+	&f_0 &&= \text{specified critical frequency in Hz}
+\end{alignat*}
 $$
 	- The pre-warp is then
 $$
 \begin{gather}
-	{\omega'}_0 = 2f_s \tan\left( \frac{\Omega_0}{2} \right) \\
+	\omega^{'}_0 = 2f_s \tan\left( \frac{\Omega_0}{2} \right) \\
 	
 	\text{let } \alpha = \frac{1} {\tan\left( \frac{\Omega_0}{2} \right)}
-	\text{, so that } {\omega'}_0 = \frac{2f_s}{\alpha}
+	\text{, so that } \omega^{'}_0 = \frac{2f_s}{\alpha}
 \end{gather}$$
-2. Substitute in the prewarped frequency ${\omega'}_0$ to analogue 2nd order prototype and then perform the BLT:
+1. Substitute in the prewarped frequency $\omega^{'}_0$ to analogue 2nd order prototype and then perform the BLT:
 $$
 \begin{align}
-	{H'}(\omega) = H(\omega)|_{\huge\omega_0 = {\omega'}_0}
-	= \frac{1}{\left(\frac{j\omega}{{\omega'}_0}\right) + \frac{j\omega}{{\omega'}_0Q} + 1}
+	H^{'}(\omega) = H(\omega)|_{\huge\omega_0 = \omega^{'}_0} \\
+	= \frac{1}{
+		\left(\frac{j\omega} {\omega^{'}_0}\right) + 
+		\frac{j\omega} {\omega^{'}_0 \cdot Q} + 1}
 \end{align}
 $$
 TODO copy from picture and include John's workings
@@ -299,7 +325,8 @@ TODO copy from picture and include John's workings
 Applying the BLT: $j\omega \rightarrow 2f_s \frac{z-1}{z+1}$
 $$
 \begin{align}
-	H(z) = {H'}(\omega)|_{\huge j\omega = 2f_s \frac{z-1}{z+1}} \\
+	H(z) = H^{'}(\omega)|_{\huge 
+		j\omega = 2f_s \frac{z-1}{z+1}} \\
 	\\
 	H(z) = \frac{1}{
 		\ldots
@@ -320,14 +347,14 @@ We need to get $H(z)$ to this fraction of polynomials ("AIM to get").
 TODO copy from picture
 Multiplying out terms in the denominator and collect like terms together:
 $$
-\begin{align}
+\begin{gather}
 	\alpha^2(z-1)^2 = \alpha^2(z^2 - 2z+1)
 		= \alpha^2 z^2 - 2\alpha^2 z + \alpha^2 \\
 	\frac{\alpha}{Q} (z-1)(z+1) 
 		= \frac{\alpha}{Q} \left( z^2-1 \right)
-		= \frac{z^2\alpha}{Q} - \frac{\alpha}{Q} \;(?) \\
+		= \frac{z^2\alpha}{Q} - \frac{\alpha}{Q} \:(?) \\
 	(z+1)^2 = z^2 + 2z + 1
-\end{align}
+\end{gather}
 $$
 TODO finish copying from picture
 To make the denominator factor on $z^2$ equal to 1 (useful as it is a more standard form), we have:

@@ -1,4 +1,4 @@
-Euler's Identity: $exp(\theta\phi) = sin(\theta)+cos(\phi)$
+Euler's Identity: $\exp(\theta\phi) = \sin(\theta)+\cos(\phi)$
 
 Input Analogue Filter $\rightarrow$ Analogue to Digital Converter $\rightarrow$ Digital Signal Processor $\rightarrow$ Digital to Analogue Converter $\rightarrow$ Output Analogue Filter
 
@@ -9,16 +9,16 @@ Apparently everyone else knew this was happening, so I guess I'm blind lol
 
 1. $$
 \begin{align}
-	f(t) &= 0.5 \times sin(2\pi f t) \\
-	f(t) &= 0.5 \times sin(2\pi t \times 21 \times 10^3)
+	f(t) &= 0.5 \times \sin(2\pi f t) \\
+	f(t) &= 0.5 \times \sin(2\pi t \times 21 \times 10^3)
 \end{align}
 $$
 2. $$
 \begin{align}
-	f[n] &= sin(2pi \times f T_s n) \\
+	f[n] &= \sin(2\pi \times f T_s n) \\
 	F_s &= 100,000 \\
 	T_s &= \frac{1}{F_s} \\
-	f[n] &= sin(2pi \times 1 \times 10^-5 \times n)
+	f[n] &= \sin(2\pi \times 1 \times 10^-5 \times n)
 \end{align}
 $$
 3. $$
@@ -35,21 +35,21 @@ $$
 \begin{align}
 	\omega &= 2\pi f \\
 	&= 2\pi \cdot 8500 \\
-	&= 17000\pi \; rads/second
+	&= 17000\pi \text{ rads/second}
 \end{align}
 $$
 6. Complex sinusoid
-	$Ae^{j\omega t} = Acos(\omega t)+jAsin(\omega t)$
-7. $Ae^{j\Omega n} = Acos(\Omega n)+jAsin(\Omega n)$
+	$Ae^{j\omega t} = A\cos(\omega t)+jA\sin(\omega t)$
+7. $Ae^{j\Omega n} = A\cos(\Omega n)+jA\sin(\Omega n)$
 
 
 ## Useful formulas
 $$
 \begin{align}
-	y(t) &= A \cdot sin(2\pi ft) \\
-	y(t) &= A \cdot sin(\omega t) \\
-	y[n] &= A \cdot sin(2\pi f T_s n) \\
-	y[n] &= A \cdot sin(\frac{2\pi fn}{f_s}) \\
-	y[n] &= A \cdot sin(\Omega n)
+	y(t) &= A \cdot \sin(2\pi ft) \\
+	y(t) &= A \cdot \sin(\omega t) \\
+	y[n] &= A \cdot \sin(2\pi f T_s n) \\
+	y[n] &= A \cdot \sin(\frac{2\pi fn}{f_s}) \\
+	y[n] &= A \cdot \sin(\Omega n)
 \end{align}
 $$

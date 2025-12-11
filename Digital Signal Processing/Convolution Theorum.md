@@ -36,32 +36,32 @@ The DTFT of this can be determined as follows:
 $$
 \begin{align}
 	H(\Omega) &= \text{DTFT}\{h[n]\} \\
-	          &= \sum^\infty_{n=-\infty} h[n] \; exp(-j \Omega n)
+	          &= \sum^\infty_{n=-\infty} h[n] \cdot \exp(-j \Omega n)
 \end{align}
 $$
 Substituting in the expression for $h[n]$
 $$
 H(\Omega) =
-	\sum^{-1}_{n=-\infty} 0    \; exp(-j \Omega n) +
-	\sum^{2}_{n=0}     \frac13 \; exp(-j \Omega n) +
-	\sum^{\infty}_{n=3}   0    \; exp(-j \Omega n)
+	\sum^{-1}_{n=-\infty} 0    \cdot \exp(-j \Omega n) +
+	\sum^{2}_{n=0}     \frac13 \cdot \exp(-j \Omega n) +
+	\sum^{\infty}_{n=3}   0    \cdot \exp(-j \Omega n)
 $$
 Substituting in the values of $n$ and expanding
 $$
 H(\Omega) =
-	\frac13 exp(-j \Omega 0) +
-	\frac13 exp(-j \Omega 1) +
-	\frac13 exp(-j \Omega 2)
+	\frac13 \exp(-j \Omega 0) +
+	\frac13 \exp(-j \Omega 1) +
+	\frac13 \exp(-j \Omega 2)
 $$
 
 Expanding each complex exponential using Euler's identity and factorizing the $\frac13$
-Remember: Euler's identity is $exp(jA) = jsin(A)+cos(A)$ and $exp(c)=1$
+Remember: Euler's identity is $\exp(jA) = j\sin(A)+\cos(A)$ and $\exp(c)=1$
 - What the fuck??
 $$
 \begin{alignat}{1}
 	H(\Omega) = \frac13 \bigl(
-		1 &+ cos( \Omega) &&- jsin(\Omega)\\
-		  &+ cos(2\Omega) &&- jsin(2\Omega) \,
+		1 &+ \cos( \Omega) &&- j\sin(\Omega)\\
+		  &+ \cos(2\Omega) &&- j\sin(2\Omega) \,
 	\bigr)
 \end{alignat}
 $$
@@ -78,7 +78,7 @@ We can then perform further simplification using trigonometric substitutions and
 - Magnitude of a complex number, $A=a+jb$:
 $$|A| = \sqrt{a^2 + b^2}$$
 - Phase:
-$$\angle \, A = tan^-1 \left\{ \frac{b}{a} \right\}$$
+$$\angle \, A = \tan^{-1} \left\{ \frac{b}{a} \right\}$$
 
 ----
 A simpler case is where the moving average is performed symmetric around zero where
@@ -92,29 +92,29 @@ h[n] =
 \end{cases}
 $$
 The DTFT of this can be determined in a similar way which is resulting in a **real** transfer function.
-$$H(\Omega) = \frac13 (1 + 2cos(\Omega))$$
+$$H(\Omega) = \frac13 (1 + 2\cos(\Omega))$$
 The magnitude of this is then
-$$|H(\Omega)| = \frac13 (1 + 2cos(\Omega))$$
+$$|H(\Omega)| = \frac13 (1 + 2\cos(\Omega))$$
 In decibels we have
 $$
 \begin{align}
-	H_{db}(\Omega) &= 20 \; log_{10}(|H(\Omega)|) \\
-	&= 20 \; log_{10} \left\{ \frac13 (1+2cos(\Omega)) \right\}
+	H_{dB}(\Omega) &= 20 \log_{10}(|H(\Omega)|) \\
+	&= 20 \log_{10} \left\{ \frac13 (1+2\cos(\Omega)) \right\}
 \end{align}
 $$
 The convolution theorem tells us that the input signal, in the frequency domain, multiplies with this transfer function (or equivalently sums on the decibel scale). This function will modify the input but will not provide a clear single function for this type of moving average filter.
 $$
 \begin{gather}
-	&Y_{db}(\Omega) = &H_{db}(\Omega) &+ &X_{db}(\Omega) \\
-	&\text{(Output)} &\text{(Transfer function)} &\; &\text{(Input)}
+	&Y_{dB}(\Omega) = &H_{dB}(\Omega) &+ &X_{dB}(\Omega) \\
+	&\text{(Output)} &\text{(Transfer function)} & &\text{(Input)}
 \end{gather}
 $$
 Attenuation at certain points:
 $$
 \begin{alignat}{1}
-	&\text{Frequencies close to } 0 &&             &\approx &+0dB \\
-	&\text{Frequencies close to } \frac{\pi}{2} && &\approx &-30dB \\
-	&\text{Frequencies close to } \pi &&           &\approx &-10dB
+	&\text{Frequencies close to } 0 &&             &\approx &+0&\text{ dB} \\
+	&\text{Frequencies close to } \frac{\pi}{2} && &\approx &-30&\text{ dB} \\
+	&\text{Frequencies close to } \pi &&           &\approx &-10&\text{ dB}
 \end{alignat}
 $$
 This is almost like a low-pass filter and band-stop filter hybrid.

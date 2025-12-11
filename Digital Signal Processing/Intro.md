@@ -79,9 +79,9 @@ Suppose we got samples occurring every 25 ms: ^define-discrete
 | $\ldots$             | $\ldots$      |
 $$Fs = \frac{1}{Ts} = \frac{1}{25ms} = \frac{1}{25\times10^-3} = 40$$
 Equation for sine wave, where $A$ is amplitude, $f$ is frequency (which can be calculated as  $\frac{1}{cycle\ time}$), $t$ is time:
-$$y(t) = A \cdot sin(2\pi \cdot f \cdot t)$$
+$$y(t) = A \cdot \sin(2\pi \cdot f \cdot t)$$
 To make this discrete, $t$ has fixed time intervals instead of being continuous, so $t$ becomes $n \cdot Ts$. Note that $y$ is now indexed with
-$$y[t] = A \cdot sin(2\pi \cdot f \cdot n \cdot Ts)$$
+$$y[t] = A \cdot \sin(2\pi \cdot f \cdot n \cdot Ts)$$
 Nyquist's sampling frequency $Fs$ states that your sampling rate must be at least twice as the highest frequency you want to capture, otherwise you will observe aliasing distortion.
 https://chivertj.github.io/dspworksheets/dsp_introduction/Ex_ContVsSampledSignal.html
 Formally, this is written as: $f_s > 2\times f_{max}$ where $fs=\frac{1}{Ts}$ and $f_{max}$ is the maximum frequency being sampled.
