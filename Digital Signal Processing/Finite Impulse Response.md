@@ -8,7 +8,7 @@ Say we have an input to an [[Linear Time Invariant Systems|LTI]]:
 $$
 \begin{gather}
 	&x[n] &\rightarrow \boxed{\text{LTI System } h[n]=w[n] \cdot s[n]} \rightarrow &y[n] \\
-	&Input & &Output
+	&\text{Input} & &\text{Output}
 \end{gather}
 $$
 - $w$ is the window function, and $s$ is the $\text{sinc}$ function
