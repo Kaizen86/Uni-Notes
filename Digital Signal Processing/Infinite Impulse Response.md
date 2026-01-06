@@ -195,11 +195,21 @@ $$
 	\left(1+\beta z^{-1}\right) \frac
 		{Y(z)\cancel{X(z)}}
 		{\cancel{X(z)}}
-	= \\
+	= \frac{K+Kz^{-1}}{\cancel{1+\beta z^{-1}}}
+		\cdot X(z) \cdot \cancel{\left( 1+\beta z^{-1} \right)} \\
 	\dots
 \end{gather}
 $$
-- TODO
+Multiplying out:
+$$
+\begin{align}
+	&Y(z) + \beta \cdot Y(z) \cdot z^{-1} =
+		k \cdot X(z) + k \cdot X(z) \cdot z^{-1} \\
+	
+	&\text{Inverse z-transforms:} \\
+	Z^{-1} \lbrace Y(z) \rbrace = y[n]  &
+\end{align}
+$$
 "Now this is the bit of inverse magic. This z function ... time delay to take it back to time domain. Where you're multiplying by $z^{-1}$, that's like a time shift." I couldn't quite keep up with him there, sorry.
 TODO
 "When we z-transform it, it becomes much simpler because you're multiplying with z's, and it's just algebra."
