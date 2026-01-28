@@ -272,8 +272,8 @@ omegacf=2*fs*tan(Omegacf/2)
 oh lawdy oh good heavens
 
 # Filters: 2nd Order
-TODO include picture of graph comparing 1st/2nd order frequency response slopes
-
+Graph comparing 1st/2nd order frequency response slopes
+![[Filter Orders.png]]
 ## How to make a 2nd order filter
 (this apparently won't be on the exam, phew)
 You simply run the filter again! You have 2 filters one after another, in stages. Phrased formally, a 2nd order response can be achieved by cascading two 1st order responses, e.g:
