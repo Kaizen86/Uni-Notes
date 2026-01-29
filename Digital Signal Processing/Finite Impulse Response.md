@@ -17,6 +17,6 @@ $\text{sinc}(t)$ function in the time domain corresponds to a brick-wall filter 
 ![[sinc-pulse.png]]
 - In this case, 0.5Hz is the "Critical frequency", where it transitions from pass-band to stop-band.
 
-In DSP, we use *[[Intro#^define-discrete|discrete]] [[Window Functions#^explain-normalised-freq|normalised]] $\textit{sinc}$*, which is defined as: $\text{sinc}(n) = \frac{\sin(\pi n)}{\pi n}$
+In DSP, we use *[[Digital Signal Processing/Intro#^define-discrete|discrete]] [[Window Functions#^explain-normalised-freq|normalised]] $\textit{sinc}$*, which is defined as: $\text{sinc}(n) = \frac{\sin(\pi n)}{\pi n}$
 
 To achieve a perfect brick-wall response, you would need an infinitely-long $\text{sinc}$ pulse, so the time domain convolution would take literally forever. You can get close to perfect, but at the cost of lots of time and resources. This is obviously impractical in the real world, so we truncate it with [[Window Functions]].
