@@ -1,0 +1,16 @@
+# Important dates:
+- 4th February 12:00: Interim Report
+	- This is the last day the title can be changed
+	- Review of Project progress should list what I've done so far
+	- Remaining Timescales is a simple Gantt chart
+- 29th February: On-campus face-to-face Project Day
+	- 3 hour session, either at 9:00 or 13:00
+- 18th March 12:00: Project abstract submission for the Conference
+	- Do not lie about the achievements, it's okay to not meet the goals in the abstract
+- 13th May: Final submission:
+	- Final report (One PDF)
+	- Poster
+	- Addendum: proposal, ethics, interim
+- 4th April: Risk assessment deadline
+	- For any practical project (meaning mine)
+	- Must be signed by project supervisor
