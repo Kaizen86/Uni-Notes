@@ -43,9 +43,9 @@ To determine the transfer function $H(z) = \large\frac{Y(z)}{X(z)}$, we need to 
 $$
 \begin{align}
 	&\boxed{Y(z) = W(z) \left( b_0+b_1 \cdot z^{-1} \right)}
-		\text{ Also factored out } W(z) \text{!}\\
+		\text{ Also factored out } W(z) \text{!} \\
 	&\boxed{\begin{align}
-		X() &= W(z) + a_1 \cdot W(z) \cdot z^{-1}\\
+		X() &= W(z) + a_1 \cdot W(z) \cdot z^{-1} \\
 		&= W(z) \left( 1+a_1 \cdot z^{-1} \right)
 	\end{align}}
 \end{align}

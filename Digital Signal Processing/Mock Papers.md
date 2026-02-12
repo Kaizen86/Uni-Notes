@@ -1,7 +1,7 @@
 $$
 \begin{align}
 	\left\{ 
-		
+		TODO
 	\right\}
 \end{align}
 $$
@@ -24,13 +24,13 @@ $$
 	
 	\Omega_l = \frac{2\pi \cdot f_l}{f_s}
 		\approx 1.178 \text{ rad/sample} \\
-	\Omega_h \approx 1.963 \text{ rad/sample} \\
-	\omega_l^{'} \approx 1.069 \text{ rad/sample} \\
-	\omega_h^{'} \approx 2.395 \text{ rad/sample} \\
+	{\Omega_h} \approx 1.963 \text{ rad/sample} \\
+	{\omega_l}^{'} \approx 1.069 \text{ rad/sample} \\
+	{\omega_h}^{'} \approx 2.395 \text{ rad/sample} \\
 	
 	\text{Centre Frequency (geometric mean)} \\
-	\omega_o^{'} 
-		= \sqrt{\omega_l^{'} \cdot \omega_h^{'}} 
+	{\omega_o}^{'} 
+		= \sqrt{{\omega_l}^{'} \cdot {\omega_h}^{'}} 
 		= 1.6 \times 10^6 \text{ rad/s} \\
 	
 	\text{Bandwidth (warped)} \\
