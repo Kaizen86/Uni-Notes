@@ -41,6 +41,7 @@ $$
 $$
 
 ## Aim: Determine the transfer function:
+oh fuck, brace yourself for this bit!
 $$
 \begin{align}
 	G(s) = \frac{V_o(s)}{V_i(s)} = \frac
@@ -70,7 +71,8 @@ $$
 		{z_1 z_2 z_3}
 	\right)
 	- \frac{V_+}{z_2} - \frac{V_o}{z_3}
-$$Substituting expression for $V_a$ :
+$$
+Substituting expression for $V_a$ :
 
 $$
 \begin{alignat*}{1}
@@ -132,7 +134,7 @@ $$
 \end{alignat*}
 $$
 This is the required transfer function for the unity gain Sallen-Key filter topology with general impedances. We can now use it to determine the transfer function for a low-pass configuration:
-![[PXL_20260205_122829751~2.jpg]]
+![[Sallen-Key Low Pass Filter.jpg]]
 
 ---
 From this,
@@ -166,20 +168,51 @@ $$
 	}
 \end{align}
 $$
-TODO copy
 This can now be related to the standard 2nd order response:
-TODO copy
+$$
+	H_{LP}(s) = \frac1 {
+		\frac{s^2}{\omega_o^2} + \frac{s}{\omega_o Q} + 1
+	}
+$$
 Comparing these, we have:
-TODO copy
+$$
+\begin{alignat*}{1}
+	\omega_o^2 &= \frac1{R_1R_2 C_1C_2} &\Rightarrow \enspace&
+	&\omega_o =& \frac1{\sqrt{R_1R_2 C_1C_2}} \\ \\
+	
+	\omega_o Q &= \frac1{C_2(R_1+R_2)} &\Rightarrow \enspace&
+	&Q =& \frac{\sqrt{R_1R_2 C_1C_2}}{C_2(R_1+R_2)}
+\end{alignat*}
+$$
 
-FUCK HE IS GOING TOO DAMN QUICKLY
-AND MY BATTERY IS ABOUT TO DIE FOR FUCKS SAKEOWEBPVCIUOWBP
+# Design Example
+Design a 2nd order Butterworth filter ($Q=\frac1{\sqrt{2}}$) and a critical frequency of $f_o =4 \text{ kHz}$. Assume $R_1=R_2=10\text{ k}\Omega$. Determine the required capacitor Farad values to achieve this specification.
 
-Design Example
-Design a 2nd order Butterworth filter (Q=1/sqrt(2)) and a crititcal friquenty of f_o =4kHz. Assume R_1=R_2=10k\Ohm. Determine the required capacitor values to achieve this specification.
-C_2(R_1+R_2) -> 1/\omega_o Q
+$C_2(R_1+R_2) \rightarrow \frac1{\omega_o Q}$
+
 Equating these factors of $s^1$ from expressions:
-C_2(R_1+R_2) = 1/\omega_o Q
-Solving for C_2 and sibstiting in the values:
-C_2 = 1/((R_1+R_2)  \omega_o Q) = 1/((R_1+R_2) 2\pi f_o Q)
-= fuck this shit, TODO copy from picture.
+$$C_2(R_1+R_2) = \frac1{\omega_o Q}$$
+Solving for $C_2$ and substituting in the values:
+$$
+\begin{align}
+	C_2 &= \frac{1}{(R_1+R_2) \cdot \omega_o Q}
+	= \frac1{(R_1+R_2) \cdot 2\pi f_o Q} \\ \\
+	
+	&= \frac1{
+		(10000+10000) \cdot 2\pi \cdot 4000 \cdot \frac1{\sqrt{2}}
+	} \\ \\
+	
+	&= 2.814 \times 10^9 \text{ F} \\
+	&= 2.8 \text{nF}
+\end{align}
+$$
+
+For $C_1$, equate the values of $s^2$ from both transfer functions and solve for $C_1$:
+$$
+\begin{align}
+	\frac1{\omega_o^2} &= R_1 R_2 C_1 C_2 \\
+	\Rightarrow C_1 &= \frac1{R_1 R_2 C_2 (2\pi f_o)^2} \\ \\
+	&= 5.6 \times 10^{-9} \text{ F} \\
+	&= 5.6 \text{ nF}
+\end{align}
+$$
