@@ -4,5 +4,8 @@
 # Matlab autosave files
 **/*.asv
 
+# Sometimes, deleting files on mobile simply renames them
+**/.trashed-*
+
 # Output of webpage-html-export plugin
 export/
