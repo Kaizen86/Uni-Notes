@@ -9,8 +9,8 @@ The deadline for both of these is **16th March**.
 
 # Sallen-Key Unity Gain Active Filter
 what the fuck does that mean?
-Active Filters include an Op-Amp or sometimes transistors. We will be focusing on Op-Amps.
-TODO include picture of circuit diagram
+Active Filters include an Op-Amp or sometimes transistors. We will be focusing on Op-Amps. Today, we will analyse this circuit:
+![[Sallen-Key Unity Gain Active Filter.jpg]]
 
 John: "We won't be going on any detours today."
 Someone: "Yeah, right."
@@ -132,7 +132,7 @@ $$
 \end{alignat*}
 $$
 This is the required transfer function for the unity gain Sallen-Key filter topology with general impedances. We can now use it to determine the transfer function for a low-pass configuration:
-TODO insert diagram of filter
+![[PXL_20260205_122829751~2.jpg]]
 
 ---
 From this,
@@ -154,9 +154,17 @@ $$
 $$
 Substituting these into the transfer function:
 $$
-	G_{LP}(s) \frac1{
-		\frac{R_1R_2}{TODO}
+\begin{align}
+	G_{LP}(s) &= \frac1{
+		\frac{R_1R_2}{
+			\frac1{s C_1} \times \frac1{s C_2}
+		} + s C_2(R_1 + R_2) + 1
+	} \\ \\
+	&= \frac1{
+		s^2 R_1 R_2 C_1 C_2
+		+ s C_2(R_1 + R_2) + 1
 	}
+\end{align}
 $$
 TODO copy
 This can now be related to the standard 2nd order response:
