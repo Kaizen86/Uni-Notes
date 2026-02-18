@@ -291,7 +291,8 @@ $$
 	}_\text{3rd order}
 	\rightarrow \text{output}
 $$
-TODO insert circuit diagram
+Butterworth 3rd order response: 1st order + 2nd order. $Q=1$
+![[Sallen-Key Butterworth 3rd order.jpg]]
 $$
 \begin{gather}
 	&H_1(s) = \frac1{
@@ -315,7 +316,7 @@ $$
 		{z_1z_2 + z_2z_3 + z_1z_3 + z_3z_4}
 $$
 For high-pass, the Sallen-Key circuit requires:
-TODO insert circuit diagram
+![[Sallen-Key High Pass.jpg]]
 So replacing
 $$
 \begin{align}
@@ -339,8 +340,8 @@ $$
 To design the high-pass case, we can again equate the like-for-like factors and solve for any unknowns:
 $$
 \begin{alignat*}{1}
-	s_1 &= \frac1{Q \omega_o}   &\longleftrightarrow& R_1(C_1 + C_2) \\
-	s_2 &= \frac1{{\omega_o}^2} &\longleftrightarrow& R_1 R_2 C_1 C_2
+	s^1 &= \frac1{Q \omega_o}   &\longleftrightarrow& R_1(C_1 + C_2) \\
+	s^2 &= \frac1{{\omega_o}^2} &\longleftrightarrow& R_1 R_2 C_1 C_2
 \end{alignat*}
 $$
 If we assume values for the capacitors, we can then solve for $R_1$ so that:

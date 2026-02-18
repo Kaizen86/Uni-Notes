@@ -27,10 +27,10 @@ $$
 Assume steady state AC conditions. $\text{let } s=j\omega$ and substituting into the transfer function. Normally, $s=0+j\omega$
 $$H(s) = H(j\omega) |_{\huge s=j\omega} = \frac{1}{1+sRC}$$
 This is the Laplace transfer function for the RC circuit with output taken across the capacitor.
-TODO insert circuit diagram
+![[RC Circuit.jpg]]
 
 For digital, we use Fourier transforms. For analogue, we use Laplace transforms.
-TODO copy Laplace/Fourier transform equations with relation to poles
+NOTE: missing Laplace/Fourier transform equations with relation to poles
 
 Zeroes (numerator) increases the magnitude beyond a frequency, while poles (denominator) will reduce the magnitude.
-TODO insert diagram.
+NOTE: missing diagram.
