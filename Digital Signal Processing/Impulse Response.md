@@ -41,7 +41,6 @@ This is quite abstract, which can be difficult to think about.
 # What is $h[n]$ ?
 Example of a moving average filter, taking the mean average of 3 neighbouring samples:
 $$y[n] = \frac13 x[n] + \frac13 x[n-1] + \frac13 x[n-2]$$
-*TODO include picture of diagram he drew*
 This will remove high-frequency noise from the input signal $x$, which is quite useful!
 - Examples of sensors with noise: Microphone, thermometer, vibration sensor
 This function is quite crude, you can implement this on a microcontroller like an Arduino very easily, but you can make much better filters. "That's the whole point of DSP."

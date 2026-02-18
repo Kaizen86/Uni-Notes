@@ -101,7 +101,7 @@ $$
 $$
 # How to determine the required filter order
 Sometimes, filters are specified as follows:
-TODO include picture of graph
+![[Low-pass filter response.jpg]]
 $$
 \begin{align}
 	f_{pass} &= \text{ passband frequency} \\
