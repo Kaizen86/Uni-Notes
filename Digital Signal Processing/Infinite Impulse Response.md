@@ -222,7 +222,6 @@ $$
 \end{gather}
 $$
 "Now this is the bit of inverse magic. This z function ... time delay to take it back to time domain. Where you're multiplying by $z^{-1}$, that's like a time shift." I couldn't quite keep up with him there, sorry.
-TODO
 "When we z-transform it, it becomes much simpler because you're multiplying with z's, and it's just algebra."
 
 Combining these:
@@ -232,7 +231,7 @@ $$y[n] = k \cdot x[n] + k \cdot x[n-1] - \beta  \cdot y[n-1]$$
 - This is the time domain difference equation
 
 This can be illustrated as a first-order direct form 1 filter structure. 
-- TODO insert diagram
+![[DF1 IIR Example Structure.jpg]]
 In MATLAB, we can look at this form:
 $$
 \begin{align}
