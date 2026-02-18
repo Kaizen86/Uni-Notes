@@ -190,43 +190,61 @@ $$H(z) = \frac{K+K z^{-1}} {1+\beta z^{-1}}$$
 3. Equate both expressions and cross-multiply by both denominators:
 	- Recall that an [[Linear Time Invariant Systems|LTI System]] in z-domain looks like: $X(x) \rightarrow \boxed{H(z)} \rightarrow Y(z)$
 $$
-\begin{gather}
-	\text{Noting that:}\: H(z) = \frac{Y(z)}{X(z)}, \\
-	\left(1+\beta z^{-1}\right) \frac
+\begin{alignat*}{1}
+	\text{Noting that:}\: H(z) &= \frac{Y(z)}{X(z)}, \\
+	
+	\left(1+\beta z^{-1}\right) \cdot \frac
 		{Y(z)\cancel{X(z)}}
 		{\cancel{X(z)}}
-	= \frac{K+Kz^{-1}}{\cancel{1+\beta z^{-1}}}
+	&= \frac{K+Kz^{-1}}{\cancel{1+\beta z^{-1}}}
 		\cdot X(z) \cdot \cancel{\left( 1+\beta z^{-1} \right)} \\
-	\dots
-\end{gather}
+	
+	\left(1+\beta z^{-1}\right) \cdot Y(z)
+	&= K+Kz^{-1} \cdot X(z)
+\end{alignat*}
 $$
 Multiplying out:
 $$
-\begin{align}
-	&Y(z) + \beta \cdot Y(z) \cdot z^{-1} =
+\begin{gather}
+	Y(z) + \beta \cdot Y(z) \cdot z^{-1} =
 		k \cdot X(z) + k \cdot X(z) \cdot z^{-1} \\
+	\text{Inverse z-transforms:} \\
 	
-	&\text{Inverse z-transforms:} \\
-	Z^{-1} \lbrace Y(z) \rbrace = y[n]  &
-\end{align}
+	\boxed{
+		\begin{alignat*}{1}
+		Z^{-1} \lbrace Y(z) \rbrace &= y[n] \quad
+		Z^{-1} \lbrace X(z) \rbrace &= x[n] \\
+		
+		Z^{-1} \lbrace Y(z) \rbrace &= y[n] \quad
+		Z^{-1} \lbrace X(z) \rbrace &= x[n] \\
+		\end{alignat*}
+	}
+\end{gather}
 $$
 "Now this is the bit of inverse magic. This z function ... time delay to take it back to time domain. Where you're multiplying by $z^{-1}$, that's like a time shift." I couldn't quite keep up with him there, sorry.
 TODO
 "When we z-transform it, it becomes much simpler because you're multiplying with z's, and it's just algebra."
 
 Combining these:
-$$y[n]+\beta y[n-1] = \dots$$
+$$y[n] + \beta \cdot y[n-1] = k \cdot x[n] + k \cdot x[n-1]$$
 Solving for $y[n]$:
-$$y[n] = kx[n] + kx[n-1] - \beta y[n-1]$$
+$$y[n] = k \cdot x[n] + k \cdot x[n-1] - \beta  \cdot y[n-1]$$
 - This is the time domain difference equation
 
 This can be illustrated as a first-order direct form 1 filter structure. 
 - TODO insert diagram
 In MATLAB, we can look at this form:
-- TODO copy equations
+$$
+\begin{align}
+	&H(z) 
+	= \frac{k + k \cdot z^{-1}}{1 + \beta \cdot z^{-1}} 
+	= \frac{b_0 + b_1 \cdot z^{-1}}{a_0 + a_1 \cdot z^{-1}} \\
+&\text{where: } b_0=k,\; b_1=k,\; a_0=1\; \&\; a_1=\beta
+\end{align}
+$$
 Functions like `filter(B,A,n,fs)` have:
-
-We can use this to implement, for instance, a Butterworth filter
+$$B=[b_0,b_1] \quad \& \quad A=[a_0,a_1]$$
+We can use this to implement, for instance, a Butterworth filter.
 
 ---
 ## Practice with using Analogue Prototype Method using Bilinear Transformation
