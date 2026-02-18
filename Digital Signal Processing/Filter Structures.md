@@ -382,8 +382,8 @@ $$
 	\cdots &\text{ To be continued!}
 \end{align}
 $$
-- TODO John will revisit this later
 Important! Aim to get:
 $$H(z) = \frac{0.1\cdot z^{-2}} {1-0.5 \cdot z^{-1} + 0.06 \cdot z^{-2}}$$
 
-### 2.
+- TODO John will revisit this later
+	- 2026 February: so uhh I'm going through these TODOs and he never revisited this. ![[that-was-a-lie.png||500]]
