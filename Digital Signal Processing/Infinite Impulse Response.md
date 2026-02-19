@@ -262,20 +262,53 @@ $f_s$ and $f_{cf}$ in Hertz
 $\Omega_{cf}$ in rad/sample
 $\omega_{cf}$ in rad/second
 $\omega_0=\omega_{cf}$ for some reason
-- $\alpha = \frac{2f_s}{\omega_0}$ or $\alpha = \frac{1}{\tan(\frac{\Omega_{cf}}{2})}$
+- $\alpha = \large\frac{2f_s}{\omega_0}$ or $\alpha = \large\frac{1}{\tan(\frac{\Omega_{cf}}{2})}$
 
 Analogue prototype transfer function:
 $$
-\begin{align}
-	(j\omega) &= \frac{\omega_0}{j\omega+\omega_0} 
-	= \frac{1}{1 + \frac{j\omega}{\omega_0} } \\
-	H(s) &= \frac{\omega_0}{s+\omega_0} \\
-\end{align}
+\begin{gather}
+	\boxed{\begin{align}
+			H(j\omega) &= \frac{\omega_0}{j\omega+\omega_0} 
+			= \frac{1}{1 + \frac{j\omega}{\omega_0} } \\
+			
+			H(s) &= \frac{\omega_0}{s+\omega_0} \\
+	\end{align}} \\ \\
+	
+	H^{'}(j\omega)
+	= \frac{1}{1 + \frac{j\omega}{1453.1} } 
+	= \frac{1453.1}{1453.1 + j\omega}
+\end{gather}
 $$
-TODO copy from pictures
+
+Apply bilinear transformation $\left( 2\cdot f_s \frac{z-1}{z+1} \right)$ to obtain the z-domain transfer function:
+$$
+\begin{alignat*}{1}
+	H(z) &= k \frac{(z+1)}{z+\beta} \\
+	k &= \frac1{1+\alpha} = &0.42081 \\
+	\beta &= \frac{1-\alpha}{1+\alpha} = &-0.15838
+\end{alignat*}
+\quad
+\boxed{\begin{gather}
+	H(z) = \frac1{1+\alpha} \times \frac{z+1}{z+\frac{1-a}{1+a}} \\
+	\omega_o = 2 \cdot f_s \tan\left( \frac{\Omega_o}2 \right),\enspace
+	\Omega_o = \frac{2\pi f_o}{f_s} \\
+	\text{and } \alpha = \frac{2f_s}{\omega_o}
+\end{gather}}
+$$
+Determine the poles to ensure a stable filter design:
+$$
+\begin{gather}
+	&p_1 = -\beta = 0.15838\quad
+	\xcancel{p_2 = } \\
+	
+	&\text{It is stable as } |p_1| < 1 \text{ (within unit circle)}
+\end{gather}
+$$
+Determine the coefficients of the inputs $x[n-\cdots]$ and outputs $y[n-\cdots]$ that can be used in the generalised difference equation:
+TODO
 
 ---
-### 2
+### 2.
 ```math
 # Sampling frequency
 fs=1000
