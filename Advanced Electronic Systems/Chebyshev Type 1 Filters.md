@@ -1,7 +1,7 @@
 
 # Chebyshev Type 1 (T1) Filter Recipe
 These filters designs have a sharper slope immediately around the critical frequency. The trade-off here is having ripples in the passband. 
-TODO include picture of diagram
+![[PXL_20260219_111842722~2.jpg]]
 Notes:
 - The filters in the lab are designed to have 0dB attenuation in the pass-band, but at the cost of the ripples causing amplification just before the critical frequency $f_0$.
 - Even order filters behaves differently from odd order.
@@ -29,10 +29,13 @@ TODO increase size of fractions
 Design a low-pass 2nd order Chebyshev T1 with 0.1dB of passband ripple and critical frequency of 60Hz. Use the [[Sallen-Key Unity Gain Active Filter|unity gain Sallen-Key]] topology for this.
 $$
 \begin{gather}
-	\text{input} \rightarrow &\fbox{0.1dB attenuation}& \rightarrow &\fbox{2nd order Sallen Key circuit}& \rightarrow \text{output}
+	\text{input} \rightarrow &\fbox{0.1dB attenuation}& \rightarrow &\fbox{2nd order Sallen Key circuit}& \rightarrow \text{output} \\
+	&&&F=1.8204 \\
+	&&&Q=0.7674 \\
+	&&&\text{(from the 0.1dB table)}
 \end{gather}
 $$
-TODO copy from picture and insert diagram
+![[PXL_20260219_114450611~2.jpg]]
 
 Split the $R_1$ resistor into a voltage divider with an equivalent resistance of $R_1$.
 Theoretical 2nd order response:
@@ -56,7 +59,7 @@ Someone: "I'm still here!! :D"
 *classroom laughs*
 
 To achieve the attenuation we can split the initial resistor as follows:
-TODO insert diagram
+![[PXL_20260219_121512997~2.jpg]]
 The equivalent resistance to $R_1$ and the required amount of attenuation can be achieved with the following:
 $$R_a = \frac{R_1}{H_0} \;\&\; R_b = \frac{R_1}{1-H_0}$$
 TODO i just realised it's been $*_0$ all this time, not $*_o\,$. Do a find-and-replace!
@@ -71,11 +74,19 @@ $$
 Verify these provide the required properties.
 
 # Practice Problem № 1
-Repeat the design but modified for a 3rd order response with 3dB of passband ripple.
+Repeat the design but modified for a 3rd order response with 3dB of passband ripple. (no attenuation required)
 TODO copy from picture and insert diagram
+$$
+\begin{gather}
+	\text{input} \rightarrow &\boxed{F=0.2986}& \rightarrow &\boxed{\begin{align} &F=0.9161 \\ &Q=3.0677\end{align}}& \rightarrow \text{output}
+\end{gather}
+$$
+![[PXL_20260219_122914479~3.jpg]]
 # Practice Problem № 2 
 Repeat both but modified for high pass in both cases.
 2nd order high-pass
 TODO copy from picture and insert diagram
+![[PXL_20260219_122914479~4.jpg]]
 
-TODO copy rest of the pictures
+3rd order high-pass
+![[PXL_20260219_122914479~5.jpg]]
