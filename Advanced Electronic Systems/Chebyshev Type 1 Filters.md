@@ -1,7 +1,7 @@
 
 # Chebyshev Type 1 (T1) Filter Recipe
 These filters designs have a sharper slope immediately around the critical frequency. The trade-off here is having ripples in the passband. 
-![[PXL_20260219_111842722~2.jpg]]
+![[Chebyshev vs Butterworth frequency responses.jpg]]
 Notes:
 - The filters in the lab are designed to have 0dB attenuation in the pass-band, but at the cost of the ripples causing amplification just before the critical frequency $f_0$.
 - Even order filters behaves differently from odd order.
@@ -35,7 +35,7 @@ $$
 	&&&\text{(from the 0.1dB table)}
 \end{gather}
 $$
-![[PXL_20260219_114450611~2.jpg]]
+![[Chebyshev T1 Example 1 Circuit.jpg|500]]
 
 Split the $R_1$ resistor into a voltage divider with an equivalent resistance of $R_1$.
 Theoretical 2nd order response:
@@ -59,7 +59,7 @@ Someone: "I'm still here!! :D"
 *classroom laughs*
 
 To achieve the attenuation we can split the initial resistor as follows:
-![[PXL_20260219_121512997~2.jpg]]
+![[Chebyshev T1 Example 1 Circuit - Split.jpg|700]]
 The equivalent resistance to $R_1$ and the required amount of attenuation can be achieved with the following:
 $$R_a = \frac{R_1}{H_0} \;\&\; R_b = \frac{R_1}{1-H_0}$$
 TODO i just realised it's been $*_0$ all this time, not $*_o\,$. Do a find-and-replace!
@@ -81,12 +81,12 @@ $$
 	\text{input} \rightarrow &\boxed{F=0.2986}& \rightarrow &\boxed{\begin{align} &F=0.9161 \\ &Q=3.0677\end{align}}& \rightarrow \text{output}
 \end{gather}
 $$
-![[PXL_20260219_122914479~3.jpg]]
+![[Chebyshev Practice 1 Circuit.jpg|400]]
 # Practice Problem № 2 
 Repeat both but modified for high pass in both cases.
 2nd order high-pass
 TODO copy from picture and insert diagram
-![[PXL_20260219_122914479~4.jpg]]
+![[Chebyshev Practice 2 Circuit.jpg|300]]
 
 3rd order high-pass
-![[PXL_20260219_122914479~5.jpg]]
+![[Chebyshev Practice 3 Circuit.jpg|350]]
