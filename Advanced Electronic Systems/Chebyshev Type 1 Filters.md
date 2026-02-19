@@ -1,4 +1,3 @@
-
 # Chebyshev Type 1 (T1) Filter Recipe
 These filters designs have a sharper slope immediately around the critical frequency. The trade-off here is having ripples in the passband. 
 ![[Chebyshev vs Butterworth frequency responses.jpg]]
@@ -13,7 +12,7 @@ Chebyshev T1 filters are specified by the amount of ripple in the passband, the 
 $$
 \begin{gather}
 	&\text{1st order} &&\text{2nd order} \\
-	\text{input} \rightarrow &\fbox{F=0.4942}& \rightarrow &\fbox{F=0.9971; Q=2.0177}& \rightarrow \text{output}
+	\text{input} \rightarrow &\fbox{F=0.4942} &\rightarrow &\fbox{F=0.9971; Q=2.0177} &\rightarrow \text{output}
 \end{gather}
 $$
 
@@ -29,7 +28,7 @@ TODO increase size of fractions
 Design a low-pass 2nd order Chebyshev T1 with 0.1dB of passband ripple and critical frequency of 60Hz. Use the [[Sallen-Key Unity Gain Active Filter|unity gain Sallen-Key]] topology for this.
 $$
 \begin{gather}
-	\text{input} \rightarrow &\fbox{0.1dB attenuation}& \rightarrow &\fbox{2nd order Sallen Key circuit}& \rightarrow \text{output} \\
+	\text{input} \rightarrow &\fbox{0.1dB attenuation} &\rightarrow &\fbox{2nd order Sallen Key circuit} &\rightarrow \text{output} \\
 	&&&F=1.8204 \\
 	&&&Q=0.7674 \\
 	&&&\text{(from the 0.1dB table)}
@@ -59,34 +58,91 @@ Someone: "I'm still here!! :D"
 *classroom laughs*
 
 To achieve the attenuation we can split the initial resistor as follows:
-![[Chebyshev T1 Example 1 Circuit - Split.jpg|700]]
+![[Chebyshev T1 Example 1 Circuit - Split.jpg|600]]
 The equivalent resistance to $R_1$ and the required amount of attenuation can be achieved with the following:
 $$R_a = \frac{R_1}{H_0} \;\&\; R_b = \frac{R_1}{1-H_0}$$
 TODO i just realised it's been $*_0$ all this time, not $*_o\,$. Do a find-and-replace!
 For 0.1dB attenuation we have:
 TODO insert boxed red part
-$$H_0 = 10^{\large\frac{-0.1}{20}} = 0.98855$$
+$$
+	H_0 = 10^{\large\frac{-0.1}{20}} = 0.98855
+	\quad
+	\boxed{}
+$$
 Also, here $R_1 = 10k\Omega$, which means:
 $$
-	R_a = \frac{10000}{0.98855} = 10.116 k\Omega
+	R_a = \frac{10000}{0.98855} = 10.116 \text{k}\Omega
 	\quad\&\quad
-	R_b = \frac{10000}{1-0.98855} = 873.6 k\Omega$$
+	R_b = \frac{10000}{1-0.98855} = 873.6 \text{k}\Omega
+$$
 Verify these provide the required properties.
 
 # Practice Problem № 1
 Repeat the design but modified for a 3rd order response with 3dB of passband ripple. (no attenuation required)
-TODO copy from picture and insert diagram
+TODO copy from picture
 $$
 \begin{gather}
-	\text{input} \rightarrow &\boxed{F=0.2986}& \rightarrow &\boxed{\begin{align} &F=0.9161 \\ &Q=3.0677\end{align}}& \rightarrow \text{output}
+	&\text{1st order} &&\text{2nd order} \\
+	
+	\text{input} \rightarrow
+	&\boxed{F=0.2986} &\rightarrow
+	&\boxed{\begin{align}
+		&F=0.9161 \\
+		&Q=3.0677
+	\end{align}} &\rightarrow
+	\text{output}
 \end{gather}
 $$
 ![[Chebyshev Practice 1 Circuit.jpg|400]]
+## Solution:
+Low-pass 2nd order:
+$$
+\begin{gather}
+	R_1 = R_2 = R_0 = 20 \text{k}\Omega \\ \\
+	C_2 = \frac1{(R_1+R_2)F^2 F \omega_0 Q} = 23.6 \text{nF} \\ \\
+	C_1 = \frac1{R_1R_2C_2 F^2 {\omega_0}^2} = 888.1 \text{uF} \\
+\end{gather}
+$$
+Low-pass 1st order:
+$$C_0 = \frac1{R_0 F \omega_0} = 444.2 \text{nF}$$
 # Practice Problem № 2 
 Repeat both but modified for high pass in both cases.
 2nd order high-pass
-TODO copy from picture and insert diagram
+$$
+	\text{input} \rightarrow 
+	\fbox{attenuation with Buffer} \rightarrow 
+	\fbox{Sallen-Key Unity Gain} \rightarrow 
+	\text{output}
+$$
 ![[Chebyshev Practice 2 Circuit.jpg|300]]
 
 3rd order high-pass
+$$
+	\text{input} \rightarrow 
+	\fbox{1st order high-pass} \rightarrow 
+	\fbox{Sallen-Key Unity Gain high-pass} \rightarrow 
+	\text{output}
+$$
 ![[Chebyshev Practice 3 Circuit.jpg|350]]
+## Solution
+2nd order high-pass:
+$$
+\begin{gather}
+	H(s) = \frac
+		{\left(\frac{sF}{\omega_0}\right)^2}
+		{\left(\frac{sF}{\omega_0}\right)^2 + \frac{sF}{\omega_0 Q} + 1} \\ \\
+	G(s) = \frac
+		{s^2 R_1R_2C_1C_2}
+		{s^2 R_1R_2C_1C_2 + s K_1(C_1+C_2) + 1}
+\end{gather}
+$$
+TODO: include diagram
+Assume $C_1 \;\&\; C_2 = 10\text{nF}$
+Calculate:
+$$
+\begin{gather}
+	R_1(C_1+C_2) = \frac{F}{\omega_0 Q} \\
+	\Rightarrow R_1 = \frac{F}{\omega_0 Q (C_1+C_2)} = 314.6 \text{k}\Omega
+\end{gather}
+$$
+$$R_2 = \frac{F^2}{\omega_0 R_1C_1C_2} = 741.2 \text{k}\Omega$$
