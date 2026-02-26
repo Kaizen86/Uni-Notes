@@ -16,13 +16,12 @@ $$
 \end{gather}
 $$
 
-| Standard                                                                                                         | with frequency scaling factor                                                                                               |
-| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| 2nd order Low Pass<br>$H_{LP}(s) = \frac1{\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$                  | <br>$H_{LP}(s) = \frac1{\left(\frac{s}{F\omega_o}\right)^2 + \frac{s}{F\omega_o Q} + 1}$                                    |
-| High Pass<br>$H_{HP}(s) = \frac{\frac{s^2}{{\omega_o}^2}} {\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$ | <br>$H_{HP}(s) = \frac{\left(\frac{Fs}{\omega_o}\right)^2}{\left(\frac{Fs}{\omega_o}\right)^2 + \frac{Fs}{\omega_o Q} + 1}$ |
-| 1st order Low Pass<br>$H_{LP}(s) = \frac1{1+\frac{s}{\omega_o}}$                                                 | <br>$H_{LP}(s) = \frac1{1+\frac{s}{F\omega_o}}$                                                                             |
-| 1st order High Pass<br>$H_{HP} = \frac{\frac{s}{\omega_o}} {1+\frac{s}{\omega_o}}$                               | <br>$H_{HP} = \frac{\frac{Fs}{\omega_o}} {1+\frac{Fs}{\omega_o}}$                                                           |
-TODO increase size of fractions
+| Standard                                                                                                              | with frequency scaling factor                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 2nd order Low Pass<br>$H_{LP}(s) = \huge\frac1{\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$                  | <br>$H_{LP}(s) = \huge\frac1{\left(\frac{s}{F\omega_o}\right)^2 + \frac{s}{F\omega_o Q} + 1}$                                    |
+| High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s^2}{{\omega_o}^2}} {\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$ | <br>$H_{HP}(s) = \huge\frac{\left(\frac{Fs}{\omega_o}\right)^2}{\left(\frac{Fs}{\omega_o}\right)^2 + \frac{Fs}{\omega_o Q} + 1}$ |
+| 1st order Low Pass<br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{\omega_o}}$                                                 | <br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{F\omega_o}}$                                                                             |
+| 1st order High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s}{\omega_o}} {1+\frac{s}{\omega_o}}$                            | <br>$H_{HP}(s) = \huge\frac{\frac{Fs}{\omega_o}} {1+\frac{Fs}{\omega_o}}$                                                        |
 
 # Low Pass Chebyshev T1 Example
 Design a low-pass 2nd order Chebyshev T1 with 0.1dB of passband ripple and critical frequency of 60Hz. Use the [[Sallen-Key Unity Gain Active Filter|unity gain Sallen-Key]] topology for this.
@@ -57,18 +56,23 @@ John: "All the noisy people have left, haven't they?"
 Someone: "I'm still here!! :D"
 *classroom laughs*
 
-To achieve the attenuation we can split the initial resistor as follows:
+To achieve the attenuation we can split the initial resistor into a voltage divider, like this:
 ![[Chebyshev T1 Example 1 Circuit - Split.jpg|600]]
 The equivalent resistance to $R_1$ and the required amount of attenuation can be achieved with the following:
 $$R_a = \frac{R_1}{H_0} \;\&\; R_b = \frac{R_1}{1-H_0}$$
 TODO i just realised it's been $*_0$ all this time, not $*_o\,$. Do a find-and-replace!
 For 0.1dB attenuation we have:
-TODO insert boxed red part
 $$
 	H_0 = 10^{\large\frac{-0.1}{20}} = 0.98855
 	\quad
-	\boxed{}
+	\boxed{\begin{align}
+		&R_0 = \frac{R_b}{R_a + R_b} \text{ (voltage divider)} \\
+		&\text{and } R_a \lVert R_b = R_1
+	\end{align}}
 $$
+For an explanation of $R_a \lVert R_b$, see this footnote: [^1]
+
+![[Chebyshev T1 Example 1 Circuit.jpg]]
 Also, here $R_1 = 10k\Omega$, which means:
 $$
 	R_a = \frac{10000}{0.98855} = 10.116 \text{k}\Omega
@@ -79,7 +83,7 @@ Verify these provide the required properties.
 
 # Practice Problem № 1
 Repeat the design but modified for a 3rd order response with 3dB of passband ripple. (no attenuation required)
-TODO copy from picture
+
 $$
 \begin{gather}
 	&\text{1st order} &&\text{2nd order} \\
@@ -94,6 +98,7 @@ $$
 \end{gather}
 $$
 ![[Chebyshev Practice 1 Circuit.jpg|400]]
+
 ## Solution:
 Low-pass 2nd order:
 $$
@@ -105,6 +110,7 @@ $$
 $$
 Low-pass 1st order:
 $$C_0 = \frac1{R_0 F \omega_0} = 444.2 \text{nF}$$
+
 # Practice Problem № 2 
 Repeat both but modified for high pass in both cases.
 2nd order high-pass
@@ -124,13 +130,18 @@ $$
 	\text{output}
 $$
 ![[Chebyshev Practice 3 Circuit.jpg|350]]
+
 ## Solution
 2nd order high-pass:
 $$
 \begin{gather}
+	F = 1.8204 \quad\&\quad Q = 0.7674 \\ \\
 	H(s) = \frac
-		{\left(\frac{sF}{\omega_0}\right)^2}
-		{\left(\frac{sF}{\omega_0}\right)^2 + \frac{sF}{\omega_0 Q} + 1} \\ \\
+		{\left(\huge\frac{sF}{\omega_0}\right)^2}
+		{
+			\left(\huge\frac{sF}{\omega_0}\right)^2
+			+ \frac{sF}{\omega_0 Q} + 1
+		} \\ \\
 	G(s) = \frac
 		{s^2 R_1R_2C_1C_2}
 		{s^2 R_1R_2C_1C_2 + s K_1(C_1+C_2) + 1}
@@ -145,4 +156,17 @@ $$
 	\Rightarrow R_1 = \frac{F}{\omega_0 Q (C_1+C_2)} = 314.6 \text{k}\Omega
 \end{gather}
 $$
+Also, 
 $$R_2 = \frac{F^2}{\omega_0 R_1C_1C_2} = 741.2 \text{k}\Omega$$
+---
+For the required attenuation,
+TODO include diagram
+$$
+	\frac{R_b}{R_a+R_b}
+	= 10^{\left(\huge\frac{-A_p}{20}\right)}
+	= 10^{\left(\huge\frac{-3}{20}\right)}
+	= 0.7071
+$$
+
+
+[^1]: $R_a \lVert R_b$ means the resistors are in *parallel*. To my understanding, this is because $V_{in}$ (assuming it's an ideal voltage source with very low impedance) behaves like an AC ground from the perspective of $R_a\,$, and $R_b$ is also connected to ground. Note that $V_{in} \approx \text{GND}$, so we can only assume they're the same for the purposes of analysing impedances. **Don't** do this when deriving filter transfer functions; keep $V_{in}$ as a variable.
