@@ -1,4 +1,4 @@
-As the name suggests, it's an infinitely long [[Impulse Response]]
+As the name suggests, it's an infinitely long [[Impulse Response]]. This means the start-up transients can last forever, unlike a [[Finite Impulse Response]] where they will dissipate.
 # [[Finite Impulse Response]] vs IIR
 FIR:
 - No feedback
