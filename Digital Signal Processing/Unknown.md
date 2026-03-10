@@ -5,7 +5,7 @@ TODO Copy from image 18/12/2025 09:43
 Prewarping steps
 0. Determine normalised digital frequency:
 $$
-	\Omega_o = \frac{2\pi \cdot f_s}{f_s} 
+	\Omega_0 = \frac{2\pi \cdot f_s}{f_s} 
 		= \frac{2\pi \cdot 500}{2000}
 		= \frac{1000\pi}{2000}
 		= \frac\pi2

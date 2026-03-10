@@ -171,30 +171,30 @@ $$
 This can now be related to the standard 2nd order response:
 $$
 	H_{LP}(s) = \frac1 {
-		{\huge \frac{s^2}{{\omega_o}^2}} + {\huge\frac{s}{\omega_o Q}} + 1
+		{\huge \frac{s^2}{{\omega_0}^2}} + {\huge\frac{s}{\omega_0 Q}} + 1
 	}
 $$
 Comparing these, we have:
 $$
 \begin{alignat*}{1}
-	{\omega_o}^2 &= \frac1{R_1R_2 C_1C_2} &\Rightarrow \enspace&
-	&\omega_o =& \frac1{\sqrt{R_1R_2 C_1C_2}} \\ \\
+	{\omega_0}^2 &= \frac1{R_1R_2 C_1C_2} &\Rightarrow \enspace&
+	&\omega_0 =& \frac1{\sqrt{R_1R_2 C_1C_2}} \\ \\
 	
-	\omega_o Q &= \frac1{C_2(R_1+R_2)} &\Rightarrow \enspace&
+	\omega_0 Q &= \frac1{C_2(R_1+R_2)} &\Rightarrow \enspace&
 	&Q =& \frac{\sqrt{R_1R_2 C_1C_2}}{C_2(R_1+R_2)}
 \end{alignat*}
 $$
 
 # Design Example $\textnumero 1$
-Design a 2nd order Butterworth filter ($Q=\frac1{\sqrt2}$) and a critical frequency of $f_o =4 \text{ kHz}$. Assume $R_1=R_2=10\text{ k}\Omega$. Determine the required capacitor Farad values to achieve this specification: $C_2(R_1+R_2) \rightarrow \frac1{\omega_o Q}$
+Design a 2nd order Butterworth filter ($Q=\frac1{\sqrt2}$) and a critical frequency of $f_0 =4 \text{ kHz}$. Assume $R_1=R_2=10\text{ k}\Omega$. Determine the required capacitor Farad values to achieve this specification: $C_2(R_1+R_2) \rightarrow \frac1{\omega_0 Q}$
 
 Equating these factors of $s^1$ from expressions:
-$$C_2(R_1+R_2) = \frac1{\omega_o Q}$$
+$$C_2(R_1+R_2) = \frac1{\omega_0 Q}$$
 Solving for $C_2$ and substituting in the values:
 $$
 \begin{align}
-	C_2 &= \frac{1}{(R_1+R_2) \cdot \omega_o Q}
-	= \frac1{(R_1+R_2) \cdot 2\pi f_o Q} \\ \\
+	C_2 &= \frac{1}{(R_1+R_2) \cdot \omega_0 Q}
+	= \frac1{(R_1+R_2) \cdot 2\pi f_0 Q} \\ \\
 	
 	&= \frac1{
 		(10000+10000) \cdot 2\pi \cdot 4000 \cdot \frac1{\sqrt2}
@@ -208,8 +208,8 @@ $$
 For $C_1$, equate the values of $s^2$ from both transfer functions and solve for $C_1$:
 $$
 \begin{align}
-	\frac1{{\omega_o}^2} &= R_1 R_2 C_1 C_2 \\
-	\Rightarrow C_1 &= \frac1{R_1 R_2 C_2 (2\pi f_o)^2} \\ \\
+	\frac1{{\omega_0}^2} &= R_1 R_2 C_1 C_2 \\
+	\Rightarrow C_1 &= \frac1{R_1 R_2 C_2 (2\pi f_0)^2} \\ \\
 	&= 5.6 \times 10^{-9} \text{ F} \\
 	&= 5.6 \text{ nF}
 \end{align}
@@ -218,8 +218,8 @@ $$
 - Ideal low-pass 2nd order response (no frequency scaling):
 $$
 	H(\omega) = \frac1{ \large
-		\left( \frac{j\omega}{\omega_o} \right)^2
-		+ \frac{j\omega}{Q\omega_o} + 1
+		\left( \frac{j\omega}{\omega_0} \right)^2
+		+ \frac{j\omega}{Q\omega_0} + 1
 	}
 $$
 - Unity gain Sallen-Key low-pass configuration transfer function:
@@ -231,7 +231,7 @@ $$
 $$
 Values are as follows:
 
-| $f_o$  | $Q$              | $R_1$       | $R_2$       | $C_1$ | $C_2$ |
+| $f_0$  | $Q$              | $R_1$       | $R_2$       | $C_1$ | $C_2$ |
 | ------ | ---------------- | ----------- | ----------- | ----- | ----- |
 | 750 Hz | $\frac1{\sqrt2}$ | 10k$\Omega$ | 10          | 30nF  | 15nF  |
 |        |                  | 15k$\Omega$ | 15k$\Omega$ | 20nF  | 10nF  |
@@ -239,8 +239,8 @@ Values are as follows:
 
 | Name                            | Variable   | Value                               |
 | ------------------------------- | ---------- | ----------------------------------- |
-| Critical Frequency              | $f_o$      | 750                                 |
-| <br>(Radial critical frequency) | $\omega_o$ | $2\pi 750 \text{ rad/s } (1500\pi)$ |
+| Critical Frequency              | $f_0$      | 750                                 |
+| <br>(Radial critical frequency) | $\omega_0$ | $2\pi 750 \text{ rad/s } (1500\pi)$ |
 | Required filter order           | $n$        | 1                                   |
 | Number of 2nd order stages      |            | 1                                   |
 ```math-tex
@@ -251,9 +251,9 @@ R2=100 # Ohms
 #n = 1 # Filter order
 Q=1/sqrt(2) # 2nd order stage Quality factor
 # Calculations
-w_o=2*pi*fo # rad/s
-C2=1/((R1+R2)*w_o*Q)
-C1=1/(R1*R2*w_o^2)
+w_0=2*pi*fo # rad/s
+C2=1/((R1+R2)*w_0*Q)
+C1=1/(R1*R2*w_0^2)
 # NOTE: There's a bug in Numerals which is rounding down
 # See: https://github.com/gtg922r/obsidian-numerals/issues/42
 ```
@@ -296,16 +296,16 @@ Butterworth 3rd order response: 1st order + 2nd order. $Q=1$
 $$
 \begin{gather}
 	&H_1(s) = \frac1{
-		1 + \huge\frac{s}{\omega_o}
+		1 + \huge\frac{s}{\omega_0}
 	}
 	&H_2(s) = \frac1{
-		{\huge\frac{s^2}{{\omega_o}^2}}
-		+ {\huge\frac{s}{\omega_o Q}} + 1
+		{\huge\frac{s^2}{{\omega_0}^2}}
+		+ {\huge\frac{s}{\omega_0 Q}} + 1
 	}
 	\\
 	\Rightarrow \\
-	&\omega_o = \frac1{R_o C_o} &C_o = \frac1{2\pi f_o R_o} \\
-	&C_2 = \frac1{\omega_o Q 2R} &C_1=\frac1{{\omega_o}^2 C_2 R^2} \\
+	&\omega_0 = \frac1{R_0 C_0} &C_0 = \frac1{2\pi f_0 R_0} \\
+	&C_2 = \frac1{\omega_0 Q 2R} &C_1=\frac1{{\omega_0}^2 C_2 R^2} \\
 	&\text{ (where }R=R_1=R_2)
 \end{gather}
 $$
@@ -333,18 +333,18 @@ $$
 Comparing with the theoretical high-pass case:
 $$
 	H(s) = \frac
-		{\large\frac{s^2}{{\omega_o}^2}}
-		{\large\frac{s^2}{{\omega_o}^2} + {\large\frac{s^2}{\omega_o Q}} + 1}
+		{\large\frac{s^2}{{\omega_0}^2}}
+		{\large\frac{s^2}{{\omega_0}^2} + {\large\frac{s^2}{\omega_0 Q}} + 1}
 $$
 ---
 To design the high-pass case, we can again equate the like-for-like factors and solve for any unknowns:
 $$
 \begin{alignat*}{1}
-	s^1 &= \frac1{Q \omega_o}   &\longleftrightarrow& R_1(C_1 + C_2) \\
-	s^2 &= \frac1{{\omega_o}^2} &\longleftrightarrow& R_1 R_2 C_1 C_2
+	s^1 &= \frac1{Q \omega_0}   &\longleftrightarrow& R_1(C_1 + C_2) \\
+	s^2 &= \frac1{{\omega_0}^2} &\longleftrightarrow& R_1 R_2 C_1 C_2
 \end{alignat*}
 $$
 If we assume values for the capacitors, we can then solve for $R_1$ so that:
 $$
-	R_2 = \frac1{{\omega_o}^2 R_1 C_1 C_2}
+	R_2 = \frac1{{\omega_0}^2 R_1 C_1 C_2}
 $$

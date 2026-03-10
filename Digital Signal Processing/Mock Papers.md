@@ -29,7 +29,7 @@ $$
 	{\omega_h}^{'} \approx 2.395 \text{ rad/sample} \\
 	
 	\text{Centre Frequency (geometric mean)} \\
-	{\omega_o}^{'} 
+	{\omega_0}^{'} 
 		= \sqrt{{\omega_l}^{'} \cdot {\omega_h}^{'}} 
 		= 1.6 \times 10^6 \text{ rad/s} \\
 	

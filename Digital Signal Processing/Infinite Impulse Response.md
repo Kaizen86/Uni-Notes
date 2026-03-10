@@ -290,9 +290,9 @@ $$
 \quad
 \boxed{\begin{gather}
 	H(z) = \frac1{1+\alpha} \times \frac{z+1}{z+\frac{1-a}{1+a}} \\
-	\omega_o = 2 \cdot f_s \tan\left( \frac{\Omega_o}2 \right),\enspace
-	\Omega_o = \frac{2\pi f_o}{f_s} \\
-	\text{and } \alpha = \frac{2f_s}{\omega_o}
+	\omega_0 = 2 \cdot f_s \tan\left( \frac{\Omega_0}2 \right),\enspace
+	\Omega_0 = \frac{2\pi f_0}{f_s} \\
+	\text{and } \alpha = \frac{2f_s}{\omega_0}
 \end{gather}}
 $$
 Determine the poles to ensure a stable filter design:

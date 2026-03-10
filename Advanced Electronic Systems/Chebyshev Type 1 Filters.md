@@ -18,10 +18,10 @@ $$
 
 | Standard                                                                                                              | with frequency scaling factor                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 2nd order Low Pass<br>$H_{LP}(s) = \huge\frac1{\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$                  | <br>$H_{LP}(s) = \huge\frac1{\left(\frac{s}{F\omega_o}\right)^2 + \frac{s}{F\omega_o Q} + 1}$                                    |
-| High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s^2}{{\omega_o}^2}} {\frac{s^2}{{\omega_o}^2} + \frac{s}{\omega_o Q} + 1}$ | <br>$H_{HP}(s) = \huge\frac{\left(\frac{Fs}{\omega_o}\right)^2}{\left(\frac{Fs}{\omega_o}\right)^2 + \frac{Fs}{\omega_o Q} + 1}$ |
-| 1st order Low Pass<br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{\omega_o}}$                                                 | <br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{F\omega_o}}$                                                                             |
-| 1st order High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s}{\omega_o}} {1+\frac{s}{\omega_o}}$                            | <br>$H_{HP}(s) = \huge\frac{\frac{Fs}{\omega_o}} {1+\frac{Fs}{\omega_o}}$                                                        |
+| 2nd order Low Pass<br>$H_{LP}(s) = \huge\frac1{\frac{s^2}{{\omega_0}^2} + \frac{s}{\omega_0 Q} + 1}$                  | <br>$H_{LP}(s) = \huge\frac1{\left(\frac{s}{F\omega_0}\right)^2 + \frac{s}{F\omega_0 Q} + 1}$                                    |
+| High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s^2}{{\omega_0}^2}} {\frac{s^2}{{\omega_0}^2} + \frac{s}{\omega_0 Q} + 1}$ | <br>$H_{HP}(s) = \huge\frac{\left(\frac{Fs}{\omega_0}\right)^2}{\left(\frac{Fs}{\omega_0}\right)^2 + \frac{Fs}{\omega_0 Q} + 1}$ |
+| 1st order Low Pass<br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{\omega_0}}$                                                 | <br>$H_{LP}(s) = \huge\frac1{1+\frac{s}{F\omega_0}}$                                                                             |
+| 1st order High Pass<br>$H_{HP}(s) = \huge\frac{\frac{s}{\omega_0}} {1+\frac{s}{\omega_0}}$                            | <br>$H_{HP}(s) = \huge\frac{\frac{Fs}{\omega_0}} {1+\frac{Fs}{\omega_0}}$                                                        |
 
 # Low Pass Chebyshev T1 Example
 Design a low-pass 2nd order Chebyshev T1 with 0.1dB of passband ripple and critical frequency of 60Hz. Use the [[Sallen-Key Unity Gain Active Filter|unity gain Sallen-Key]] topology for this.
@@ -45,10 +45,10 @@ We now need to determine suitable component values to achieve the filter specifi
 $$
 {\begin{gather}
 	&C_2 (R_1+R_2) &\& 
-	&R_1R_2C_1C_2 = \frac1{F^2 \cdot \omega_o} \\
+	&R_1R_2C_1C_2 = \frac1{F^2 \cdot \omega_0} \\
 	
-	&\Rightarrow C_2 = \frac1{(R_1+R_2) F \omega_o Q}
-	&&\Rightarrow C_1 = \frac1{F^2 \cdot \omega_o \cdot R_1R_2C_1C_2}
+	&\Rightarrow C_2 = \frac1{(R_1+R_2) F \omega_0 Q}
+	&&\Rightarrow C_1 = \frac1{F^2 \cdot \omega_0 \cdot R_1R_2C_1C_2}
 \end{gather}}
 $$
 
@@ -60,7 +60,6 @@ To achieve the attenuation we can split the initial resistor into a voltage divi
 ![[Chebyshev T1 Example 1 Circuit - Split.jpg|600]]
 The equivalent resistance to $R_1$ and the required amount of attenuation can be achieved with the following:
 $$R_a = \frac{R_1}{H_0} \;\&\; R_b = \frac{R_1}{1-H_0}$$
-TODO i just realised it's been $*_0$ all this time, not $*_o\,$. Do a find-and-replace!
 For 0.1dB attenuation we have:
 $$
 	H_0 = 10^{\large\frac{-0.1}{20}} = 0.98855

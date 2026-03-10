@@ -89,12 +89,12 @@ $$
 			{\epsilon^2}
 		\right)
 $$
-- Where the normalised frequency $v_s$ has $f_o$ which is the critical or bandpass frequency and the free frequency is given by the stop band frequency, i.e $f=f_s$ so that:
+- Where the normalised frequency $v_s$ has $f_0$ which is the critical or bandpass frequency and the free frequency is given by the stop band frequency, i.e $f=f_s$ so that:
 $$
 \begin{align}
-	v_s &= \frac{f}{f_o}
+	v_s &= \frac{f}{f_0}
 		\text{ for a low pass filter,} \\
-	v_s &= \frac{f_o}{f}
+	v_s &= \frac{f_0}{f}
 		\text{ for a high pass filter,} \\
 	\text{and } \epsilon^2 &= 10^{0.1\cdot A_p} -1
 \end{align}
