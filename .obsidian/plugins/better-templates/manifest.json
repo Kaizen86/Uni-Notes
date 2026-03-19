@@ -1,0 +1,10 @@
+{
+	"id": "better-templates",
+	"name": "Better Templates",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Lets you insert a template directly using the Command Palette, and places your cursor at a set point within the template instead of afterwards.",
+	"author": "Kaizen86",
+	"authorUrl": "https://github.com/Kaizen86",
+	"isDesktopOnly": false
+}

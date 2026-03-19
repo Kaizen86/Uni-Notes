@@ -9,3 +9,8 @@
 
 # Output of webpage-html-export plugin
 export/
+
+
+# custom better-templates plugin
+.obsidian/plugins/better-templates/node_modules
+.obsidian/plugins/better-templates/main.js
