@@ -8,5 +8,5 @@ I missed the part where he said what this module was about.
 # Required background knowledge:
 - Analogue Filters
 - Op Amps
-- Laplace Transforms (oh shit*)
+- Laplace Transforms (*oh shit*)
 - Complex Numbers
