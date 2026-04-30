@@ -2,9 +2,6 @@ This session is being taught by Abdul, not John. This is new, and looks like I w
 
 This module purportedly has a very high pass rate, so this should be relatively easy.
 
-# <u style='font-size:50'>Hello</u>
-
-
 
 Consider an open-loop circuit with some voltage $V_S$ and a resistance $R_s$. You can measure $V_S$ across the output. That's obvious lol. If you add an inductive load $Z_L\,$, you can define it as $Z_L = R + jx$.
 
