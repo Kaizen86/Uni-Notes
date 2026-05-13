@@ -1,0 +1,5 @@
+/* Courtesy of https://www.reddit.com/r/ObsidianMD/comments/pq2anj/comment/jcxknw6/ */
+div[src$='.svg'] {
+background-color: white;
+filter: opacity(1) drop-shadow(0 0 0 white);
+}
